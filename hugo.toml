@@ -1,0 +1,161 @@
+baseURL = "https://blog.climbtw.com/"
+# languageCode = "en-us"
+languageCode = "zh-cn"
+title = "Temple Blog"
+
+theme = "hugo-theme-cleanwhite"
+
+cleanDestinationDir = true
+buildDrafts = true
+buildFuture = true
+
+hasCJKLanguage = true
+
+[pagination]
+  pagerSize = 5 # frontpage pagination
+
+[markup]
+  [markup.tableOfContents] 
+    startLevel = 1 # 文章目录层级
+    endLevel = 2
+  [markup.highlight]
+    style = "nord" # 代码块高亮，https://xyproto.github.io/splash/docs/all.html
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # markdown 中使用 html
+
+[[params.addtional_menus]]
+title =  "READING"
+href =  "/reading/"
+[[params.addtional_menus]]
+title =  "LIFE"
+href =  "/life/"
+[[params.addtional_menus]]
+title =  "ARCHIVE"
+href =  "/archive/"
+[[params.addtional_menus]]
+title =  "ABOUT"
+href =  "/about/"
+
+[params]
+  header_image = "img/temple-home-bg.png"
+  slogan = "山高自有客行路，水深自有渡船人"
+  SEOTitle = "谌中钱的博客 | Temple Blog"
+  description = ""
+  keyword = ""
+
+  image_404 = "img/temple-404-bg.png"
+  title_404 = "页面不存在"
+
+  upstreamAttribution = false # 显示主题作者信息
+  omit_categories = false # 隐藏分类菜单
+
+  # Sidebar settings
+  sidebar_avatar = "img/temple.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_about_description = "谌中钱（言戈，Temple Chan），男，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修物联网工程，中国内地不知名程序员，Coupang、腾讯、阿里高级搬砖人，爬界科技 创始人、首席执行官。"
+  
+  about_me = true
+  bookmarks = true
+  featured_tags = true 
+  featured_condition_size = 0
+  friends = true
+  
+  # Twikoo comments
+  # Follow https://twikoo.js.org/ to set up your own env_id
+  twikoo_env_id = "https://twikoo.climbtw.com/"
+
+
+
+  # algolia site search
+  algolia_search = false
+  algolia_appId = ""
+  algolia_indexName = ""
+  algolia_apiKey = ""
+
+  # Artalk comments
+  # Follow https://artalk.js.org/ to set up your own server
+  artalk_enable = false
+  artalk_server = "https://xxx.xxx.com"
+  artalk_site = "xxx blog"
+
+  # We need a proxy to access Disqus api in China
+  # Follow https://github.com/zhaohuabing/disqus-php-api to set up your own disqus proxy
+  disqus_proxy = ""
+  disqus_site = ""
+
+  # leancloud storage for page view counter
+  page_view_counter = false
+  leancloud_app_id = ""
+  leancloud_app_key = ""
+
+  # Baidu Analytics
+  ba_track_id = ""
+
+  #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
+  reward = false 
+  # reward_guide = "如果这篇文章对你有用,请随意打赏" 
+
+  # Include any custom CSS and/or JS files, url or relative to /static folder
+  #custom_css = ["css/lightbox.css", "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css", "css/main.css"]
+  #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
+
+
+
+  [params.social]
+  rss            = true 
+  # email          = "youremail@gmail.com"
+  # facebook      = "full profile url in facebook"
+  # googleplus    = "full profile url in googleplus"
+  # twitter       = "full profile url in twitter"
+  # linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
+  # stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  # instagram     = "full profile url in instagram"
+  # github         = "https://github.com/yourgithub"
+  # wechat         = "your wechat qr code image"
+  # medium        = "full profile url in medium"
+  # slack         = "full workspace url in slack"
+  # pinterest     = "full profile url in pinterest"
+  # reddit        = "full profile url in reddit"
+  # gitlab        = "full profile url in gitlab"
+  # mastodon      = "full profile url in mastodon"
+  # keybase       = "full profile url in keybase"
+  # xing          = "https://www.xing.com/profile/yourxingid"
+  # git           = "full profile url for git user"
+
+  [[params.bookmark_link]]
+  title =  "Martin Fowler"
+  href =  "https://martinfowler.com"
+  [[params.bookmark_link]]
+  title = "ServiceMesher"
+  href =  "http://www.servicemesher.com"
+  [[params.bookmark_link]]
+  title =  "Pxhere"
+  href = "https://pxhere.com"
+  [[params.bookmark_link]]
+  title = "unsplash"
+  href = "https://unsplash.com"
+
+  [[params.friend_link]]
+  title = "Linda的博客"
+  href =  "https://zhaozhihan.com"
+
+[services]
+  # Enable comments by entering your Disqus shortname
+  [services.disqus]
+    shortname = ""
+  [services.googleAnalytics]
+    id = ""
+
+[outputs]
+# home = ["HTML", "RSS", "Algolia"]
+home = ["HTML", "RSS"]
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"] 
