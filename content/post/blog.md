@@ -25,6 +25,7 @@ categories: [ "Solutions" ]
         - [云函数部署](#云函数部署)
           - [构建命令](#构建命令-1)
         - [hugo.toml 前端配置](#hugotoml-前端配置)
+        - [启用 Server酱 的评论微信通知](#启用-server酱-的评论微信通知)
       - [静态资源 CDN](#静态资源-cdn)
       - [自动化部署](#自动化部署)
         - [在腾讯云服务器上生成SSH密钥](#在腾讯云服务器上生成ssh密钥)
@@ -291,6 +292,10 @@ docker run -d --restart=always -p 82:8080 -e TWIKOO_THROTTLE=1000  -v ./data:/ap
 # Follow https://twikoo.js.org/ to set up your own env_id
 twikoo_env_id = "" # 云函数部署的地址
 ```
+
+##### 启用 Server酱 的评论微信通知
+
+- Server酱 SendKey 获取：<https://sct.ftqq.com/sendkey>
 
 #### 静态资源 CDN
 

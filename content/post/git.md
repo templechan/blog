@@ -52,6 +52,8 @@ git branch -M main
 
 # 添加远程仓库地址
 git remote add origin https://github.com/templechan/blog.git
+# 修改为 SSH
+git remote set-url origin git@github.com:templechan/blog.git
 # 推送代码到远程仓库 origin 的 main 分支，-u 是建立分支联系，远程仓库没有对应分支时使用
 git push -u origin main
 
