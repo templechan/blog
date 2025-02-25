@@ -241,7 +241,7 @@ http {
         # }
 
         location / {
-            root   /etc/nginx/html/blog/blog/public;
+            root   /etc/nginx/html/blog/public;
             # try_files $uri $uri/ /index.html; # 解决单页应用history路由404的问题
             index  index.html index.htm;
         }
@@ -253,7 +253,7 @@ http {
 
         error_page   404  /404.html;
         location = /404.html {
-            root   /etc/nginx/html/blog/blog/public;
+            root   /etc/nginx/html/blog/public;
         }
 
         # # 反向代理：解决跨域问题，动静分离

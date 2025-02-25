@@ -21,4 +21,4 @@ jobs:
       run: ssh-keyscan ${{ secrets.CTW_SERVER_IP }} >> ~/.ssh/known_hosts
  
     - name: Deploy to Server
-      run: ssh ${{ secrets.CTW_USER }}@${{ secrets.CTW_SERVER_IP }} 'bash -s' < /usr/local/src/blog/deploy.sh
+      run: ssh ${{ secrets.CTW_USER }}@${{ secrets.CTW_SERVER_IP }} 'bash -s' < ./deploy.sh

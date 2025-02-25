@@ -1,4 +1,4 @@
-cd /usr/local/src/blog/blog
+cd /usr/local/src/blog
 rm -rf *
 dnf install -y git
 git config --global user.email "templechan@126.com"
