@@ -1,26 +1,28 @@
 ---
 layout: page
-multilingual: true
+# multilingual: true
 ---
 
 ## About Me
-**_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years. 
 
-Throughout his career, he has built a number of large-scale, cross-country software systems, most of them are still running in production. 
+**_Huabing Zhao_** is a software architect, an Istio Member and an ONAP PTL. He has a solid experience in the information and telecommunication technology industry for more than 17 years.
+
+Throughout his career, he has built a number of large-scale, cross-country software systems, most of them are still running in production.
 
 He loves open source and has been contributing to various open source projects, he is a member of Istio,  previous PTL of ONAP, the author of the Hugo clean-white theme and the open source project Aeraki Mesh.  
 
 He also has strong interests in various technical topics such as Cloud Native, Artificial Intelligence, Cryptocurrencies, Smart Home, etc. He love sharing his ideas about these things in his blog.
 
-Huabing holds a BSc in Computer Science and Technology from Chongqing University in China. 
+Huabing holds a BSc in Computer Science and Technology from Chongqing University in China.
 
 Currently, Huabing works as a senior engineer at [Tencent Cloud](https://cloud.tencent.com/) and also wears the hat of PTL in ONAP open source project. For now, his main focus is to build a managed service mesh solution on cloud.
 
 While he is free, he likes writing technical blog posts, watching movies, swimming, hiking, travelling and learning languages.
 
-Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his blog or share your ideas by [writing him an email](mailto:zhaohuabing@zhaohuabing.com). 
+Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his blog or share your ideas by [writing him an email](mailto:zhaohuabing@zhaohuabing.com).
 
 ## Publications
+
 | Title       |Type        |Publisher   |Link        |
 | ----------- |----------- |----------- |----------- |
 |[Istio Service Mesh Advanced Practical](https://www.zhaohuabing.com/post/2021-08-26-istio-handbook/)|Book|电子工业出版社|[Buy now](https://item.jd.com/13200745.html)|
@@ -28,8 +30,8 @@ Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his 
 |[Cloud Native Data Center Networking](https://zhaohuabing.com/post/2021-08-27-cloud-native-data-center)|Translation|中国电力出版社|[Buy now](https://item.jd.com/12929975.html)|
 |[Istio Operation Bible](http://localhost:1313/post/2021-10-08-istio-operation-bible/)|ebook||[Read online](https://istio-operation-bible.aeraki.net/)|
 
-
 ## Presentations (Selected)
+
 |Year         |City        |Conference  | Title      |Slides      |Video       |
 | ----------- |----------- |----------- |----------- |----------- |----------- |
 |2022|Virtual|[IstioCon](https://events.istio.io/istiocon-2022)|[Tencent Music’s service mesh practice with Istio and Aeraki](https://events.istio.io/istiocon-2022/sessions/tencent-music-aeraki/)|[slides](/slides/tencent-music-service-mesh-practice-with-istio-and-aeraki.pdf)|[Video](https://www.youtube.com/watch?v=6t_yPsq4Pi4)|
@@ -46,10 +48,11 @@ Feel free to connect Huabing at Github and Linkedin, leave your thoughts in his 
 |2017|Paris|[ONAP Developer Event](https://wiki.onap.org/display/DW/ONAP+Developer+Event+September+25-28%2C+2017%2C+Paris-Saclay%2C+France)|[Microservice Bus Tutorial](https://wiki.onap.org/display/DW/September+26-28+Topics#September2628Topics-M2)|[Slides](https://www.slideshare.net/HuabingZhao/microservice-bus-tutorial)|
 
 ## Open Source Projects
+
 |Project      |Role        |  Website   | GitHub     |
 | ----------- |----------- |----------- |----------- |
-| Aeraki Mesh | Creator    | https://aeraki.net  | http://github.com/aeraki-mesh |
-| Istio       | Contributor| https://istio.io    | https://github.com/istio/istio|
-| Envoy       | Contributor| https://www.envoyproxy.io |https://github.com/envoyproxy/envoy|
-| ONAP        | PTL        | https://www.onap.org||
-| hugo-theme-cleanwhite | Creator    | https://themes.gohugo.io/themes/hugo-theme-cleanwhite  | https://github.com/zhaohuabing/hugo-theme-cleanwhite |
+| Aeraki Mesh | Creator    | <https://aeraki.net>  | <http://github.com/aeraki-mesh> |
+| Istio       | Contributor| <https://istio.io>    | <https://github.com/istio/istio>|
+| Envoy       | Contributor| <https://www.envoyproxy.io> |<https://github.com/envoyproxy/envoy>|
+| ONAP        | PTL        | <https://www.onap.org>||
+| hugo-theme-cleanwhite | Creator    | <https://themes.gohugo.io/themes/hugo-theme-cleanwhite>  | <https://github.com/zhaohuabing/hugo-theme-cleanwhite> |
