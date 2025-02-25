@@ -29,7 +29,7 @@ categories: [ "Solutions" ]
       - [自动化部署](#自动化部署)
         - [在腾讯云服务器上生成SSH密钥](#在腾讯云服务器上生成ssh密钥)
         - [编写 GitHub Actions 工作流](#编写-github-actions-工作流)
-        - [腾讯云服务器上的部署脚本](#腾讯云服务器上的部署脚本)
+        - [仓库的部署脚本](#仓库的部署脚本)
       - [SEO](#seo)
         - [搜索引擎收录](#搜索引擎收录)
 
@@ -344,12 +344,12 @@ jobs:
       run: ssh-keyscan ${{ secrets.CTW_SERVER_IP }} >> ~/.ssh/known_hosts
  
     - name: Deploy to Server
-      run: ssh ${{ secrets.CTW_USER }}@${{ secrets.CTW_SERVER_IP }} 'bash -s' < /usr/local/src/blog/deploy.sh
+      run: ssh ${{ secrets.CTW_USER }}@${{ secrets.CTW_SERVER_IP }} 'bash -s' < ./deploy.sh
 ```
 
-##### 腾讯云服务器上的部署脚本
+##### 仓库的部署脚本
 
-`/usr/local/src/blog/deploy.sh`
+`./deploy.sh`
 
 ```shell
 cd /usr/local/src
