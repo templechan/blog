@@ -351,7 +351,7 @@ jobs:
 
 ```shell
 cd /usr/local/src
-rm -rf *
+rm -rf /usr/local/src/blog
 dnf install -y git
 git config --global user.email "templechan@126.com"
 git config --global user.name "templechan"
