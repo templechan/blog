@@ -47,10 +47,40 @@
                     <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-sidebar">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
-                        <img id="wechat-img-sidebar" src="{{ . | relURL }}" style="display:none; position:absolute; width: 150px; height: 170px; border: 2px solid black; border-radius: 10px; z-index:1000;">
+                        <img id="wechat-img-sidebar" src="{{ . | relURL }}" style="display:none; position:absolute; width: 150px; height: 170px; border: 2px solid gray; border-radius: 10px; z-index:1000;">
                     </span>
                </li>
                {{ end }}
+               {{ with .Site.Params.social.line }}
+               <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-line fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+               </li>
+               {{ end }}
+               {{ with .Site.Params.social.telegram }}
+               <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+               </li>
+               {{ end }}
+               {{ with .Site.Params.social.tiktok }}
+                   <li>
+                        <a target="_blank" href="{{ . }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-tiktok fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                   </li>
+                   {{ end }}
                {{ with .Site.Params.social.instagram }}
                <li>
                    <a target="_blank" href="{{ . }}">
@@ -67,6 +97,19 @@
                        <span class="fa-stack fa-lg">
                            <i class="fas fa-circle fa-stack-2x"></i>
                            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li> 
+               {{ end }}
+
+               <li style="line-height: 40px;">&nbsp;&nbsp;🐒&nbsp;&nbsp;</li>
+
+               {{ with .Site.Params.social.youtube }}
+               <li>
+                   <a href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
                        </span>
                    </a>
                </li>
@@ -89,6 +132,19 @@
                            <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
                        </span>
                    </a>
+               </li> 
+               {{ end }}
+
+               <li style="line-height: 40px;">&nbsp;&nbsp;🐒&nbsp;&nbsp;</li>
+
+               {{ with .Site.Params.social.linkedin }}
+               <li>
+                   <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
                </li>
                {{ end }}
                {{ with .Site.Params.social.gitlab }}
@@ -101,17 +157,6 @@
                    </a>
                </li>
                {{ end }}
-               {{ with .Site.Params.social.linkedin }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-
 
                {{ with .Site.Params.social.facebook }}
                <li>
