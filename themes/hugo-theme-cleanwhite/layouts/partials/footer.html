@@ -14,16 +14,46 @@
                         </a>
                     </li>
 		           {{ end }}
-                    {{ with .Site.Params.social.twitter }}
-                    <li>
-                        <a href="{{ . }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    {{ end }}
+                   <!-- Huabing: add wechat QR code link -->
+                   <!-- {{ with .Site.Params.social.wechat }}
+                   <li>
+                       <a target="_blank" href="{{ . | relURL}}">
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   {{ end }} -->
+                   {{ with .Site.Params.social.wechat }}
+                   <li>
+                        <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-footer">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                            <img id="wechat-img-footer" src="{{ . | relURL }}" style="display:none; position:absolute; width: 200px; height: 200px; border: 2px solid black; border-radius: 10px; z-index:1000;">
+                        </span>
+                   </li>
+                   {{ end }}
+                   {{ with .Site.Params.social.instagram }}
+                   <li>
+                       <a target="_blank" href="{{ . }}">
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   {{ end }}
+                   {{ with .Site.Params.social.twitter }}
+                   <li>
+                       <a href="{{ . }}">
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   {{ end }}
                     {{ with .Site.Params.social.zhihu }}
                     <li>
                         <a target="_blank" href="{{ . }}">
@@ -44,6 +74,28 @@
                         </a>
                     </li>
 		           {{ end }}
+                   {{ with .Site.Params.social.github }}
+                   <li>
+                       <a target="_blank" href="{{ . }}">
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   {{ end }}
+                   {{ with .Site.Params.social.linkedin }}
+                   <li>
+                       <a target="_blank" href="{{ . }}">
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                  {{ end }}
+
+
                     {{ with .Site.Params.social.facebook }}
                     <li>
                         <a target="_blank" href="{{ . }}">
@@ -54,28 +106,6 @@
                         </a>
                     </li>
 		           {{ end }}
-
-		            <!-- Huabing: add wechat QR code link -->
-                    {{ with .Site.Params.social.wechat }}
-                    <li>
-                        <a target="_blank" href="{{ . | relURL }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		            {{ end }}
-                    {{ with .Site.Params.social.github }}
-                    <li>
-                        <a target="_blank" href="{{ . }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		            {{ end }}
                     {{ with .Site.Params.social.gitlab }}
                     <li>
                         <a target="_blank" href="{{ . }}">
@@ -96,16 +126,7 @@
                         </a>
                     </li>
                     {{ end }}
-                    {{ with .Site.Params.social.linkedin }}
-                    <li>
-                        <a target="_blank" href="{{ . }}">
-                            <span class="fa-stack fa-lg">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-		           {{ end }}
+
                     {{ with .Site.Params.social.medium }}
                     <li>
                         <a target="_blank" href="{{ . }}">
@@ -176,16 +197,7 @@
                 </a>
             </li>
             {{ end }}
-            {{ with .Site.Params.social.instagram }}
-            <li>
-                <a target="_blank" href="{{ . }}">
-                    <span class="fa-stack fa-lg">
-                        <i class="fas fa-circle fa-stack-2x"></i>
-                        <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-                    </span>
-                </a>
-            </li>
-            {{ end }}
+
             {{ with .Site.Params.social.flickr }}
             <li>
                 <a target="_blank" href="{{ . }}">
@@ -224,7 +236,28 @@
     </div>
 </footer>
 
-
+<!-- social-img -->
+<script>
+$(document).ready(function(){
+    $(".social-img-span").mouseenter(function(e) {
+        var imgId = e.currentTarget.dataset.img;
+        console.log(e.pageX, e.pageY);
+        if (imgId) {
+            var img = $("#" + imgId);
+            img.css({
+                'top': -210, // 调整图片位置以避开鼠标指针
+                'left': -70, // 调整图片位置以避开鼠标指针
+                'display': 'block' // 显示图片
+            });
+        }
+    }).mouseleave(function(e) {
+        var imgId = e.currentTarget.dataset.img;
+        if (imgId) {
+            $("#" + imgId).css('display', 'none'); // 鼠标离开时隐藏图片
+        }
+    });
+});
+</script>
 
 <!-- async load function -->
 <script>
@@ -255,7 +288,6 @@
     </script>
     <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
 -->
-
 
 <!-- jquery.tagcloud.js -->
 <script>

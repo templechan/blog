@@ -32,6 +32,35 @@
                    </a>
                </li>
                {{ end }}
+               <!-- {{ with .Site.Params.social.wechat }}
+               <li>
+                   <a target="_blank" href="{{ . | relURL}}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               {{ end }} -->
+               {{ with .Site.Params.social.wechat }}
+               <li>
+                    <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-sidebar">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                        <img id="wechat-img-sidebar" src="{{ . | relURL }}" style="display:none; position:absolute; width: 200px; height: 200px; border: 2px solid black; border-radius: 10px; z-index:1000;">
+                    </span>
+               </li>
+               {{ end }}
+               {{ with .Site.Params.social.instagram }}
+               <li>
+                   <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               {{ end }}
                {{ with .Site.Params.social.twitter }}
                <li>
                    <a href="{{ . }}">
@@ -62,52 +91,12 @@
                    </a>
                </li>
                {{ end }}
-               {{ with .Site.Params.social.facebook }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.wechat }}
-               <li>
-                   <a target="_blank" href="{{ . | relURL}}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.github }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
                {{ with .Site.Params.social.gitlab }}
                <li>
                    <a target="_blank" href="{{ . }}">
                        <span class="fa-stack fa-lg">
                            <i class="fas fa-circle fa-stack-2x"></i>
                            <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.git }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-git fa-stack-1x fa-inverse"></i>
                        </span>
                    </a>
                </li>
@@ -122,6 +111,41 @@
                    </a>
                </li>
                {{ end }}
+
+
+               {{ with .Site.Params.social.facebook }}
+               <li>
+                   <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               {{ end }}
+
+               {{ with .Site.Params.social.github }}
+               <li>
+                   <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               {{ end }}
+
+               {{ with .Site.Params.social.git }}
+               <li>
+                   <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-git fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               {{ end }}
+ 
                {{ with .Site.Params.social.medium }}
                <li>
                    <a target="_blank" href="{{ . }}">
@@ -182,16 +206,7 @@
                    </a>
                </li>
                {{ end }}
-               {{ with .Site.Params.social.instagram }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fas fa-circle fa-stack-2x"></i>
-                           <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
+
                {{ with .Site.Params.social.flickr }}
                <li>
                    <a target="_blank" href="{{ . }}">

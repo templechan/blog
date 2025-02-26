@@ -102,25 +102,28 @@ href =  "/about/"
 
 
   [params.social]
+  email          = "templechan@126.com"
+  wechat         = "img/temple.png"
+  instagram     = "full profile url in instagram"
+  twitter       = "full profile url in twitter"
+  zhihu           = "full profile url for git user"
+  weibo           = "full profile url for git user"
+  github         = "https://github.com/yourgithub"
+  linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
   rss            = true 
-  # email          = "youremail@gmail.com"
+
   # facebook      = "full profile url in facebook"
-  # googleplus    = "full profile url in googleplus"
-  # twitter       = "full profile url in twitter"
-  # linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
-  # stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
-  # instagram     = "full profile url in instagram"
-  # github         = "https://github.com/yourgithub"
-  # wechat         = "your wechat qr code image"
-  # medium        = "full profile url in medium"
-  # slack         = "full workspace url in slack"
-  # pinterest     = "full profile url in pinterest"
-  # reddit        = "full profile url in reddit"
   # gitlab        = "full profile url in gitlab"
-  # mastodon      = "full profile url in mastodon"
-  # keybase       = "full profile url in keybase"
-  # xing          = "https://www.xing.com/profile/yourxingid"
-  # git           = "full profile url for git user"
+  # slack         = "full workspace url in slack" # 是一种用于办公的操作系统
+  # stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid" # 一个与程序相关的IT技术问答网站
+
+  # xing          = "https://www.xing.com/profile/yourxingid" # 德国类似Linkedin的职业社交网站
+  # medium        = "full profile url in medium" # 一个网络文章发布平台，由推特联合创办人埃文·威廉姆斯和比兹·斯通于2012年8月创办
+  # reddit        = "full profile url in reddit" # 一个美国著名的论坛，拥有庞大的用户群体和巨大的影响力
+  # keybase       = "full profile url in keybase" # 基于PGP技术的社交网络平台
+  # mastodon      = "full profile url in mastodon" # 一个自由开源的去中心化的分布式微博客社交网络
+  # flickr = "full profile url for git user" # 雅虎旗下图片分享网站
+  # pinterest = "full profile url in pinterest" # 以视觉方式发现创意点子的地方，比如食谱、家装等等
 
   [[params.bookmark_link]]
   title =  "Martin Fowler"
