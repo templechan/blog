@@ -6,7 +6,7 @@
                 <ul class="list-inline text-center">
                     {{ with .Site.Params.social.email }}
                     <li>
-                        <a href="mailto:{{ . }}">
+                        <a href="mailto:{{ . }}" title="{{ . }}">
                             <span class="fa-stack fa-lg">
                                 <i class="fas fa-circle fa-stack-2x"></i>
                                 <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
@@ -30,7 +30,7 @@
                         <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-footer">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
-                            <img id="wechat-img-footer" src="{{ . | relURL }}" style="display:none; position:absolute; width: 200px; height: 200px; border: 2px solid black; border-radius: 10px; z-index:1000;">
+                            <img id="wechat-img-footer" src="{{ . | relURL }}" style="display:none; position:absolute; width: 150px; height: 170px; border: 2px solid black; border-radius: 10px; z-index:1000;">
                         </span>
                    </li>
                    {{ end }}
@@ -245,8 +245,8 @@ $(document).ready(function(){
         if (imgId) {
             var img = $("#" + imgId);
             img.css({
-                'top': -210, // 调整图片位置以避开鼠标指针
-                'left': -70, // 调整图片位置以避开鼠标指针
+                'top': -180, // 调整图片位置以避开鼠标指针
+                'left': -45, // 调整图片位置以避开鼠标指针
                 'display': 'block' // 显示图片
             });
         }

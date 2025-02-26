@@ -24,7 +24,7 @@
            <ul class="list-inline">
                {{ if .Site.Params.social.email }}
                <li>
-                   <a href="mailto:{{ .Site.Params.social.email }}">
+                   <a href="mailto:{{ .Site.Params.social.email }}"  title="{{ .Site.Params.social.email }}">
                       <span class="fa-stack fa-lg">
                           <i class="fa fa-circle fa-stack-2x"></i>
                           <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -47,7 +47,7 @@
                     <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-sidebar">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
-                        <img id="wechat-img-sidebar" src="{{ . | relURL }}" style="display:none; position:absolute; width: 200px; height: 200px; border: 2px solid black; border-radius: 10px; z-index:1000;">
+                        <img id="wechat-img-sidebar" src="{{ . | relURL }}" style="display:none; position:absolute; width: 150px; height: 170px; border: 2px solid black; border-radius: 10px; z-index:1000;">
                     </span>
                </li>
                {{ end }}
