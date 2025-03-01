@@ -52,7 +52,7 @@ href =  "/about/"
 
   # Sidebar settings
   sidebar_avatar = "img/temple.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_about_description = "谌中钱（言戈，Temple Chan），男，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，Coupang、腾讯、阿里高级搬砖人，爬界科技 创始人、首席执行官。"
+  sidebar_about_description = "谌中钱（言戈，Temple Chan），男，29岁，177cm，76kg，摩羯座，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，腾讯、Coupang、阿里高级搬砖人，爬界科技 创始人、首席执行官。"
   
   about_me = true
   bookmarks = true
@@ -103,17 +103,17 @@ href =  "/about/"
 
   [params.social]
   email          = "templechan@126.com"
-  wechat         = "img/temple.png"
-  line         = "img/temple.png"
-  telegram     = "img/temple.png"
-  tiktok         = "https://www.baidu.com"
-  instagram     = "full profile url in instagram"
-  twitter       = "full profile url in twitter"
-  youtube       = "full profile url in twitter"
-  zhihu           = "full profile url for git user"
-  weibo           = "full profile url for git user"
-  github         = "https://github.com/yourgithub"
-  linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
+  wechat         = "img/social/temple-social-wechat.png"
+  # line         = "img/temple.png"
+  telegram       = "img/social/temple-social-telegram.png"
+  tiktok         = "https://www.douyin.com/user/MS4wLjABAAAA84o70K2c9LEZXJ9fHp0deVyvxMudni7rQgAahjtoWIX34SCg61Gbf6H4HYKneZsW"
+  instagram     = "https://www.instagram.com/templechann"
+  twitter       = "https://x.com/templechann"
+  youtube       = "https://www.youtube.com/@templechann"
+  zhihu           = "https://www.zhihu.com/people/templechan"
+  weibo           = "https://weibo.com/u/7893774034"
+  github         = "https://github.com/templechan"
+  linkedin       = "https://www.linkedin.com/in/templechan"
   rss = true 
 
   # facebook      = "full profile url in facebook"
