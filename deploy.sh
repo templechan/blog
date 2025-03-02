@@ -11,7 +11,7 @@ git clone -b main git@github.com:templechan/blog.git
 # 使用加速
 # git clone -b main https://gitclone.com/github.com/templechan/blog.git
 
-if [ "$(-d /usr/local/src/blog)" ]; then
+if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
     # 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
     # 也可指定具体文件名压缩
