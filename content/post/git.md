@@ -26,6 +26,12 @@ tags:
 > Git 是一个免费的开源分布式版本控制系统，旨在处理从小型到快速高效的超大型项目。
 
 - 官网：<https://git-scm.com/>
+- GitHub 国内镜像站实时更新：<https://fcp7.com/github-mirror-daily-updates.html#google_vignette>
+  - <https://blog.51cto.com/u_17218975/12981033>
+
+    ```shell
+    git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+    ```
 
 ## 安装
 

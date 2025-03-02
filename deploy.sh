@@ -7,9 +7,10 @@ if [ ! "$(command -v git)" ]; then
     git config --global user.name "templechan"
 fi
 # 使用 ssh 克隆会快一些
-git clone -b main git@github.com:templechan/blog.git
-# 使用加速
-# git clone -b main https://gitclone.com/github.com/templechan/blog.git
+# git clone -b main git@github.com:templechan/blog.git
+# 使用国内镜像代理
+git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
