@@ -4,9 +4,9 @@ dnf install -y git
 git config --global user.email "templechan@126.com"
 git config --global user.name "templechan"
 # 使用 ssh 克隆会快一些
-# git clone -b main git@github.com:templechan/blog.git
+git clone -b main git@github.com:templechan/blog.git
 # 使用加速
-git clone -b main https://gitclone.com/github.com/templechan/blog.git
+# git clone -b main https://gitclone.com/github.com/templechan/blog.git
 
 cd /usr/local/src/blog
 # 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
