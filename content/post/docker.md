@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Docker 使用记录"
-description: "Docker 安装，设置国内软件源，国内镜像代理实时更新，常用命令。"
+description: "Docker 安装，国内镜像代理实时更新，设置国内软件源，常用命令。"
 author: "谌中钱"
 date: "2025-01-17"
 image: "/img/temple-404-bg.png"
@@ -54,7 +54,7 @@ dnf config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/
 
 # 安装 Docker
 dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# 设置 Docker 国内镜像源
+# 设置 Docker 国内镜像代理
 tee /etc/docker/daemon.json <<EOF
 {
   "registry-mirrors": [
