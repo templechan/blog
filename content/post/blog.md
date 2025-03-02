@@ -82,8 +82,8 @@ hasCJKLanguage = true
 
 [markup]
   [markup.tableOfContents] 
-    startLevel = 1 # 文章目录层级
-    endLevel = 2
+    startLevel = 1 # 文章目录层级，无效，直接修改 footer.html 文件代码
+    endLevel = 4
   [markup.highlight]
     style = "nord" # 代码块高亮，https://xyproto.github.io/splash/docs/all.html
   [markup.goldmark]
@@ -118,7 +118,7 @@ href =  "/about/"
 
   # Sidebar settings
   sidebar_avatar = "img/temple.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
-  sidebar_about_description = "谌中钱（言戈，Temple Chan），男，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修物联网工程，中国内地不知名程序员，Coupang、腾讯、阿里高级搬砖人，爬界科技 创始人、首席执行官。"
+  sidebar_about_description = "谌中钱（言戈，Temple Chan），男，29岁，177cm，76kg，摩羯座，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，腾讯、Coupang、阿里高级搬砖人，爬界科技 创始人、首席执行官。"
   
   about_me = true
   bookmarks = true
@@ -168,42 +168,40 @@ href =  "/about/"
 
 
   [params.social]
-  rss            = true 
-  # email          = "youremail@gmail.com"
+  email          = "templechan@126.com"
+  wechat         = "img/social/temple-social-wechat.png"
+  # line         = "img/temple.png"
+  telegram       = "img/social/temple-social-telegram.png"
+  tiktok         = "https://www.douyin.com/user/MS4wLjABAAAA84o70K2c9LEZXJ9fHp0deVyvxMudni7rQgAahjtoWIX34SCg61Gbf6H4HYKneZsW"
+  instagram     = "https://www.instagram.com/templechann"
+  twitter       = "https://x.com/templechann"
+  youtube       = "https://www.youtube.com/@templechann"
+  zhihu           = "https://www.zhihu.com/people/templechan"
+  weibo           = "https://weibo.com/u/7893774034"
+  github         = "https://github.com/templechan"
+  linkedin       = "https://www.linkedin.com/in/templechan"
+  rss = true 
+
   # facebook      = "full profile url in facebook"
-  # googleplus    = "full profile url in googleplus"
-  # twitter       = "full profile url in twitter"
-  # linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
-  # stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
-  # instagram     = "full profile url in instagram"
-  # github         = "https://github.com/yourgithub"
-  # wechat         = "your wechat qr code image"
-  # medium        = "full profile url in medium"
-  # slack         = "full workspace url in slack"
-  # pinterest     = "full profile url in pinterest"
-  # reddit        = "full profile url in reddit"
   # gitlab        = "full profile url in gitlab"
-  # mastodon      = "full profile url in mastodon"
-  # keybase       = "full profile url in keybase"
-  # xing          = "https://www.xing.com/profile/yourxingid"
-  # git           = "full profile url for git user"
+  # slack         = "full workspace url in slack" # 是一种用于办公的操作系统
+  # stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid" # 一个与程序相关的IT技术问答网站
+
+  # xing          = "https://www.xing.com/profile/yourxingid" # 德国类似Linkedin的职业社交网站
+  # medium        = "full profile url in medium" # 一个网络文章发布平台，由推特联合创办人埃文·威廉姆斯和比兹·斯通于2012年8月创办
+  # reddit        = "full profile url in reddit" # 一个美国著名的论坛，拥有庞大的用户群体和巨大的影响力
+  # keybase       = "full profile url in keybase" # 基于PGP技术的社交网络平台
+  # mastodon      = "full profile url in mastodon" # 一个自由开源的去中心化的分布式微博客社交网络
+  # flickr = "full profile url for git user" # 雅虎旗下图片分享网站
+  # pinterest = "full profile url in pinterest" # 以视觉方式发现创意点子的地方，比如食谱、家装等等
 
   [[params.bookmark_link]]
-  title =  "Martin Fowler"
-  href =  "https://martinfowler.com"
-  [[params.bookmark_link]]
-  title = "ServiceMesher"
-  href =  "http://www.servicemesher.com"
-  [[params.bookmark_link]]
-  title =  "Pxhere"
-  href = "https://pxhere.com"
-  [[params.bookmark_link]]
-  title = "unsplash"
-  href = "https://unsplash.com"
+  title =  "爬界科技"
+  href =  "https://climbtw.com"
 
   [[params.friend_link]]
-  title = "Linda的博客"
-  href =  "https://zhaozhihan.com"
+  title = "谌中钱的博客"
+  href =  "https://blog.climbtw.com"
 
 [services]
   # Enable comments by entering your Disqus shortname
@@ -224,7 +222,7 @@ notAlternative = true
 
 [params.algolia]
 vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
-params = ["categories", "tags"] 
+params = ["categories", "tags"]
 ```
 
 ### 使用 Docker 搭建
@@ -299,7 +297,7 @@ twikoo_env_id = "" # 云函数部署的地址
 
 #### 静态资源 CDN
 
-> 目前图片采用命令压缩，CDN 需要时再研究。
+> 目前图片采用 开源压缩工具 **ImageMagick** 进行命令压缩，CDN 需要时再研究。
 
 #### 自动化部署
 
@@ -310,12 +308,12 @@ twikoo_env_id = "" # 云函数部署的地址
 ```shell
 # 在云服务器上生成私钥和公钥
 ssh-keygen -t rsa -b 4096 -C "templechan@126.com"
-# 将公钥（id_rsa.pub）添加到云服务器的 ~/.ssh/authorized_keys 文件中
+# 将 公钥（id_rsa.pub）添加到云服务器的 ~/.ssh/authorized_keys 文件中
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 # 查看私钥
 cat ~/.ssh/id_rsa
-# 将私钥（id_rsa）内容添加到 GitHub Actions 的 Secrets 中
+# 将 私钥（id_rsa）内容添加到 GitHub Actions 的 Secrets 中
 # 在 GitHub 仓库的 Settings -> Secrets -> Actions -> New repository secret 中添加：
 # Name: CTW_SSH_PRIVATE_KEY
 # Value: 你的私钥内容（注意不要添加换行符，可以直接从文件复制）
@@ -372,9 +370,11 @@ git clone -b main git@github.com:templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
+    if [ ! "$(command -v mogrify)" ]; then
+        dnf install -y ImageMagick
+    fi
     # 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
     # 也可指定具体文件名压缩
-    dnf install -y ImageMagick
     mogrify -resize 20% -quality 70 ./static/img/*.{png}
 
     if [ ! "$(docker ps -a -f "name=blog" --quiet)" ]; then
@@ -397,6 +397,8 @@ fi
 #### SEO
 
 ##### 搜索引擎收录
+
+> 百度的 sitemap 提交权限需要和客服去申请。
 
 - 百度收录官网：<https://ziyuan.baidu.com/linksubmit/index>
 - 必应收录官网：<https://www.bing.com/webmasters/sitemaps>

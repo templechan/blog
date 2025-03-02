@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "VS Code 使用记录（实时更新）"
+title: "VS Code 使用记录"
 description: "VS Code 下载安装，常用插件 等。"
 author: "谌中钱"
 date: "2025-01-14"
@@ -17,11 +17,11 @@ tags:
   - [简介](#简介)
   - [安装](#安装)
     - [Window 环境](#window-环境)
-- [配置文件 settings.json 记录（实时更新）](#配置文件-settingsjson-记录实时更新)
-- [代码片段记录（实时更新）](#代码片段记录实时更新)
+- [配置文件 settings.json 记录](#配置文件-settingsjson-记录)
+- [代码片段记录](#代码片段记录)
   - [Markdown](#markdown)
   - [Hugo博客文章模板](#hugo博客文章模板)
-- [常用插件（实时更新）](#常用插件实时更新)
+- [常用插件](#常用插件)
   - [基础插件](#基础插件)
   - [Markdown 插件](#markdown-插件)
     - [Markdown Preview Enhanced](#markdown-preview-enhanced)
@@ -54,7 +54,7 @@ tags:
 - 下载安装包完成后，直接运行安装即可。
 - 可使用 微软，GitHub 账户登录，用于同步软件设置。
 
-# 配置文件 settings.json 记录（实时更新）
+# 配置文件 settings.json 记录
 
 ```json
 {
@@ -77,7 +77,7 @@ tags:
 }
 ```
 
-# 代码片段记录（实时更新）
+# 代码片段记录
 
 ## Markdown
 
@@ -131,7 +131,7 @@ tags:
 内部目录位置...
 ```
 
-# 常用插件（实时更新）
+# 常用插件
 
 ## 基础插件
 
