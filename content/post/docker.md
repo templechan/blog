@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Docker 使用记录"
-description: "Docker 安装，设置国内软件源，镜像源，常用命令。"
+description: "Docker 安装，设置国内软件源，国内镜像代理实时更新，常用命令。"
 author: "谌中钱"
 date: "2025-01-17"
 image: "/img/temple-404-bg.png"

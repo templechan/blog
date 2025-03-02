@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Git 使用记录"
-description: "Git 下载安装，常用命令。"
+description: "Git 下载安装，GitHub 国内镜像代理 实时更新，常用命令。"
 author: "谌中钱"
 date: "2025-01-15"
 image: "/img/temple-404-bg.png"
@@ -26,7 +26,7 @@ tags:
 > Git 是一个免费的开源分布式版本控制系统，旨在处理从小型到快速高效的超大型项目。
 
 - 官网：<https://git-scm.com/>
-- GitHub 国内镜像站实时更新：<https://fcp7.com/github-mirror-daily-updates.html#google_vignette>
+- GitHub 国内镜像代理实时更新：<https://fcp7.com/github-mirror-daily-updates.html#google_vignette>
   - <https://blog.51cto.com/u_17218975/12981033>
 
     ```shell
