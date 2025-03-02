@@ -13,10 +13,12 @@ git clone -b main git@github.com:templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
+    if [ ! "$(command -v mogrify)" ]; then
+        dnf install -y ImageMagick
+    fi
     # 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
     # 也可指定具体文件名压缩
-    dnf install -y ImageMagick
-    mogrify -resize 20% -quality 70 ./static/img/*.{png}
+    mogrify -resize 20% -quality 70 ./static/img/*.{png, ico}
 
     if [ ! "$(docker ps -a -f "name=blog" --quiet)" ]; then
         if [ ! "$(docker images -q blog)" ]; then
