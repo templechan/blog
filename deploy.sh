@@ -18,11 +18,11 @@ if [ -d /usr/local/src/blog ]; then
     dnf install -y ImageMagick
     mogrify -resize 20% -quality 70 ./static/img/*.{png}
 
-    if [ ! "$(docker images -q blog)" ]; then
-        # 构建镜像
-        docker build -t blog .
-    fi
     if [ ! "$(docker ps -a -f "name=blog" --quiet)" ]; then
+        if [ ! "$(docker images -q blog)" ]; then
+            # 构建镜像
+            docker build -t blog .
+        fi
         # 创建并运行容器
         # 不适用于Docker部署
         # docker run -d --restart=always -p 80:81 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static --name blog blog
