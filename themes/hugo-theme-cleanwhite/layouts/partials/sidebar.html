@@ -43,7 +43,7 @@
                {{ end }} -->
                 {{ with .Site.Params.social.wechat }}
                 <li>
-                    <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-sidebar">
+                    <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-sidebar" title="微信">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
                         <img id="wechat-img-sidebar" src="{{ . | relURL }}"
@@ -63,7 +63,7 @@
                 {{ end }}
                 {{ with .Site.Params.social.telegram }}
                 <li>
-                    <span class="fa-stack fa-lg social-img-span" data-img="telegram-img-sidebar">
+                    <span class="fa-stack fa-lg social-img-span" data-img="telegram-img-sidebar"  title="Telegram">
                         <i class="fas fa-circle fa-stack-2x"></i>
                         <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
                         <img id="telegram-img-sidebar" src="{{ . | relURL }}"
@@ -73,7 +73,7 @@
                 {{ end }}
                 {{ with .Site.Params.social.tiktok }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="Tiktok">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-tiktok fa-stack-1x fa-inverse"></i>
@@ -83,7 +83,7 @@
                 {{ end }}
                 {{ with .Site.Params.social.instagram }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="Instagram">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
@@ -93,7 +93,7 @@
                 {{ end }}
                 {{ with .Site.Params.social.twitter }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="X">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
@@ -106,7 +106,7 @@
 
                 {{ with .Site.Params.social.youtube }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="YouTube">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
@@ -116,7 +116,7 @@
                 {{ end }}
                 {{ with .Site.Params.social.zhihu }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="知乎">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-stack-1x fa-inverse">知</i>
@@ -126,7 +126,7 @@
                 {{ end }}
                 {{ with .Site.Params.social.weibo }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="微博">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
@@ -139,10 +139,20 @@
 
                 {{ with .Site.Params.social.linkedin }}
                 <li>
-                    <a target="_blank" href="{{ . }}">
+                    <a target="_blank" href="{{ . }}"  title="LinkedIn">
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.github }}
+                <li>
+                    <a target="_blank" href="{{ . }}" title="GitHub">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                 </li>
@@ -164,16 +174,6 @@
                         <span class="fa-stack fa-lg">
                             <i class="fas fa-circle fa-stack-2x"></i>
                             <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-                {{ end }}
-                {{ with .Site.Params.social.github }}
-                <li>
-                    <a target="_blank" href="{{ . }}">
-                        <span class="fa-stack fa-lg">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                 </li>
