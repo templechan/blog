@@ -44,6 +44,8 @@ scripts.forEach(script => document.head.appendChild(script));
 // 白名单设置
 // let whiteList = ["pp小公举", "归南"];
 let whiteList = [];
+let whiteListTime = (whiteList.length / 10) * 1000;
+whiteListTime = whiteListTime >= 4000 ? 4000 : whiteListTime;
 // 取消关注数量，0 为无限制
 let nums = 0;
 
@@ -116,7 +118,7 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
             }
             isStop = true;
         }
-    }, 5000); // 5秒执行一次，减少频繁访问报错
+    }, 5000 - whiteListTime); // 5秒执行一次，减少频繁访问报错，白名单设置过多会导致翻页过多，这里优化定时器间隔
 };
 
 batchUnfollow(whiteList, nums);
