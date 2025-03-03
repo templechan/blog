@@ -45,7 +45,7 @@ scripts.forEach(script => document.head.appendChild(script));
 // let whiteList = ["pp小公举", "归南"];
 let whiteList = [];
 let whiteListTime = (whiteList.length / 10) * 1000;
-whiteListTime = whiteListTime >= 4000 ? 4000 : whiteListTime;
+whiteListTime = whiteListTime >= 3600 ? 3660 : whiteListTime;
 // 取消关注数量，0 为无限制
 let nums = 0;
 
@@ -65,7 +65,7 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
         let userName = "";
 
         if (whiteList.length != "") {
-            userContent = $('.semi-table-row-cell');
+            userContent = $(".semi-table-row-cell");
             for (let i = 0; i < userContent.length; i++) {
                 userName = userContent[i].children[1]?.innerHTML;
                 if (userName) {
@@ -82,14 +82,14 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
             }
             // 翻页
             if (!isNewCancelUser) {
-                let nextPageElement = $('.semi-button')[1];
+                let nextPageElement = $(".semi-button")[1];
                 if (nextPageElement.classList.contains("semi-button-primary")) {
                     nextPageElement.click();
                     isNewCancelUser = true;
                 }
             }
         } else {
-            userContent = $('.semi-table-row-cell a');
+            userContent = $(".semi-table-row-cell a");
             for (let i = 0; i < userContent.length; i++) {
                 user = userContent[i];
                 if (user.innerHTML === "取消关注") {
@@ -101,7 +101,7 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
         }
         
         // 找到确认弹窗的确认按钮，并点击，完成取消操作
-        let buttons = $('.semi-button-content');
+        let buttons = $(".semi-button-content");
         [...buttons].forEach(button => {
             if (button.innerHTML === "确认") {
                 button.click();
