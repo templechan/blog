@@ -15,7 +15,7 @@ categories: [ "Solutions" ]
 
 # 源代码
 
-> 取消关注 1000 人大约需要半小时。
+> 取消关注 1000 人大约需要 1 小时。
 
 ```javascript
 /**
@@ -106,7 +106,7 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
             }
             isStop = true;
         }
-    }, 2000); // 2秒执行一次，避免频繁访问报错
+    }, 4000); // 4秒执行一次，避免频繁访问报错
 };
 
 batchUnfollow(whiteList, nums);
