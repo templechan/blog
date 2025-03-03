@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JS批量取消抖音关注脚本"
-description: "取消关注 1000 人大约需要半小时。"
+description: "支持 白名单 和 数量 控制，取消关注 1000 人大约需要 1 小时。"
 author: "谌中钱"
 date: "2025-03-03"
 image: "/img/temple-404-bg.png"
@@ -15,7 +15,7 @@ categories: [ "Solutions" ]
 
 # 源代码
 
-> 取消关注 1000 人大约需要 1 小时。
+> 支持 白名单 和 数量 控制，取消关注 1000 人大约需要 1 小时。
 
 ```javascript
 /**
@@ -29,6 +29,7 @@ categories: [ "Solutions" ]
  * @date 2025-03-03
  * @notes 1. 需要登录到抖音创造中心（https://creator.douyin.com/），找到 互动管理 -> 关注管理，在页面上鼠标右键检查 -> 控制台，复制输入下面的 JS 脚本，回车即可
  * @notes 2. 如果抖音创造中心页面结构发生更新，则需要自行修改脚本，只保证脚本构建时有效
+ * @notes 3. 中途会偶尔频繁访问报错，不必理会，过几分钟频繁解除后脚本会继续进行
  */
 
 // 依赖管理
@@ -41,7 +42,8 @@ let scripts = [jQueryScript];
 scripts.forEach(script => document.head.appendChild(script));
 
 // 白名单设置
-let whiteList = [".会打呼噜噜的月亮", "小1"];
+// let whiteList = ["pp小公举", "归南"];
+let whiteList = [];
 // 取消关注数量，0 为无限制
 let nums = 0;
 
@@ -76,6 +78,14 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
                     }
                 }
             }
+            // 翻页
+            if (!isNewCancelUser) {
+                let nextPageElement = $('.semi-button')[1];
+                if (nextPageElement.classList.contains("semi-button-primary")) {
+                    nextPageElement.click();
+                    isNewCancelUser = true;
+                }
+            }
         } else {
             userContent = $('.semi-table-row-cell a');
             for (let i = 0; i < userContent.length; i++) {
@@ -106,7 +116,7 @@ let batchUnfollow = (whiteList = [], nums = 0) => {
             }
             isStop = true;
         }
-    }, 4000); // 4秒执行一次，避免频繁访问报错
+    }, 5000); // 5秒执行一次，减少频繁访问报错
 };
 
 batchUnfollow(whiteList, nums);
