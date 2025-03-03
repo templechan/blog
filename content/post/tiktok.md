@@ -45,7 +45,7 @@ scripts.forEach(script => document.head.appendChild(script));
 // let whiteList = ["pp小公举", "归南"];
 let whiteList = [];
 let whiteListTime = (whiteList.length / 10) * 1000;
-whiteListTime = whiteListTime >= 3600 ? 3660 : whiteListTime;
+whiteListTime = whiteListTime >= 3600 ? 3600 : whiteListTime;
 // 取消关注数量，0 为无限制
 let nums = 0;
 
