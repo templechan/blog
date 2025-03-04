@@ -12,7 +12,7 @@ Hi，我是谌中钱，本科主修计算机科学，阿里云高级工程师，
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;邮箱： [templechan@126.com](mailto:templechan@126.com)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;微信： templechan2024<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;手机号： +8617279689815<br />
-下载简历： <a href="/img/temple.png" download>前端开发-谌中钱-7年经验-17279689815.pdf</a>
+简历： <a href="/img/temple.png">预览</a> &nbsp;|&nbsp; <a href="/img/temple.png" download>下载</a>
 
 ## 技能和语言
 
