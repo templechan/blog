@@ -12,7 +12,9 @@ Hi，我是谌中钱，本科主修计算机科学，阿里云高级工程师，
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;邮箱： [templechan@126.com](mailto:templechan@126.com)<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;微信： templechan2024<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;手机号： +8617279689815<br />
-简历： <a href="/doc/cv.pdf" title="前端开发 - 谌中钱 - 7年经验 - 本科 - 17279689815.pdf">预览</a> &nbsp;|&nbsp; <a href="/doc/cv.pdf" download="前端开发 - 谌中钱 - 7年经验 - 本科 - 17279689815.pdf" title="前端开发 - 谌中钱 - 7年经验 - 本科 - 17279689815.pdf">下载</a>
+简历：<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;中文：<a href="/doc/cv.pdf" title="前端开发 - 谌中钱 - 7年经验 - 本科 - 17279689815.pdf">预览</a> &nbsp;|&nbsp; <a href="/doc/cv.pdf" download="前端开发 - 谌中钱 - 7年经验 - 本科 - 17279689815.pdf" title="前端开发 - 谌中钱 - 7年经验 - 本科 - 17279689815.pdf">下载</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🐒&nbsp;&nbsp;英文：<a href="/doc/cv-en.pdf" title="Front-end Development - Temple Chan - 7 Years Experience - 17279689815 - Bachelor.pdf">预览</a> &nbsp;|&nbsp; <a href="/doc/cv-en.pdf" download="Front-end Development - Temple Chan - 7 Years Experience - 17279689815 - Bachelor.pdf" title="Front-end Development - Temple Chan - 7 Years Experience - 17279689815 - Bachelor.pdf">下载</a>
 
 ## 技能和语言
 
