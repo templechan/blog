@@ -21,7 +21,7 @@ Hi，我是谌中钱，本科主修计算机科学，阿里云高级工程师，
 ### 软件
 
 - Web 开发：React（Next.js，React Native）
-- 工程化：Webpack，Nginx，CI/CD（‌GitHub Actions）
+- 工程化：Webpack，Nginx，Docker，CI/CD
 - Server 开发：Node.js（Express.js），Python（Scrapy）
 - Web3 相关
 
