@@ -42,11 +42,11 @@ Hi，我是谌中钱，本科主修计算机科学，阿里云高级工程师，
 
 ## 工作经验
 
-- 2025 - 至今 ：Web3 Game &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp; 远程（USDT 6,000 * 13/15）
-- 2024 - 2025：Web 开发工程师 &nbsp;&nbsp;-&nbsp;&nbsp; Alibaba，中国，深圳（¥ 25,000 * 13）
-- 2023 - 2023：Web 开发工程师 &nbsp;&nbsp;-&nbsp;&nbsp; Coupang，中国，上海（¥ 22,000 * 13）
-- 2020 - 2022：Web 开发工程师 &nbsp;&nbsp;-&nbsp;&nbsp; Tencent，中国，武汉（¥ 16,000 * 14）
-- 2018 - 2019：Java 开发工程师 &nbsp;&nbsp;-&nbsp;&nbsp; Augmentum，中国，武汉（¥ 7,000 * 13）
+- 2025 - 至今 ：Web3 Game - 远程（USDT 6,000 * 13/15）
+- 2024 - 2025：Web 开发工程师 - Alibaba，中国，深圳（¥ 25,000 * 13）
+- 2023 - 2023：Web 开发工程师 - Coupang，中国，上海（¥ 22,000 * 13）
+- 2020 - 2022：Web 开发工程师 - Tencent，中国，武汉（¥ 16,000 * 14）
+- 2018 - 2019：Java 开发工程师 - Augmentum，中国，武汉（¥ 7,000 * 13）
 
 ## 社交平台
 
