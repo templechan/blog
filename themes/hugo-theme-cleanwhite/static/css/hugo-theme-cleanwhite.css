@@ -906,7 +906,8 @@ body{
     overflow: auto;
     height: 100%;
     padding-bottom: 40px;
-    width: 195px;
+    /* width: 195px; */
+    width: 250px;
   }
   .side-catalog.fixed {
     position: fixed;
