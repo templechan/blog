@@ -12,7 +12,7 @@ buildFuture = true
 hasCJKLanguage = true
 
 [pagination]
-  pagerSize = 5 # frontpage pagination
+  pagerSize = 10 # frontpage pagination
 
 [markup]
   [markup.tableOfContents] 
