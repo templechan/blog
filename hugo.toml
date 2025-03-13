@@ -6,7 +6,7 @@ title = "Temple Blog"
 theme = "hugo-theme-cleanwhite"
 
 cleanDestinationDir = true
-buildDrafts = true
+buildDrafts = false
 buildFuture = true
 
 hasCJKLanguage = true
