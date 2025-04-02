@@ -80,6 +80,7 @@ categories: [ "Solutions" ]
   - [Redux](#redux)
     - [三大原则](#三大原则)
     - [redux中间件](#redux中间件)
+  - [自定义Hook组件](#自定义hook组件)
 - [Node后端](#node后端)
 - [性能优化](#性能优化)
   - [常规](#常规)
@@ -1341,6 +1342,8 @@ console.log(emailRegex.test(email));
     - 第二个参数为 [] 时，只会在首次渲染执行一次
     - 第二个参数为有值时，值发生变化就会执行
     - 如果副作用的依赖项是对象、数组或函数，在每次渲染时，JavaScript 引擎会为这些值创建新的引用。为了避免 useEffect 反复执行，可以使用 useCallback 或 useMemo 来记住函数或计算值。
+  - React.memo，React.PureComponent：避免在 props 未改变时的不必要渲染
+  - useMemo 和 useCallback：缓存值和函数
 
 ## 事件机制
 
@@ -1403,6 +1406,52 @@ console.log(emailRegex.test(email));
   - redux-thunk：处理异步操作，主要作用就是可以使 action 可以变成函数形式，接收两个参数 dispatch、getState
   - redux-promise： 处理异步操作
   - redux-logger：打印日志，主要作用在控制台打印输出新老state等信息
+
+## 自定义Hook组件
+
+自定义 Hook：
+
+```js
+import { useState, useEffect } from 'react';
+ 
+function useCountdown(initialTime) {
+  const [timeLeft, setTimeLeft] = useState(initialTime);
+ 
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => {
+        setTimeLeft(timeLeft - 1000); // 每次减少1000毫秒（1秒）
+      }, 1000);
+      return () => clearTimeout(timer); // 清除定时器以避免内存泄漏
+    } else {
+      console.log('倒计时结束');
+    }
+  }, [timeLeft]);
+ 
+  return timeLeft;
+}
+```
+
+使用 Hook：
+
+```js
+import React from 'react';
+import useCountdown from './useCountdown'; // 确保路径正确
+ 
+function CountdownTimer() {
+  const timeLeft = useCountdown(10000); // 例如，设置倒计时为10秒（10000毫秒）
+  const minutes = Math.floor(timeLeft / 60000);
+  const seconds = Math.floor((timeLeft % 60000) / 1000);
+ 
+  return (
+    <div>
+      <p>倒计时: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}</p>
+    </div>
+  );
+}
+ 
+export default CountdownTimer;
+```
 
 # Node后端
 
