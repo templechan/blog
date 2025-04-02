@@ -16,10 +16,29 @@ categories: [ "Solutions" ]
 <!-- code_chunk_output -->
 
 - [HTML](#html)
-  - [SSE](#sse)
-  - [WebSocket](#websocket)
-  - [WebWorker](#webworker)
-  - [常见面试题](#常见面试题)
+  - [行内元素和块级元素](#行内元素和块级元素)
+  - [H5新增标签](#h5新增标签)
+  - [图形](#图形)
+  - [存储](#存储)
+    - [Cookie](#cookie)
+    - [Session Storage](#session-storage)
+    - [Local Storage](#local-storage)
+    - [IndexedDB](#indexeddb)
+  - [缓存](#缓存)
+    - [客户端缓存](#客户端缓存)
+      - [MemoryCache](#memorycache)
+      - [Service Worker](#service-worker)
+        - [PWA](#pwa)
+      - [HTTP缓存（DiskCache）](#http缓存diskcache)
+    - [服务器缓存](#服务器缓存)
+      - [Nginx 缓存](#nginx-缓存)
+      - [CDN 缓存](#cdn-缓存)
+  - [多线程](#多线程)
+    - [Web Worker](#web-worker)
+    - [Service Worker 和 Web Worker 的区别](#service-worker-和-web-worker-的区别)
+  - [单、双向通信](#单-双向通信)
+    - [SSE](#sse)
+    - [WorkSocket](#worksocket)
 - [CSS](#css)
   - [页面布局](#页面布局)
     - [flex布局属性](#flex布局属性)
@@ -30,60 +49,45 @@ categories: [ "Solutions" ]
   - [BFC](#bfc)
   - [CSS 动画](#css-动画)
   - [CSS样式隔离方案](#css样式隔离方案)
-  - [常见面试题](#常见面试题-1)
+  - [常见面试题](#常见面试题)
 - [JS](#js)
   - [数据类型](#数据类型)
   - [作用域](#作用域)
   - [原型链](#原型链)
   - [继承](#继承)
   - [闭包](#闭包)
-  - [DOM/BOM 操作](#dombom-操作)
+  - [DOM/BOM 对象](#dombom-对象)
   - [Ajax](#ajax)
   - [事件循环](#事件循环)
   - [模块化编程](#模块化编程)
     - [CommonJS](#commonjs)
     - [ES6模块](#es6模块)
   - [ES6+](#es6)
-  - [TS](#ts)
-  - [常见面试题](#常见面试题-2)
   - [手写代码](#手写代码)
     - [邮箱的正则](#邮箱的正则)
     - [数组去重](#数组去重)
     - [防抖和节流](#防抖和节流)
     - [深拷贝](#深拷贝)
-- [框架](#框架)
-  - [React](#react)
-    - [生命周期](#生命周期)
-    - [虚拟DOM是如何工作的](#虚拟dom是如何工作的)
-    - [Diff算法有哪些优化策略](#diff算法有哪些优化策略)
-    - [Fiber带来了哪些改进？](#fiber带来了哪些改进)
-      - [Fiber 与 传统React渲染机制 有哪些区别？](#fiber-与-传统react渲染机制-有哪些区别)
-    - [React 事件机制](#react-事件机制)
-    - [setState 流程](#setstate-流程)
-    - [Redux](#redux)
-      - [三大原则](#三大原则)
-      - [redux中间件](#redux中间件)
-    - [Next](#next)
-- [工程化](#工程化)
-  - [Webpack](#webpack)
-  - [前端监控](#前端监控)
-    - [监控工具](#监控工具)
-    - [关键性能指标](#关键性能指标)
+  - [常见面试题](#常见面试题-1)
+- [Vue](#vue)
+- [React](#react)
+  - [生命周期](#生命周期)
+  - [事件机制](#事件机制)
+  - [虚拟DOM](#虚拟dom)
+    - [优化策略](#优化策略)
+  - [Fiber架构](#fiber架构)
+    - [与传统React渲染机制](#与传统react渲染机制)
+  - [Redux](#redux)
+    - [三大原则](#三大原则)
+    - [redux中间件](#redux中间件)
+- [Node后端](#node后端)
 - [性能优化](#性能优化)
   - [常规](#常规)
   - [React](#react-1)
-- [SEO优化](#seo优化)
 - [网络](#网络)
   - [浏览器地址到页面流程](#浏览器地址到页面流程)
   - [HTTP状态码](#http状态码)
   - [跨域](#跨域)
-  - [请求方法](#请求方法)
-  - [浏览器缓存机制](#浏览器缓存机制)
-    - [HTTP缓存](#http缓存)
-    - [Cookie存储4KB](#cookie存储4kb)
-    - [Storage存储5MB左右](#storage存储5mb左右)
-    - [IndexDB存储](#indexdb存储)
-    - [Service Worker缓存](#service-worker缓存)
   - [浏览器垃圾回收机制](#浏览器垃圾回收机制)
 - [安全](#安全)
   - [常见 Web 漏洞](#常见-web-漏洞)
@@ -91,17 +95,241 @@ categories: [ "Solutions" ]
     - [跨站脚本攻击 XSS](#跨站脚本攻击-xss)
     - [跨站请求伪造 CSRF](#跨站请求伪造-csrf)
     - [弱口令‌](#弱口令)
+- [工程化](#工程化)
+  - [Webpack](#webpack)
+  - [前端监控](#前端监控)
+    - [监控工具](#监控工具)
+    - [关键性能指标](#关键性能指标)
 - [项目业务](#项目业务)
 
 <!-- /code_chunk_output -->
 
 # HTML
 
-## SSE
+## 行内元素和块级元素
 
- - SSE (Server-Sent Events) 是基于 HTTP 协议的，它建立的是单向通道，只允许服务器向浏览器发送数据。这意味着客户端（浏览器）可以接收服务器的实时更新，但无法直接通过 SSE 向服务器发送数据。
+- 区别：
+    - 行内元素：span, a, img, input, label
+        - 不独占一行
+        - 不能设置宽高
+        - 宽度 由其内容决定
+    - 块级元素: div, p, h1, ul, ol, li, from, table
+        - 独占一行
+        - 可以设置宽高
+        - 宽度 默认是其 父元素的 100%
+    - 行内块元素: 通过 CSS 设置, 让 行内元素 可以 设置宽高
+        - 不独占一行
+        - 可以设置宽高
+        - 宽度 由其内容决定
+- 转换：
+    - display：
+        - inline: 使其变为 行内元素
+        - block: 使其变为 块级元素
+        - inline-block: 使其变为 行内块元素
 
-## WebSocket
+## H5新增标签
+
+- 语义化标签：header, footer, nav 等
+    - 增强代码可读性，方便维护
+    - 增强爬虫 SEO
+- 多媒体标签：audio, video, track 等
+- 表单标签：datalist, progress, meter 等
+
+## 图形
+
+## 存储
+
+- 存储的容量一般 有限制。
+
+### Cookie
+
+- 容量：一般不超过 4KB，1个域名下存放的 Cookie 的个数一般 < 30
+- 生命周期：
+    - 不能跨标签访问，只能在 domain + path 下访问
+    - Session Cookie：当不设置 expires 或 max-age 时，它会在 页面关闭 时被删除
+    - Local Cookie：设置 expires 或 max-age
+        - max-age 属性：直接以 秒 为单位指定 Cookie 的存活时间
+        `let expires = "; expires=" + date.toUTCString();`
+        `document.cookie = name + "=" + (value || "")  + expires + "; path=/";`
+        - expires 属性：接受一个日期对象，表示 Cookie 的过期时间
+        `let maxAge = "; max-age=" + seconds;`
+        `document.cookie = name + "=" + (value || "")  + maxAge + "; path=/";`
+        - path 属性：指定了 那些 页面 和 主机的路径 可以 访问 和 接收 Cookie，默认值为 根路径 /，以确保所有页面都能访问到这个 Cookie。
+        - domain 属性：指定了哪些 页面 和 主机 可以 访问 和 接收 Cookie。默认值为 同一 host，不包含子域名。
+            - 如果指定了 Domain，则一般包含子域名。
+- 设置 Cookie：`document.cookie = "key=value";`
+- 读取 Cookie：`document.cookie`
+- 删除 Cookie：`document.cookie="key=value;expires=过去的时间";`
+
+### Session Storage
+
+- 容量：一般 5MB 到 10MB 之间
+- 生命周期：
+    - 同源下，不能跨标签访问，只能 当前标签 下访问
+    - 它会在 页面关闭 时被删除
+- 设置：sessionStorage.setItem(key, value) / sessionStorage.key = value
+- 读取：sessionStorage.getItem(key) / sessionStorage.key / sessionStorage.valueOf()
+- 删除：sessionStorage.removeItem(key) / sessionStorage.clear()
+
+### Local Storage
+
+- 容量：一般 5MB 到 10MB 之间
+- 生命周期：
+    - 同源下，可以跨标签访问
+    - 持久化存储
+- 设置：localStorage.setItem(key, value) / localStorage.key = value
+- 读取：localStorage.getItem(key) / localStorage.key / localStorage.valueOf()
+- 删除：localStorage.removeItem(key) / localStorage.clear()
+
+### IndexedDB
+
+- IndexedDB 是一种 浏览器端 的 NoSQL 数据库。
+- 容量：一般限制为 硬盘容量 的 50% 减去一个固定值‌
+- 生命周期：
+    - 同源下，可以跨标签访问
+    - 持久化存储
+
+## 缓存
+
+- 缓存的容量一般 没有限制。
+- 缓存优先级：
+    - MemoryCache
+    - Service Work
+    - HTTP缓存（DiskCache）
+    - 服务器缓存
+- 注意点：
+    - MemoryCache 的存在会导致一个问题，ServiceWorker 并不总是对资源有着控制权。
+        - 如果遇到业务场景，需要对 ServiceWorker 资源控制权有很强的的要求，那么可以想办法使资源从 MemoryCache 失效。MemoryCache 是受控于 强缓存 的，这意味着我们可以在 ServiceWorker 拦截资源的响应，并设置资源响应头来使资源从 MemoryCache 失效：
+
+            ```js
+            self.addEventListener("fetch", (event) => {
+                event.respondWith(
+                    (async function () {
+                        // 从 HTTP 缓存或者网络获取资源
+                        const res =  fetch(event.request);
+                        // 因为 Response 是一个流，只能用一次，所以这里要 clone 一下
+                        const newRes = res.clone();
+                        // 改写资源响应头
+                        return new Response(res.body, { ...newRes, headers: {
+                            'cache-control': 'max-age=0'
+                        }});
+                    })();
+                );
+            });
+            ```
+
+    - 一般情况下，Service Worker 比 DiskCache  慢，但在 大并发下 Service Worker 比 DiskCache 更快。
+        - 由于 Service Worker 的优先级在 DiskCache 之上，我们可以在 Service Worker 进行 资源竞速，同一时间请求 Service Worker 和 DiskCache，哪个先返回就把资源返回上一层：
+
+            ```js
+            self.addEventListener("fetch", (event) => {
+                event.respondWith(
+                    (async function () {
+                        const res = Promise.race([
+                            // 请求 Service Worker Cache
+                            cache.open(CACHE_NAME).then(cache => cache.match(event.request)),
+                            // 请求 DiskCache 或者网络资源
+                            fetch(event.request)
+                        ])
+                    })();
+                );
+            });
+            ```
+
+    - 在某些时候，我们比较 ServiceWorker 和 HTTP 缓存有点不公平。ServiceWorker 的用途会更加广泛，它提供了更细力度的缓存控制、使离线化应用 PWA 得以实现、并且对比主线程，他能够使用更多的 CacheAPI 容量。
+
+### 客户端缓存
+
+#### MemoryCache
+
+- MemoryCache 作为第一公民，位于 ServiceWorker 之上。
+- 命中了 MemoryCache，就不会触发 ServiceWorker 的 fetch 事件。
+
+#### Service Worker
+
+- 容量：一般范围是 50MB 到 20GB，通用规则是可用空间的 20%
+- 生命周期：
+    - Service Worker 注册之后，可以独立于浏览器在后台运行，控制一个或多个页面。
+    - 即使浏览器关闭，Service Worker 仍然可以运行，但浏览器不会允许它一直处于工作状态。如果 Service Worker 长时间不使用或系统内存有限，浏览器可能会决定销毁它‌。
+    - 自由生命周期：
+        - install：安装阶段，`self.addEventListener('install', event => { ...`
+        - activate：激活阶段
+        - active：运行阶段
+        - uninstall：卸载阶段
+        - fetch：拦截网络请求
+        - push: 推送通知
+- 注册：`navigator.serviceWorker.register("/service-worker.js")`
+- 功能：
+    - 请求拦截：跟 Fetch 搭配，可以从浏览器层面拦截请求，做数据 mock
+    - 缓存管理：跟 Fetch 和 CacheStorage 搭配，可以做离线应用
+    - 推送通知：跟 Push 和 Notification 搭配，可以做像 Native APP 那样的消息推送
+- 三方库：
+    - 使用 Workbox：Google 提供的库，简化 Service Worker 开发，提供缓存策略、路由管理和自动更新等功能。
+
+##### PWA
+
+- 把 Service Worker 的功能融合在一起，再加上 Manifest 等，就差不多成了 PWA 了。
+
+#### HTTP缓存（DiskCache）
+
+- 容量：无限制，但浏览器的内存缓存（如Chrome的内存缓存）和硬盘缓存（如磁盘缓存）都有一定的存储空间限制
+- 生命周期：
+    - 强缓存：如果存在且未过期缓存，则直接使用，不向服务器发送请求
+        - Cache-Control：优先级高于 Expires，是一个相对时间
+            - public：全部缓存
+            - private：只能被单个用户的浏览器缓存存储
+            - no-cache：每次请求时都必须向服务器验证资源的有效性
+            - no-store：不缓存
+            - max-age：指定资源在缓存中的最大有效时间
+        - Expires：是绝对时间
+    - 协商缓存：浏览器在缓存过期后，会向服务器发送请求，携带响应头，如果资源未修改，服务器返回 304 状态码，表示使用缓存资源‌
+        - Last-Modified (If-Modified-Since)：基于 时间戳
+        - ETag (If-None-Match)：基于 内容哈希值，能更准确地判断资源是否发生变化
+
+### 服务器缓存
+
+#### Nginx 缓存
+
+#### CDN 缓存
+
+## 多线程
+
+### Web Worker
+
+- 多线程：worker.js
+    - 监听 self.onmessage 事件
+        - 通过 event.data 接收主线程发来的消息
+        - 执行计算密集型任务
+    - 通过 self.postMessage 发送结果回 主线程
+- 主线程：
+    - 注册：`new Worker("/worker.js")`
+    - 通过 worker.postMessage 发送结果给 多线程
+    - 监听 worker.onmessage 事件
+        - 通过 event.data 接收 多线程 发来的消息
+- 卸载 WebWorker
+    - 多线程：self.close()
+    - 主线程：worker.terminate()
+
+### Service Worker 和 Web Worker 的区别
+
+- 相同点：都是在常规的 JS 引擎线程以外开辟了新的 JS 线程
+- 不同点：Service Worker 是 Web Worker 进一步发展的产物
+    - Service Worker 不是服务于某个特定页面的，而是服务于多个页面的。（按照同源策略）
+    - Service Worker 会常驻在浏览器中，即便注册它的页面已经关闭，Service Worker 也不会停止。本质上它是一个后台线程，只有你主动终结，或者浏览器回收，这个线程才会结束。
+    - 生命周期、可调用的 API 等等也有很大的不同。
+    - 应用场景：
+        - Web Worker：在后台运行重度计算的任务，从而不阻塞主线程。
+        - Service Worker：作为一个代理，它位于 Web应用程序 与 网络 之间，允许你控制 网络请求、缓存内容 和 提供离线支持。
+
+## 单、双向通信
+
+### SSE
+
+- SSE (Server-Sent Events) 是基于 HTTP 协议的，它建立的是单向通道，只允许 服务器 向 浏览器 发送数据。这意味着客户端（浏览器）可以接收服务器的实时更新，但无法直接通过 SSE 向 服务器 发送数据。
+- 注册：`let source = new EventSource("demo_sse.php")`
+- 接收消息：`source.onmessage = function(event) { event.data ...`
+
+### WorkSocket
 
 - 原理：
     - 握手阶段：
@@ -111,10 +339,10 @@ categories: [ "Solutions" ]
     - 通信阶段：一旦握手成功，浏览器和服务器之间的通信就切换到了 WebSocket 协议。双方可以通过 WebSocket 协议进行实时双向通信，而不再依赖于传统的请求-响应模型。
 - 优缺点：
     - 优点：
-        - 实时性，双向通信，减少网络负载
-        - 没有同源限制，客户端可以与任意服务器通信
+        - 实时性（双向通信）
+        - 跨域（没有同源限制，客户端可以与任意服务器通信）
     - 缺点：
-        - 需要浏览器和服务器同时支持
+        - 需要 浏览器 和 服务器 同时支持
 - 客户端 API：
 
     ```js
@@ -137,56 +365,7 @@ categories: [ "Solutions" ]
     socket.bufferedAmount
     ```
 
-    - 服务端 API: 通常借助第三方库，如 Python 的 websockets 等
-
-## WebWorker
-
-- 多线程：创建 Worker 文件
-    - 监听 self.**onmessage** 事件
-        - 通过 event.data 接收主线程发来的消息
-        - 执行计算密集型任务
-    - 通过 self.**postMessage** 发送结果回 主线程
-- 主线程：通过 new Worker("worker.js") 实例化 Worker
-    - 通过 worker.**postMessage** 发送结果给 多线程
-    - 监听 worker.**onmessage** 事件
-        - 通过 event.data 接收 多线程 发来的消息
-- 卸载 WebWorker
-    - 多线程：self.close()
-    - 主线程：worker.terminate()
-
-## 常见面试题
-
-- 行内元素 和 块级元素 的 区别 和 转换？
-    - 区别：
-        - 行内元素：span, a, img, input, label
-            - 不独占一行
-            - 不能设置宽高
-            - 宽度 由其内容决定
-        - 块级元素: div, p, h1, ul, ol, li, from, table
-            - 独占一行
-            - 可以设置宽高
-            - 宽度 默认是其 父元素的 100%
-        - 行内块元素: 通过 CSS 设置, 让 行内元素 可以 设置宽高
-            - 不独占一行
-            - 可以设置宽高
-            - 宽度 由其内容决定
-    - 转换：
-        - display：
-            - inline: 使其变为 行内元素
-            - block: 使其变为 块级元素
-            - inline-block: 使其变为 行内块元素
-- HTML5 有哪些新增的标签，有什么作用，请列举三个？
-    - 语义化标签：header, footer, nav 等
-        - 增强代码可读性，方便维护
-        - 增强爬虫 SEO
-    - 多媒体标签：audio, video, track 等
-    - 表单标签：datalist, progress, meter 等
-- src 和 href？
-    - src: 对资源的引用，它指向的资源会 嵌入 到当前标签所在的位置，当浏览器解析当该元素时，会暂停其他资源的下载和处理，直到该资源加载，编译，执行完毕。常用在 script标签 上。
-    - href: 对资源的引用，当浏览器识别到它指向的是文件时，会异步下载，不会阻塞网页的渲染。常用在 link、a标签 上。
-- async 和 defer？
-    - async: 异步加载，多个 script 时，谁先下载完执行谁。适用于 不依赖 DOM 和 其他script 的场景。
-    - defer: 延迟加载，等效于放在 body 尾部，多个 script 时，等 DOM 加载完，按顺序执行。
+- 服务端 API: 通常借助第三方库，如 Python 的 websockets 等
 
 # CSS
 
@@ -344,7 +523,6 @@ categories: [ "Solutions" ]
     - **margin-top** 和 **margin-left** 负值：**元素向上、向左移动**
     - **margin-right** 负值，右侧元素左移，**自身不受影响**
     - **margin-bottom** 负值，下方元素上移，**自身不受影响**
-
 - **元素隐藏 的方式？**
     - **display: none**：元素在页面上将 **彻底消失**，导致浏览器的**重排和重绘**，无法响应点击事件。
     - **visibility: hidden**：仅仅是隐藏该元素，**DOM结果均会存在**，只是当时在一个不可见的状态，**不会触发重排，但是会触发重绘**，无法响应点击事件。
@@ -428,16 +606,16 @@ categories: [ "Solutions" ]
 
 - 基本类型（值类型）：Number、String、Boolean、Undefined、Null
 - 复杂类型（引用类型）
-  - Object、Array、Date、RegExp、Function
+  - Object、Array、Function、Date、RegExp
   - 基本包装类型：Number、String、Boolean
   - 单体内置对象：Global、Math
-- Es6 语法新增：Symbol、BigInt 数据类型
->
+- ES6 语法新增：Symbol、BigInt 数据类型
+
 - JS 类型检测方式：
   - **typeof**：能判断所有值类型，函数。不可对 null、对象、数组进行精确判断，因为都返回 object
   - **instanceof**：主要用于检测引用类型，根据对象的原形链往上找，如果原形链上有右边函数.prototype，返回true;否则返回false
   - **Object.prototype.toString.call()**：
-    - 由于原形链的检测有漏洞(原型是可以改变的)，所以会造成检测结果不准确，所以可以采用此种形式。
+    - 由于原形链的检测有漏洞 (原型是可以改变的)，所以会造成检测结果不准确，所以可以采用此种形式。
     - 所有原始数据类型都是能判断的，还有 Error 对象，Date 对象等。
 
 ## 作用域
@@ -484,19 +662,25 @@ categories: [ "Solutions" ]
 - React 中闭包：
   - useState 和 useEffect：在 React 中，由于函数组件没有自己的实例，所以在使用 useState 和 useEffect 等 Hook 时，也会用到闭包的概念来保存组件内部的状态。
 
-- 浅谈JS闭包
-- 什么是闭包，闭包有什么优缺点？
-
-## DOM/BOM 操作
+## DOM/BOM 对象
 
 - DOM:
-  - 节点操作
-  - DOM事件
-- BOM 常用对象
-  - window 对象
-  - Navigator 对象
-  - History 对象
-  - Location 对象
+  - Document：代表整个HTML文档。这是DOM树的根节点，可以通过document对象访问。
+  - Element：表示HTML元素，如 div、p 等。
+  - Node：所有 DOM节点 的基类，包括元素、属性、文本等。
+  - Event：用于处理和生成事件的对象
+  - Text：表示元素或属性中的文本内容。
+  - Attr：表示HTML元素的属性
+  - NodeList：可以包含各种类型的节点，包括元素节点（Element）、文本节点（Text）、注释节点（Comment）等
+  - HTMLCollection：它只包含元素节点（Element），常被用作表示 动态元素 集合的方式。
+    - Element 节点 继承自 Node 节点
+- BOM 常用对象:
+  - Window：代表浏览器窗口或框架。window对象是全局对象，所有的全局JavaScript对象、函数以及变量都自动成为window对象的成员。
+  - Navigator：提供关于 浏览器 的信息，如名称、版本等。可以通过 window.navigator 访问。
+  - Location：提供当前窗口的URL信息，可以通过 window.location 访问。
+  - History：包含用户（在浏览器窗口中）访问过的URL。可以通过window.history访问。
+  - Screen：提供有关用户屏幕的信息。可以通过window.screen访问。
+  - Performance: 提供关于页面性能的信息。可以通过window.performance访问。
   
 ## Ajax
 
@@ -556,8 +740,6 @@ xhr.abort();
   - 理解浏览器与 Node.js 的差异：
     - 浏览器中，微任务在渲染前执行；Node.js 中 process.nextTick 优先级最高。
     - Node.js 的 setImmediate 和 setTimeout 的触发顺序可能不同。
-
-- 说一下浏览器事件循环，哪些是宏任务，微任务有哪些，js为什么要用这种执行机制
 
 ## 模块化编程
 
@@ -623,294 +805,6 @@ xhr.abort();
   - Promise.reject()
   - finally()：指定不管最后状态如何都会执行的回调函数
 - async，await：为了实现异步操作的语法糖，async标记的函数配合使用await的话会使得异步操作更接近于同步操作，但是要比同步操作更有效率。
-
-## TS
-
-- **TypeScript 中 any 类型的作用是什么，滥用会有什么后果?**
-  - 代码可读性下降
-  - 潜在的运行时错误
-  - 类型安全受损
-- **什么是接口（interface），它的作用?**
-  - 接口定义了一个契约，描述了对象的形状（属性和方法），以便在多个地方共享。
-- **枚举（enum）是什么?**
-  - 枚举是一种对数字值集合进行命名的方式。它们可以增加代码的可读性，并提供一种便捷的方式来使用一组有意义的常量。
-- **什么是联合类型和交叉类型?**
-  - 联合类型表示一个值可以是多种类型中的一种，而交叉类型表示一个新类型，它包含了多个类型的特性。
-- **什么是类型断言?**
-  - 类型断言允许程序员手动指定一个值的类型。这在需要明确告诉编译器某个值的类型时非常有用。
-  - `let strLength: number = (someValue as string).length;`
-- **常用内置类型工具**
-  - Partial：可选
-  - Required：必选
-  - Readonly：只读
-  - `Record<Keys, Type>`：构造一个对象类型，其属性键为Keys，属性值为Type。
-
-## 常见面试题
-
-- 遍历方法
-
-    - **forEach()**：用于调用数组的每个元素，并将元素传递给回调函数。数组中的每个值都会调用回调函数。
-    - **map()**：会返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。该方法按照原始数组元素顺序依次处理元素。
-    - **filter()**：用于过滤数组，满足条件的元素会被返回。
-    - **some()**：只要有一个元素符合条件，就返回true，且剩余的元素不会再进行检测，否则就返回false。
-    - **every()**：只有所有元素都符合条件时，才返回true，如果数组中检测到有一个元素不满足，则整个表达式返回 false。
-    - **reduce()**：上一次调用回调返回的值传到下一次遍历
-    - **reduceRight()**：从右到左
-    - **find()**：通过函数内判断的数组的第一个元素的值。当数组中的元素在测试条件时返回 true 时， find() 返回符合条件的元素，之后的值不会再调用执行函数。如果没有符合条件的元素返回 undefined。 ​
-    - **findIndex**：符合条件的数组第一个元素位置（索引）
-
-- this/call/apply/bind
-
-    - **call**：改变this的指向，并**立即执行函数**
-      - 第一个是this要指向的对象，第二个参数是 **参数列表**
-      - **只会临时改变this一次**
-      - 手写
-
-        ```js
-        Function.prototype.myCall = function (context) {
-            // context就是要指向的对象
-            // 我们给context添加一个fn属性，值为this，这里的this就是调用myCall的函数
-            // 1.将函数设置为对象的属性
-            context.fn = this;
-            // 2.执行该函数
-            context.fn();
-            // 3.删除该函数
-            delete context.fn;
-        }
-        ```
-
-    - **apply**：同 call，但 apply 接受的是一个**数组**
-      - 手写：
-
-        ```js
-        Function.prototype.myApply = function (context, args) {
-            // context就是要指向的对象
-            // 这里需要做一个判断
-            context = context || window;
-            // 我们给context添加一个fn属性，值为this，这里的this就是调用myCall的函数
-            // 1.将函数设置为对象的属性
-            // 用Symbol替换掉fn
-            const fnSymbol = Symbol();
-            context[fnSymbol] = this;
-            // 2.执行该函数, 并传递参数
-            const res = context[fnSymbol](args);
-            // 3.删除该函数
-            delete context.fn;
-
-            return res;
-        }
-        ```
-
-    - **bind**：改变this指向后 **不会立即执行**，而是会返回一个永久改变this指向的函数。第二个参数是 **参数列表**
-      - 手写：
-
-        ```js
-        Function.prototype.myBind = function (context) {
-    
-            // 当调用myBind不是函数的时候，提示错误
-            if (typeof this !== 'function') {
-                throw new Error('TypeError')
-            }
-    
-            //这里的this是调用myBind的函数，即bar
-            // 将this保存起来
-            let self = this
-    
-            // 获取传入的参数，除了第一个参数
-            // 因为arguments是类数组，它不存在slice方法，所以这里我们可以将数组原型上的slice指向arguments，这样 arguments就拥有了slice方法
-            let args = Array.prototype.slice.call(arguments, 1)
-    
-            // 创建一个空函数
-            let fnTemp = function () { };
-    
-            // bind会返回一个函数
-            let fnBind = function () {
-                // 将this指向context
-                // 因为bind返回的函数可能被调用多次，所以这里需要将参数进行合并
-    
-                // 判断是否是new调用，如果是new调用，this 会指向实例，将绑定函数的this指向该实例，可以让实例获得绑定函数    的值
-                if (this instanceof fnBind) {
-                    // 如果是new调用，this指向实例对象
-                    self.apply(this, [...args, ...arguments])
-                } else {
-                    // 如果不是new调用，this指向context
-                    self.apply(context, [...args, ...arguments])
-                }
-            }
-    
-            // 让fnBind继承fnTemp的原型
-            fnTemp.prototype = this.prototype
-            fnBind.prototype = new fnTemp()
-    
-            return fnBind;
-        }
-        ```
-
-- == 和 === 的区别？
-- 写一段 js 遍历所有 li，将每个 li 逐个 alert() ？
-
-    ```html
-    <body>
-    <ul>
-        <li>张三</li>
-        <li>李四</li>
-        <li>王五</li>
-        <li>赵六</li>
-    </ul>
-    </body>
-    ```
-
-- 遍历 person 对象，按照以下格式输出
-
-    ```html
-    <p>张三:123</p>
-    <p>李四:456</p>
-    <p>王五:789</p>
-    ```
-
-    ```js
-    var person = {
-        123 : "张三",
-        456 : "李四",
-        789 : "王五",
-    }
-    ```
-
-- 找出数组中最大的版本号，[2.4.1, 2.5.2, 2.4.223]，返回'2.5.2'？
-- 两个超出 Number 最大值的数相加？
-- 有一个函数，接受了一个参数，根据参数的不同用 if 和 if else 分别来返回不同的结果，根据 设计模式 来简化时间复杂度？
-    - 借助短路运算符：&&，||
-    - Switch 语句:
-
-        ```js
-        function handleType(type) {
-            switch (type) {
-                case 'A': 
-                    console.log('处理类型 A'); 
-                    break; 
-                case 'B': 
-                    console.log('处理类型 B'); 
-                    break; 
-                case 'C': 
-                    console.log('处理类型 C'); 
-                    break; 
-                default: 
-                    console.log('未知类型'); 
-                    break; 
-            } 
-        }
-        ```
-
-    - 使用 对象映射:
-
-        ```js
-        const typeHandlers = {
-            A: () => console.log('处理类型 A'),
-            B: () => console.log('处理类型 B'),
-            C: () => console.log('处理类型 C'),
-            default: () => console.log('未知类型')
-        };
-        
-        function handleType(type) {
-            (typeHandlers[type] || typeHandlers.default)();
-        }
-        ```
-
-    - 使用 策略模式：定义一系列的算法，并将每一种算法封装起来，使它们可以相互替换。此模式让算法的变化独立于使用算法的客户。
-
-        ```js
-        class Strategy {
-            static A() { console.log('处理类型 A'); }
-            static B() { console.log('处理类型 B'); }
-            static C() { console.log('处理类型 C'); }
-        }
-        
-        function handleType(type) {
-            const methodName = `static ${type}`;
-            if (Strategy[methodName]) {
-                Strategy[methodName]();
-            } else {
-                console.log('未知类型');
-            }
-        }
-        ```
-
-        - 可以直接使用 函数 来模拟策略模式，避免了创建类的开销
-
-            ```js
-            const strategyA = (data) => data * 2; // 策略A函数
-            const strategyB = (data) => data * 3; // 策略B函数
-            
-            function context(strategy, data) {
-                return strategy(data); // 执行具体策略函数
-            }
-            
-            console.log(context(strategyA, 5)); // 输出: 10
-            console.log(context(strategyB, 5)); // 输出: 15
-            ```
-
-- 打印值顺序的题，根据 async await？
-    - async await 执行顺序：
-        - 当 await 后面的函数是 同步函数 时，返回是 字符串 和 返回 promise 执行顺序一致，都按照 微任务列表 执行。
-        - 当 await 后面的函数是 异步函数 时，返回是 字符串 同上，但如果返回 promise，此时任务会被放在微任务末尾，最后执行
-
-    ```js
-    console.log("script start");
-
-    new Promise((resolve) => {
-        console.log("promise1");
-        resolve('微任务1');
-    })
-    .then((data) => { //第一个Promise加入微任务列表
-        console.log(data);
-    });
-
-    async function fun1() {
-        console.log("fun1");
-        let data = await fun2(); // 关键的地方，await后面的代码会阻塞 ，fun2执行完毕后，后面的代码类似于传入then()中的回调
-        console.log(data);
-        console.log("await堵塞");
-    }
-
-    setTimeout(() => {
-        console.log("setTimeout 宏任务"); //一个宏任务，加入宏任务队列
-    }, 0)
-
-    async function fun2() {
-        console.log("fun2");
-        // return "no promise"
-        return new Promise((resolve, reject) => {
-            resolve("fun2 微任务")
-        })
-        // return "await"
-    }
-
-    fun1(); // 代码开始执行
-
-    new Promise((resolve) => {
-        console.log("promise2");
-        resolve("微任务2");
-    })
-    .then((data) => { // promise状态已经 fulfilled，直接加入微任务队列
-        console.log(data);
-    })
-
-
-    console.log("同步end"); // 同步代码结束
-
-    // 输出结果：
-    // script start
-    // promise1
-    // fun1
-    // fun2
-    // promise2
-    // 同步end
-    // 微任务1
-    // 微任务2
-    // fun2 微任务
-    // await堵塞
-    // setTimeout 宏任务
-    ```
 
 ## 手写代码
 
@@ -1169,13 +1063,250 @@ console.log(emailRegex.test(email));
         }
         ```
 
-# 框架
+## 常见面试题
 
-## React
+- 遍历方法
 
-### 生命周期
+    - **forEach()**：用于调用数组的每个元素，并将元素传递给回调函数。数组中的每个值都会调用回调函数。
+    - **map()**：会返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。该方法按照原始数组元素顺序依次处理元素。
+    - **filter()**：用于过滤数组，满足条件的元素会被返回。
+    - **some()**：只要有一个元素符合条件，就返回true，且剩余的元素不会再进行检测，否则就返回false。
+    - **every()**：只有所有元素都符合条件时，才返回true，如果数组中检测到有一个元素不满足，则整个表达式返回 false。
+    - **reduce()**：上一次调用回调返回的值传到下一次遍历
+    - **reduceRight()**：从右到左
+    - **find()**：通过函数内判断的数组的第一个元素的值。当数组中的元素在测试条件时返回 true 时， find() 返回符合条件的元素，之后的值不会再调用执行函数。如果没有符合条件的元素返回 undefined。 ​
+    - **findIndex**：符合条件的数组第一个元素位置（索引）
 
-- 类组件生命周期：
+- this/call/apply/bind
+
+    - **call**：改变this的指向，并**立即执行函数**
+      - 第一个是this要指向的对象，第二个参数是 **参数列表**
+      - **只会临时改变this一次**
+      - 手写
+
+        ```js
+        Function.prototype.myCall = function (context) {
+            // context就是要指向的对象
+            // 我们给context添加一个fn属性，值为this，这里的this就是调用myCall的函数
+            // 1.将函数设置为对象的属性
+            context.fn = this;
+            // 2.执行该函数
+            context.fn();
+            // 3.删除该函数
+            delete context.fn;
+        }
+        ```
+
+    - **apply**：同 call，但 apply 接受的是一个**数组**
+      - 手写：
+
+        ```js
+        Function.prototype.myApply = function (context, args) {
+            // context就是要指向的对象
+            // 这里需要做一个判断
+            context = context || window;
+            // 我们给context添加一个fn属性，值为this，这里的this就是调用myCall的函数
+            // 1.将函数设置为对象的属性
+            // 用Symbol替换掉fn
+            const fnSymbol = Symbol();
+            context[fnSymbol] = this;
+            // 2.执行该函数, 并传递参数
+            const res = context[fnSymbol](args);
+            // 3.删除该函数
+            delete context.fn;
+
+            return res;
+        }
+        ```
+
+    - **bind**：改变this指向后 **不会立即执行**，而是会返回一个永久改变this指向的函数。第二个参数是 **参数列表**
+      - 手写：
+
+        ```js
+        Function.prototype.myBind = function (context) {
+    
+            // 当调用myBind不是函数的时候，提示错误
+            if (typeof this !== 'function') {
+                throw new Error('TypeError')
+            }
+    
+            //这里的this是调用myBind的函数，即bar
+            // 将this保存起来
+            let self = this
+    
+            // 获取传入的参数，除了第一个参数
+            // 因为arguments是类数组，它不存在slice方法，所以这里我们可以将数组原型上的slice指向arguments，这样 arguments就拥有了slice方法
+            let args = Array.prototype.slice.call(arguments, 1)
+    
+            // 创建一个空函数
+            let fnTemp = function () { };
+    
+            // bind会返回一个函数
+            let fnBind = function () {
+                // 将this指向context
+                // 因为bind返回的函数可能被调用多次，所以这里需要将参数进行合并
+    
+                // 判断是否是new调用，如果是new调用，this 会指向实例，将绑定函数的this指向该实例，可以让实例获得绑定函数    的值
+                if (this instanceof fnBind) {
+                    // 如果是new调用，this指向实例对象
+                    self.apply(this, [...args, ...arguments])
+                } else {
+                    // 如果不是new调用，this指向context
+                    self.apply(context, [...args, ...arguments])
+                }
+            }
+    
+            // 让fnBind继承fnTemp的原型
+            fnTemp.prototype = this.prototype
+            fnBind.prototype = new fnTemp()
+    
+            return fnBind;
+        }
+        ```
+
+- 找出数组中最大的版本号，[2.4.1, 2.5.2, 2.4.223]，返回'2.5.2'？
+- 两个超出 Number 最大值的数相加？
+- 有一个函数，接受了一个参数，根据参数的不同用 if 和 if else 分别来返回不同的结果，根据 设计模式 来简化时间复杂度？
+    - 借助短路运算符：&&，||
+    - Switch 语句:
+
+        ```js
+        function handleType(type) {
+            switch (type) {
+                case 'A': 
+                    console.log('处理类型 A'); 
+                    break; 
+                case 'B': 
+                    console.log('处理类型 B'); 
+                    break; 
+                case 'C': 
+                    console.log('处理类型 C'); 
+                    break; 
+                default: 
+                    console.log('未知类型'); 
+                    break; 
+            } 
+        }
+        ```
+
+    - 使用 对象映射:
+
+        ```js
+        const typeHandlers = {
+            A: () => console.log('处理类型 A'),
+            B: () => console.log('处理类型 B'),
+            C: () => console.log('处理类型 C'),
+            default: () => console.log('未知类型')
+        };
+        
+        function handleType(type) {
+            (typeHandlers[type] || typeHandlers.default)();
+        }
+        ```
+
+    - 使用 策略模式：定义一系列的算法，并将每一种算法封装起来，使它们可以相互替换。此模式让算法的变化独立于使用算法的客户。
+
+        ```js
+        class Strategy {
+            static A() { console.log('处理类型 A'); }
+            static B() { console.log('处理类型 B'); }
+            static C() { console.log('处理类型 C'); }
+        }
+        
+        function handleType(type) {
+            const methodName = `static ${type}`;
+            if (Strategy[methodName]) {
+                Strategy[methodName]();
+            } else {
+                console.log('未知类型');
+            }
+        }
+        ```
+
+        - 可以直接使用 函数 来模拟策略模式，避免了创建类的开销
+
+            ```js
+            const strategyA = (data) => data * 2; // 策略A函数
+            const strategyB = (data) => data * 3; // 策略B函数
+            
+            function context(strategy, data) {
+                return strategy(data); // 执行具体策略函数
+            }
+            
+            console.log(context(strategyA, 5)); // 输出: 10
+            console.log(context(strategyB, 5)); // 输出: 15
+            ```
+
+- 打印值顺序的题，根据 async await？
+    - async await 执行顺序：
+        - 当 await 后面的函数是 同步函数 时，返回是 字符串 和 返回 promise 执行顺序一致，都按照 微任务列表 执行。
+        - 当 await 后面的函数是 异步函数 时，返回是 字符串 同上，但如果返回 promise，此时任务会被放在微任务末尾，最后执行
+
+    ```js
+    console.log("script start");
+
+    new Promise((resolve) => {
+        console.log("promise1");
+        resolve('微任务1');
+    })
+    .then((data) => { //第一个Promise加入微任务列表
+        console.log(data);
+    });
+
+    async function fun1() {
+        console.log("fun1");
+        let data = await fun2(); // 关键的地方，await后面的代码会阻塞 ，fun2执行完毕后，后面的代码类似于传入then()中的回调
+        console.log(data);
+        console.log("await堵塞");
+    }
+
+    setTimeout(() => {
+        console.log("setTimeout 宏任务"); //一个宏任务，加入宏任务队列
+    }, 0)
+
+    async function fun2() {
+        console.log("fun2");
+        // return "no promise"
+        return new Promise((resolve, reject) => {
+            resolve("fun2 微任务")
+        })
+        // return "await"
+    }
+
+    fun1(); // 代码开始执行
+
+    new Promise((resolve) => {
+        console.log("promise2");
+        resolve("微任务2");
+    })
+    .then((data) => { // promise状态已经 fulfilled，直接加入微任务队列
+        console.log(data);
+    })
+
+
+    console.log("同步end"); // 同步代码结束
+
+    // 输出结果：
+    // script start
+    // promise1
+    // fun1
+    // fun2
+    // promise2
+    // 同步end
+    // 微任务1
+    // 微任务2
+    // fun2 微任务
+    // await堵塞
+    // setTimeout 宏任务
+    ```
+
+# Vue
+
+# React
+
+## 生命周期
+
+- 类组件 生命周期：
   - 挂载阶段：
     - constructor：初始化组件的 state，给事件处理方法绑定 this
     - getDerivedStateFromProps：会返回一个对象用来更新当前的 state 对象，如果不需要更新可以返回 null。
@@ -1184,46 +1315,30 @@ console.log(emailRegex.test(email));
   - 更新阶段：
     - getDerivedStateFromProps
     - shouldComponentUpdate：决定组件是否需要重新渲染。它接收新的props和新的state作为参数，如果返回true，则组件会重新渲染
-      - 在函数组件中，可以使用 React.memo 来实现类似功能
     - render
     - getSnapshotBeforeUpdate
     - componentDidUpdate
   - 卸载阶段：
     - componentWillUnmount：清除 timer，取消网络请求或清除，取消在 componentDidMount 中创建的订阅等
 
-- 函数组件生命周期钩子：
-  - useState()：管理组件的状态，类似于类组件中的this.state和this.setState。
-  - useEffect()：类似于 componentDidMount 和 componentDidUpdate 的合并，以及 componentWillUnmount 功能，通过返回一个清理函数可以在组件卸载时执行一些操作
+- 函数组件 生命周期 钩子：
+  - useState()：管理组件的状态，类似于类组件中的 this.state 和 this.setState。
+    - setVisible 异步，同步时机：
+        - 当在 合成事件 和 钩子函数 中调用时，是 异步更新 的。
+            - 同步方法：
+                - 使用 useRef 存值
+                - 使用 useLayoutEffect
+        - 当在 原生事件 和 setTimeout、Promise.resolve().then 中调用时，都是同步的。
+        - 原因：在 React 合成事件中，React 通过事件代理和统一的事件处理机制，能够对setState调用进行拦截和批量处理。然而，在原生 DOM 事件或setTimeout回调中，React 无法感知这些setState调用。因此，setState按照常规的同步方式执行，状态更新后立即触发组件的重新渲染。
+    - 使用 函数形式 的 setVisible(pre => pre + 1) ，可以帮助确保每次状态更新都是 独立 的。
+  - useEffect()：类似于 componentDidMount 和 componentDidUpdate 的合并，以及 componentWillUnmount 功能
+    - 通过返回一个清理函数可以在组件卸载时执行一些操作
+    - 第二个参数缺失时：每次渲染都会执行
+    - 第二个参数为 [] 时，只会在首次渲染执行一次
+    - 第二个参数为有值时，值发生变化就会执行
+    - 如果副作用的依赖项是对象、数组或函数，在每次渲染时，JavaScript 引擎会为这些值创建新的引用。为了避免 useEffect 反复执行，可以使用 useCallback 或 useMemo 来记住函数或计算值。
 
-### 虚拟DOM是如何工作的
-
-- 当组件的状态发生变化时，React首先会在内存中创建一个新的 **虚拟DOM树** 来表示更新后的UI结构。
-- 然后，React会将这个 新的虚拟DOM树 与 旧的虚拟DOM树 进行比较（这个过程称为 Diff算法）。
-- Diff算法 会找出两个虚拟DOM树之间的 **差异**，例如 哪些节点被添加、删除或者修改了。
-- 最后，React 根据这些差异计算出 **最小的DOM操作集合**，只将这些必要的操作应用到实际的DOM上，从而提高性能，避免了直接操作真实DOM带来的大量 重绘和回流。
-
-### Diff算法有哪些优化策略
-
-- **同一层级的节点进行比较**：React只在同一层级的节点之间进行比较，不会跨层级去查找差异。这样可以大大减少比较的复杂度。
-- **组件类型比较**：如果两个节点的组件类型不同（例如一个是<div>，一个是<span>），React会直接认为这是一个 **全新的节点**，会销毁旧节点及其子节点，并创建新节点及其子节点，而不会深入比较子节点。
-- **列表渲染优化**：当渲染列表时，如果给每个列表项设置了唯一的key属性，React可以根据key来更高效地识别哪些列表项是新增、删除或者移动的。
-
-### Fiber带来了哪些改进？
-
-- React Fiber是React 16引入的一种新的协调引擎。
-- 它的主要改进包括：
-  - **可中断 和 可恢复 的渲染**：React Fiber可以将渲染工作分解成多个小任务，并且可以根据优先级暂停和恢复这些任务。这使得浏览器有更多的机会进行其他操作，如响应用户交互，提高了用户体验。
-  - **更好的调度能力**：能够更合理地安排不同类型任务的执行顺序，例如先执行高优先级的更新（如用户交互触发的更新），再执行低优先级的更新（如数据获取后的更新）。
-  - **支持并发模式**：允许 React 同时处理多个任务，例如在渲染新内容的同时还能响应用户的输入操作。
-
-#### Fiber 与 传统React渲染机制 有哪些区别？
-
-- 传统React渲染是基于递归调用的，一旦开始渲染就会一直进行下去直到完成。
-- React Fiber采用了基于链表的数据结构来表示组件树，并且可以将渲染任务分解成多个小的任务单元（Fiber节点）。
-- 在任务调度方面，传统React没有很好的中断和恢复机制，而React Fiber可以根据优先级灵活地中断和恢复渲染任务。
-- 在并发模式下，传统React只能顺序执行任务，而React Fiber可以同时处理多个任务，提高了资源利用率和响应速度。
-
-### React 事件机制
+## 事件机制
 
 - React基于浏览器的事件机制自身实现了一套事件机制，包括事件注册、事件的合成、事件冒泡、事件派发等，在React中这套事件机制被称之为合成事件。
 - 合成事件：实际并不会把事件代理函数直接绑定到真实的节点上，而是把所有的事件绑定到结构的最外层，使用一个统一的事件去监听。当组件挂载或卸载时，只是在这个统一的事件监听器上插入或删除一些对象。简化了事件处理和回收机制，效率也有很大提升。
@@ -1233,118 +1348,325 @@ console.log(emailRegex.test(email));
   - 所以会先执行原生事件，然后处理 React 事件
   - 最后真正执行 document 上挂载的事件
 - 总结：
-  - React 上注册的事件最终会绑定在document这个 DOM 上，而不是 React 组件对应的 DOM(减少内存开销就是因为所有的事件都绑定在 document 上，其他节点没有绑定事件)
+  - React 上注册的事件最终会绑定在 document 这个 DOM 上，而不是 React 组件对应的 DOM (减少内存开销就是因为所有的事件都绑定在 document 上，其他节点没有绑定事件)
   - React 自身实现了一套事件冒泡机制，所以这也就是为什么我们 event.stopPropagation() 无效的原因。
   - React 通过队列的形式，从触发的组件向父组件回溯，然后调用他们 JSX 中定义的 callback
   - React 有一套自己的合成事件 SyntheticEvent
 
-### setState 流程
+## 虚拟DOM
 
-- **状态合并**：当调用 setState 时，React 不会立即改变组件的状态，而是将传入的新状态对象与当前状态进行合并。合并通常是浅层合并，这意味着如果新状态包含深层次的对象属性更改，那么只有第一层属性会合并，深层对象的更改可能不会生效，除非显式替换整个深层对象。
-- **异步处理**：React 将 setState 操作视为异步的，特别是当在事件处理器或生命周期方法中调用时。这意味着调用 setState 并不会立即导致重新渲染。实际上，React 可能会把多个连续的 setState 调用合并成一个，以减少不必要的渲染次数。
-- **批处理**：React 有一个批处理过程，它可以收集在一个事件循环 tick 内的多个 setState 调用，然后一次性去更新状态。这样有助于在高并发更新时优化性能。
-- **状态更新调度**：React 会在微任务队列中安排状态更新的任务，这通常发生在事件处理结束、生命周期钩子调用之后，或者在某些异步操作（如网络请求完成）之后。
-- **组件生命周期方法**：getDerivedStateFromProps + shouldComponentUpdate
-- **重新渲染决策**：如果根据新的 props 或 state，React 确定组件需要重新渲染，它会进入 render 方法来生成新的虚拟 DOM 树。
-- **虚拟 DOM 比较**
-- **DOM 更新**
-- **生命周期方法调用**：componentDidUpdate
+- 当组件的状态发生变化时，React首先会在内存中创建一个新的 **虚拟DOM树** 来表示更新后的UI结构。
+- 然后，React会将这个 新的虚拟DOM树 与 旧的虚拟DOM树 进行比较（这个过程称为 Diff算法）。
+- Diff算法 会找出两个虚拟DOM树之间的 **差异**，例如 哪些节点被添加、删除或者修改了。
+- 最后，React 根据这些差异计算出 **最小的DOM操作集合**，只将这些必要的操作应用到实际的DOM上，从而提高性能，避免了直接操作真实DOM带来的大量 重绘和回流。
 
-### Redux
+### 优化策略
 
-#### 三大原则
+- **同一层级的节点进行比较**：React只在同一层级的节点之间进行比较，不会跨层级去查找差异。这样可以大大减少比较的复杂度。
+- **组件类型比较**：如果两个节点的组件类型不同（例如一个是 div，一个是 span），React会直接认为这是一个 **全新的节点**，会销毁旧节点及其子节点，并创建新节点及其子节点，而不会深入比较子节点。
+- **列表渲染优化**：当渲染列表时，如果给每个列表项设置了唯一的key属性，React可以根据key来更高效地识别哪些列表项是新增、删除或者移动的。
+
+## Fiber架构
+
+- React Fiber是React 16引入的一种新的协调引擎。
+- 它的主要改进包括：
+  - **可中断 和 可恢复 的渲染**：React Fiber可以将渲染工作分解成多个小任务，并且可以根据优先级暂停和恢复这些任务。这使得浏览器有更多的机会进行其他操作，如响应用户交互，提高了用户体验。
+  - **更好的调度能力**：能够更合理地安排不同类型任务的执行顺序，例如先执行高优先级的更新（如用户交互触发的更新），再执行低优先级的更新（如数据获取后的更新）。
+  - **支持并发模式**：允许 React 同时处理多个任务，例如在渲染新内容的同时还能响应用户的输入操作。
+
+### 与传统React渲染机制
+
+- 传统React渲染是基于 **递归调用** 的，一旦开始渲染就会一直进行下去直到完成。
+- React Fiber采用了 **基于链表** 的数据结构来表示组件树，并且可以将渲染任务分解成多个小的任务单元（Fiber节点）。
+- 在任务调度方面，传统React没有很好的中断和恢复机制，而React Fiber可以根据优先级灵活地中断和恢复渲染任务。
+- 在并发模式下，传统React只能顺序执行任务，而React Fiber可以同时处理多个任务，提高了资源利用率和响应速度。
+
+## Redux
+
+### 三大原则
 
 - **单一数据源**：整个应用的state被存储在reducer中，并且这个reducer只存在于唯一一个store
 - **state是只读的**：唯一能改变 state 的就是 action, action是一个用于描述已发生事件的对象,通过 store 中的 dispatch方法 来发送 action，store.dispatch(action)
 - **使用纯函数（reducer）来执行修改**: reducer是一个纯函数，它接受老的state，action，并且返回一个新的state
 >
-- 缺点：一个组件所需要的数据，必须由父组件传过来，而不能像flux中直接从store取。 当一个组件相关数据更新时，即使父组件不需要用到这个组件，父组件还是会重新render，可能会有效率影响，或者需要写复杂的shouldComponentUpdate进行判断。
+- 缺点：一个组件所需要的数据，必须由父组件传过来，而不能像 flux 中直接从store取。 当一个组件相关数据更新时，即使父组件不需要用到这个组件，父组件还是会重新render，可能会有效率影响，或者需要写复杂的shouldComponentUpdate进行判断。
 
-#### redux中间件
+### redux中间件
 
-- 为什么需要redux中间件？
-  - 默认情况下，redux只能处理同步数据流。但是实际项目开发中，状态的更新、获取、通常是使用异步操作来实现的。
+- 为什么需要 redux中间件？
+  - 默认情况下，redux 只能处理同步数据流。但是实际项目开发中，状态的更新、获取、通常是使用异步操作来实现的。
 - 常用的redux中间件？
-  - redux-thunk：处理异步操作，主要作用就是可以使action可以变成函数形式，接收两个参数dispatch、getState
+  - redux-thunk：处理异步操作，主要作用就是可以使 action 可以变成函数形式，接收两个参数 dispatch、getState
   - redux-promise： 处理异步操作
   - redux-logger：打印日志，主要作用在控制台打印输出新老state等信息
 
-- react中更新dom是同步还是异步的?
-- vue2和3有哪些区别，组件双向绑定数据有哪些变化，组件内部怎么接受数据，从2迁移到3要注意哪些
+# Node后端
 
-### Next
+- 一个基于 Chrome V8 引擎的 JavaScript 运行环境，是一个让 JavaScript 运行在服务端的开发平台。
 
-- **什么是 Next.js，它与 React 有何不同？**
-  - Next.js 是一个基于 React 的开源框架，可帮助开发人员构建服务器端呈现的 React 应用程序。
-  - React和 Next.js 之间的主要区别在于它们处理路由的方式。 React 使用客户端路由，这意味着页面转换完全在客户端使用 JavaScript 处理。
-  - 相比之下，Next.js 提供服务器端路由，这意味着服务器处理路由并将预渲染的页面发送给客户端，从而实现更快的页面加载和更好的 SEO。
-    Next.js 还提供其他功能，如自动代码拆分、静态站点生成和动态导入。
-- **使用 Next.js 比 React 有什么优势？**
-  - Next.js 提供了几个优于 React 的优势，包括服务器端渲染、自动代码拆分、静态站点生成、动态导入、优化的性能和易于部署。此外，Next.js 支持内置的 SEO 和分析，可以更轻松地针对搜索引擎优化您的应用程序并跟踪用户参与度。
-- **如何创建新的 Next.js 应用程序？**
-  - 要创建新的 Next.js 应用程序，您可以使用create-next-app命令。例如，您可以在终端中运行以下命令： npx create-next-app my-app 。这将创建一个名为my-app新 Next.js 应用程序。
-- **什么是服务器端渲染，为什么它很重要？**
-  - 服务器端呈现 (SSR) 是在将网页发送到客户端浏览器之前在服务器上呈现网页的过程。 SSR 很重要，因为它允许搜索引擎抓取和索引您网站的内容，这可以改善您网站的 SEO。此外，SSR 可以缩短初始页面加载时间，并改善互联网连接或设备较慢的用户的用户体验。
-- **什么是客户端渲染，它与服务器端渲染有何不同？**
-  - 客户端呈现 (CSR) 是在从服务器接收到初始 HTML、CSS 和 JavaScript 后，使用JavaScript在客户端浏览器上呈现网页的过程。 SSR 和 CSR 之间的主要区别在于，SSR 向客户端浏览器发送一个完全呈现的 HTML 页面，而 CSR 发送一个由 JavaScript 填充的空 HTML 页面。
-- **如何在 Next.js 应用程序中配置路由？**
-  - Next.js 使用基于文件的路由，这意味着您可以通过在具有相应 URL 路径的pages目录中创建新文件来创建页面。例如，要创建一个 URL 路径为/about页面，您可以在pages目录中创建一个名为about.js的文件。
-- **Next.js 中getStaticProps函数的用途是什么？**
-  - getStaticProps函数用于在构建时获取数据以生成静态站点。此函数在构建过程中调用，可用于从外部 API 或数据库中获取数据。然后将getStaticProps返回的数据作为 props 传递给页面组件。
-- **在 Next.js 应用程序中如何在页面之间传递数据？**
-  - Next.js 提供了多种在 Next.js 应用程序的页面之间传递数据的方法，包括 URL 查询参数、 Router API 和状态管理库，如 Redux 或 React Context。您还可以使用getServerSideProps函数在服务器上获取数据并将其作为 props 传递给页面组件。
-- **如何部署 Next.js 应用程序？**
-  - Next.js 应用程序可以部署到各种平台，包括 AWS、 Google Cloud Platform和 Microsoft Azure 等云服务，以及 Vercel 和 Netlify 等平台。要部署 Next.js 应用程序，您可以使用next export命令导出 SSG 的静态文件或使用平台特定的部署工具，如 Vercel 的 CLI 或 AWS Elastic Beanstalk。
+- express.js：TJ 开发的最早出现的一款框架。
+    - 基于回调，也是node中最常见的 Error-First 的模式
+    - 内置了大多数的中间件，大而全，更让人省心
+    - 通过回调函数的方式实现异步
+
+    ```js
+    const express = require('express');
+    const app = express();
+
+    /* 中间件 */
+    app.use((req, res, next) => {
+        console.log('middleware');
+        next();
+        console.log('middleware call');
+    });
+
+    /* 路由部分 */
+    const router = express.Router();
+    router.get('/', (req, res) => {
+        res.send('Home');
+    });
+    app.use(router);
+
+    /* 静态文件 */
+    app.use(express.static('./'));
+
+    app.listen(3000);
+    ```
+
+- koa2.js：犹豫 ES6 语法糖 async/await 的出现，作为回应，TJ 推出了 Koa2.js
+    - 基于Promise，丢弃回调函数
+    - 没有捆绑任何中间件，更容易实现定制化，扩展性好
+    - 增强错误处理，使用Try-Catch来捕获错误
+    - 使用 await next() 进入下一个中间件
+
+    ```js
+    const Koa = require('koa');
+    const Router = require('koa-router');
+    const serve = require('koa-static');
+
+    const app = new Koa();
+    const router = Router();
+
+    /* 中间件 */
+    app.use(async (ctx, next) => {
+        console.log('middleware');
+        next();
+        console.log('middleware call');
+    });
+
+    /* 路由部分 */
+    router.get('/', (ctx) => {
+        ctx.body = 'Home';
+    });
+    app.use(router.routes());
+
+    /* 静态文件 */
+    app.use(serve('./'));
+
+    app.listen(3000);
+    ```
+
+- egg.js：基于Koa.js，将社区最佳实践整合进了Koa.js，另取名叫 egg.js
+    - 开箱即用,将多进程启动，开发时的热更新 等问题一并解决了
+    - 一个 约定大于配置 的框架
+    - 缺点：
+        - 单实例多进程模式，架构异常复杂，为了提升一点点性能，所增加的复杂度完全不可接受。如今serverless的时代，为了性能容器化部署，多实例才是主流。
+        - 开发体验，egg调试体验不太好，打个断点也很困难，调试需要依赖console打印。
+        - 插件机制，万物挂ctx，且不带类型提示（靠别人自觉写d.ts）。插件机制异常黑盒，只能靠配置文件。
+        - Egg.js没有原生提供的TypeScript支持， 开发时需要用egg-ts-helper 来帮助自动生成 d.ts 文件
+- Nest.js：基于 Express、Socket.io 封装的 nodejs 后端开发框架，支持 ts。
+- **Next.js**：一个基于 React 的开源框架，可帮助开发人员构建服务器端呈现的 React 应用程序。
+    - 支持 CSR, SSG, SSR
+        - CSR 客户端渲染：适用于需要 **交互性** 和 **快速加载** 的 非静态内容的单页应用。
+        - SSG 服务端渲染：适用于 **静态内容**，构建时生成页面。
+        - SSR 静态站点生成：适用于需要 服务器端数据的 **动态内容**。
+    - SSG: 通过 getStaticProps 获取数据
+
+        ```js
+        // pages/about.js
+        export async function getStaticProps(context) {
+        // 获取数据
+        const data = await fetch('https://api.example.com/data').then(res => res.json());
+        
+        // 将数据返回给页面
+        return {
+            props: { data }
+        }
+        }
+        
+        export default function About({ data }) {
+        return (
+            <div>
+            <h1>About Us</h1>
+            <p>{data.description}</p>
+            </div>
+        );
+        }
+        ```
+
+    - SSR: 通过 getServerSideProps 获取数据
+
+        ```js
+        // pages/dynamic.js
+        export async function getServerSideProps(context) {
+        // 从 API 获取数据
+        const res = await fetch('http://localhost:3000/api/data');
+        const data = await res.json();
+        
+        // 将数据返回给页面
+        return {
+            props: { data }
+        }
+        }
+        
+        export default function DynamicPage({ data }) {
+        return (
+            <div>
+            <h1>Dynamic Page</h1>
+            <p>{data.description}</p>
+            </div>
+        );
+        }
+        ```
+
+    - 水合：是 Next.js 在 SSR 和 SSG 中将服务器端渲染的静态 HTML 转换为交互式 React 应用的过程。
+        - 水合过程：
+            - 构建虚拟 DOM：React 使用 props 数据生成虚拟 DOM。
+            - 比较 DOM：React 将虚拟 DOM 与服务器端生成的真实 DOM 进行比较。
+            - 绑定事件：React 将事件监听器附加到现有 DOM 节点上，而不是替换它们。
+
+# 性能优化
+
+## 常规
+
+- **优化图片**：使用适当的图片格式（如 WebP、JPEG 2000）和压缩图片大小，以减少页面加载时的图片大小。
+- **优化字体加载**：避免同时加载多个字体文件，选择合适的字体格式和字体加载策略，以提高字体加载速度。
+- **使用 CDN 加速**：将静态资源（如图片、CSS、JavaScript 文件）托管在 CDN 上，加速资源的加载速度。
+- **减少 HTTP 请求**：合并和压缩 CSS、JavaScript 文件，使用 CSS Sprites 合并小图标，减少页面加载所需的 HTTP 请求次数。
+- **延迟加载**：对于页面中不是立即可见的内容（如图片、视频），可以采用延迟加载的方式，等到用户滚动到可见区域时再加载。
+- **使用懒加载**：对于长页面或内容较多的页面，可以使用懒加载技术，延迟加载部分内容，减少页面初次加载时的压力。
+- **减少重绘和重排**：避免频繁的 DOM 操作、样式改变，以减少浏览器的重绘和重排，提高页面性能。
+    - 避免频繁的 DOM 操作，可以一次性修改多个 DOM 节点，或者使用文档片段（DocumentFragment）来减少重排和重绘次数。
+    - 避免使用过多复杂的 CSS 选择器，减少样式层级嵌套，以减少 CSSOM 树的构建时间。
+    - 避免使用大量复杂的 CSS 动画，尽量使用 CSS3 动画代替 JavaScript 动画，以减少页面重绘次数。
+- **代码分割和按需加载**：对于大型应用，可以将代码按照功能模块进行分割，按需加载，减少首屏加载时的代码量。
+
+## React
+
+- 缓存组件：React.memo，通过浅比较 props 发生变化时才会重新渲染
+- 缓存大量的计算：useMemo
+- 缓存函数：useCallback
+- 延迟加载：React.lazy 和 React.Suspense 完成延迟加载
+- 当渲染大量列表时，可以使用 `key` 属性来帮助 React 识别每个列表项的唯一性，减少不必要的重新渲染。
+- 当需要渲染大量数据时，可以使用虚拟化技术（如 React Virtualized、react-window、react-virtualized 等库）来只渲染可见区域的内容，减少DOM操作，提高性能。
+
+# 网络
+
+## 浏览器地址到页面流程
+
+- **DNS 解析**：得到 IP 地址。
+- **建立 TCP 连接**：
+    - 第 1 次握手：**客户端** 发送一个 SYN 报文段到 服务器，并进入 **SYN_SENT 状态**。
+    - 第 2 次握手：**服务器** 收到客户端的 SYN 报文段后，发送一个 SYN-ACK 报文段作为响应，同时进入 **SYN_RECV 状态**。
+    - 第 3 次握手：**客户端** 收到服务器的 SYN-ACK 报文段后，再发送一个 ACK 报文段给服务器，**确认连接建立**，客户端和服务器都进入 **ESTABLISHED 状态**。
+- **发送 HTTP 请求**：浏览器通过已建立的 TCP 连接发送 HTTP 或 HTTPS 请求到服务器。请求中包含 请求方法、URL、HTTP 版本、请求头 等信息。
+- **服务器处理请求**：
+    - 根据请求的内容进行处理。这可能包括读取文件、执行脚本、查询数据库等操作。
+    - 服务器生成响应，响应中包含状态码、响应头和响应体（通常是 HTML 文档）。
+- **浏览器接收响应**：如果响应是 HTTP 200 OK，表示请求成功，浏览器开始解析响应体中的 HTML 内容。
+- **解析 HTML**：
+    - **解析 HTML**：浏览器解析 HTML 文档，构建 **DOM 树**（文档对象模型）。
+        - **解析 CSS** 和 **JS**：浏览器解析 HTML 中引用的 CSS 和 JS 文件，构建 **CSSOM 树**（CSS 对象模型）和 **JS 对象**。
+- **渲染页面**：
+    - **构建渲染树**：浏览器将 DOM 树和 CSSOM 树合并，构建渲染树。渲染树包含所有可见的节点及其样式信息。
+    - **布局计算**：基于渲染树，浏览器计算每个节点在页面上的 位置和大小。**即 重排**。
+    - **绘制**：浏览器将 渲染树 绘制 到屏幕上，显示最终的页面。**即 重绘**。
+        - **页面元素发生形状大小变化就是 重排，外观发生变化就是 重绘。**
+        - **重排一定会重绘，但是重绘不一定重排。**
+- **加载资源**：浏览器继续加载页面中引用的其他资源，如 图片、字体、视频 等。
+    - 这些资源的加载过程类似于 初始的 HTML文档 加载过程，包括 DNS解析、建立 TCP连接、发送 HTTP请求、接收响应 等。
+- **交互**：页面加载完成后，用户可以与页面进行交互，如点击链接、填写表单、滚动页面等。浏览器会根据用户的操作动态更新页面内容。
+
+## HTTP状态码
+
+- 状态码
+  - 101: 协议切换准备
+  - 请求成功：
+    - 200：成功
+  - 重定向：
+    - 301：永久重定向，响应头中会包含一个 Location 字段，指向新的URL。
+    - 302：临时重定向，搜索引擎不会将权重和收录情况转移到新的URL上，而是保留原本的URL。‌
+    - 304：表示可以在缓存中取数据 (协商缓存)
+  - 客户端错误：
+    - 401：未授权
+    - 403：拒绝请求
+    - 404：资源不存在
+  - 服务端错误：
+    - 500：服务器内部错误
+    - 502：网关错误
+    - 504：网关超时
+
+## 跨域
+
+- **JSONP 跨域**：利用 `<script>` 标签没有跨域限制，通过 `<script>` 标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数 中，返回给浏览器，浏览器解析执行，从而前端拿到 callback函数 返回的数据。
+  - 缺点：
+    - 只能处理get请求
+    - 通过 URL 携带参数容易被劫持，不安全
+- **CORS 跨域资源共享 （前端不需要做任何改变）**
+  - nginx代理设置：通过配置文件设置请求响应头 **Access-Control-Allow-Origin** 等字段。
+  - 缺点：
+    - 设置具体地址，有局限性
+    - 设置多源（*）就不能允许携带 cookie 了
+- **nginx反向代理**：同源策略仅是针对 **浏览器** 的安全策略。服务器端调用 HTTP接口 只是使用 HTTP协议，不需要同源策略，也就不存在跨域问题。
+- **WebSocket 协议跨域**：WebSocket protocol 是 HTML5 一种新的协议。它实现了浏览器与服务器全双工通信，同时 **允许跨域通讯**，是 server push 技术的一种很好的实现。
+
+## 浏览器垃圾回收机制
+
+- 说一下浏览器垃圾回收机制
+    - 标记清除：当变量进⼊执⾏环境时，就标记这个变量“进⼊环境”。当变量离开环境时，就会被标记为“离开环境”
+    - 引⽤计数：跟踪记录每个值被引⽤的次数，变为0时，说明这个变量已经没有价值
+- 哪些操作会造成内存泄露问题，怎么避免
+    - 造成：
+        - 意外的全局变量
+        - 遗忘的计时器
+        - 闭包
+    - 避免：
+        - 数组：将数组的⻓度设置为0，以此来达到清空数组的⽬的
+        - object：对于不再使⽤的对象，就将其设置为 null
+
+# 安全
+
+## 常见 Web 漏洞
+
+### SQL注入
 >
-- **什么是无服务器架构，它与 Next.js 有什么关系？**
-  - 无服务器架构是一种云计算模型，其中云提供商管理基础架构并根据需求自动扩展资源。通过将应用程序部署到 AWS Lambda 或 Google Cloud Functions 等无服务器平台，Next.js 可以与无服务器架构一起使用。
-- **Next.js 中的getServerSideProps和getStaticProps函数有什么区别？**
-  - getServerSideProps函数用于在运行时在服务器上获取数据以进行服务器端渲染
-  - 而getStaticProps函数用于在构建时获取数据以生成静态站点。
-- **Next.js 中getStaticPaths函数的用途是什么？**
-  - getStaticPaths 函数用于为具有动态数据的页面生成动态路径。此函数在构建过程中调用，可用于生成动态数据的可能值列表。然后使用getStaticPaths返回的数据为每个可能的值生成静态文件。
-- **如何在 Next.js 应用程序中配置动态路由？**
-  - Next.js 使用方括号[]表示 URL 路径中的动态段。例如，要为 URL 路径为/blog/[slug]的博客帖子创建动态路由，您可以在pages/blog目录中创建一个名为[slug].js的文件。
-- **Next.js 如何处理代码拆分，为什么它很重要？**
-  - Next.js 会自动将您的代码分成更小的块，当用户导航到新页面时，这些块可以按需加载。这有助于减少初始页面加载时间并提高应用程序的性能。
-- **Next.js 中_app.js文件的用途是什么？**
-  - _app.js文件用于包装整个应用程序并提供全局样式、布局组件和上下文提供程序。该文件在每次页面请求时都会被调用，可用于向您的应用程序添加常用功能。
-- **如何在 Next.js 应用程序中实现身份验证？**
-  - Next.js 提供了多个用于实现身份验证的选项，包括 JSON Web Tokens (JWT)、OAuth 和第三方库，如 NextAuth.js。您还可以使用服务器端呈现和会话管理来实现服务器端身份验证。
-- **容器组件和展示组件有什么区别？**
-  - 容器组件负责管理组件的状态和逻辑，而展示组件负责根据从容器组件传递下来的 props 呈现 UI。
-- **React 中useEffect钩子的用途是什么，它与 Next.js 有什么关系？**
-  - useEffect钩子用于在功能组件中执行副作用，例如从 API 获取数据或更新文档标题。在 Next.js 中， useEffect钩子可以用来 使用fetch API 或第三方库（如 Axios 或 SWR）执行客户端数据获取。
-- **如何处理 Next.js 应用程序中的错误？**
-  - Next.js 提供了多种错误处理选项，包括自定义错误页面、使用getInitialProps服务器端错误处理以及使用 React 错误边界的客户端错误处理。您还可以使用第三方库（如 Sentry 或 Rollbar）进行错误监控和报告。
+> SQL注入是一种常见的安全漏洞，攻击者通过在表单提交、URL参数、Cookie等输入点插入恶意SQL命令，绕过验证机制和权限检查，从而获取或篡改数据。SQL注入可能导致数据库信息泄露、网页篡改、服务器被远程控制等严重后果‌
+
+- 使用参数化查询接口，避免将用户输入直接拼接到SQL语句中
+- 对输入数据进行过滤和转义处理，特别是对特殊字符进行转义或编码转换。
+
+### 跨站脚本攻击 XSS
 >
-- **如何在 Next.js 应用程序中实现国际化 (i18n)？**
-  - Next.js 通过next-i18next库为 i18n 提供内置支持。您可以使用此库为您的应用程序创建翻译，并根据用户的偏好或浏览器设置在语言之间切换。
-- **Next.js 中getServerSideProps 函数的用途是什么，它与getInitialProps函数有什么关系？**
-  - getServerSideProps函数用于在运行时在服务器上取数据，用于服务器端渲染，
-  - getInitialProps 函数用于在运行时在客户端或服务器上取数据。
-  - 在 Next.js 9.3 及更高版本中，不推荐getInitialProps函数，取而代之的是getServerSideProps 。
-- **如何在 Next.js 应用程序中实现服务器端缓存？**
-  - Next.js 通过Cache-Control标头为服务器端缓存提供内置支持。您可以使用getServerSideProps函数或通过在页面组件中设置cacheControl属性来设置每个页面的缓存持续时间。
-  - 我们还可以使用 Redis 或 Memcached 等缓存库来缓存 API 响应或数据库查询。还可以实施 CDN 缓存或边缘缓存等选项，以提高静态资产的性能并减少服务器上的负载。
-- **如何优化 Next.js 应用程序的性能？**
-  - 代码拆分、延迟加载、图像优化、服务器端缓存和 CDN 缓存。
-  - 您还可以使用 Lighthouse 或 WebPageTest 等性能监控工具来确定需要改进的地方。
-- **如何在 Next.js 应用程序中实现无服务器功能？**
-  - Next.js 通过API Routes功能为无服务器功能提供内置支持。您可以通过在pages/api目录中创建一个具有所需端点名称的文件并实现服务器端逻辑来创建无服务器函数。
-- **如何使用 Next.js 实现无头 CMS？**
-  - 您可以使用第三方 CMS（如 Contentful、Strapi 或 Sanity）使用 Next.js 实现无头 CMS。这些 CMS 平台提供用于获取和更新内容的 API，可以使用getStaticProps或getServerSideProps函数将其与 Next.js 集成
-- **你如何处理复杂数据模型或嵌套数据结构的 SSR？**
-  - 我们可以使用 GraphQL 或 REST API 从服务器获取数据并将其作为 props 传递给组件。像swr或react-query这样的库也可以用来处理数据获取和缓存。
-- **如何在 Next.js 应用程序中实施 A/B 测试？**
-  - 我们可以使用 Google Optimize 或 Optimizely 等第三方工具来创建实验和跟踪用户行为。
-  - 我们还可以使用功能标志或条件渲染等自定义解决方案来测试应用程序的不同变体。
-- **如何处理 Next.js 应用程序中的实时更新？**
-  - 要在 Next.js 应用程序中处理实时更新，您可以使用服务器发送的事件、Web 套接字或第三方库（如 Socket.io）在客户端和服务器之间建立实时连接。您还可以使用像react-use或redux这样的库来处理应用程序中的实时数据更新。
-- **如何在 Next.js 应用程序中实施测试和持续集成？**
-  - 可以使用 Jest 或 Cypress 等测试框架来编写和运行测试。
-  - 使用 CircleCI 或 Travis CI 等持续集成服务来自动化测试和部署过程。
-  - 使用 ESLint 或 Prettier 等代码质量工具来确保代码的一致性和可维护性。
+> XSS攻击发生在客户端，攻击者通过在网页中注入恶意脚本，窃取用户数据、进行钓鱼欺骗或传播恶意代码。
+
+- 对输入数据进行适当的编码处理，确保输出的HTML和JavaScript代码不会执行恶意脚本。
+- 使用内容安全策略（CSP）来限制资源加载和执行，防止跨域脚本执行。
+- 对用户上传的内容进行严格的验证和过滤，避免执行未经验证的代码
+
+### 跨站请求伪造 CSRF
+>
+> CSRF攻击允许攻击者在用户不知情的情况下，以用户的身份执行某些操作。例如，通过诱导用户点击一个链接，该链接会以用户的身份发送一个恶意请求到服务器‌
+
+- 验证码
+- Token
+
+### 弱口令‌
+>
+> 弱口令漏洞使得攻击者可以通过简单的密码猜测或暴力破解方法登录系统，进而进行进一步攻击。弱口令问题常见于系统默认密码未修改、密码策略不完善等情况‌
+
+- 设置强密码策略，要求密码包含数字、大小写字母和特殊字符
+- 强制用户首次登录时修改默认密码，并定期要求用户更换密码
+- 使用验证码，限制登录尝试次数‌
 
 # 工程化
 
@@ -1415,217 +1737,15 @@ console.log(emailRegex.test(email));
 - **首屏加载时间**；表示页面上首屏内容加载完成的时间，即用户可以看到页面上首屏内容的时间点。较短的首屏加载时间可以提升用户体验。
 - **资源加载时间**：表示页面上各种资源（如图片、CSS、JavaScript）加载完成的时间。优化资源加载时间可以提升整体页面加载速度。
 
-# 性能优化
-
-## 常规
-
-- **优化图片**：使用适当的图片格式（如 WebP、JPEG 2000）和压缩图片大小，以减少页面加载时的图片大小。
-- **优化字体加载**：避免同时加载多个字体文件，选择合适的字体格式和字体加载策略，以提高字体加载速度。
-- **使用 CDN 加速**：将静态资源（如图片、CSS、JavaScript 文件）托管在 CDN 上，加速资源的加载速度。
-- **减少 HTTP 请求**：合并和压缩 CSS、JavaScript 文件，使用 CSS Sprites 合并小图标，减少页面加载所需的 HTTP 请求次数。
-- **延迟加载**：对于页面中不是立即可见的内容（如图片、视频），可以采用延迟加载的方式，等到用户滚动到可见区域时再加载。
-- **使用懒加载**：对于长页面或内容较多的页面，可以使用懒加载技术，延迟加载部分内容，减少页面初次加载时的压力。
-- **减少重绘和重排**：避免频繁的 DOM 操作、样式改变，以减少浏览器的重绘和重排，提高页面性能。
-    - 避免频繁的 DOM 操作，可以一次性修改多个 DOM 节点，或者使用文档片段（DocumentFragment）来减少重排和重绘次数。
-    - 避免使用过多复杂的 CSS 选择器，减少样式层级嵌套，以减少 CSSOM 树的构建时间。
-    - 避免使用大量复杂的 CSS 动画，尽量使用 CSS3 动画代替 JavaScript 动画，以减少页面重绘次数。
-- **代码分割和按需加载**：对于大型应用，可以将代码按照功能模块进行分割，按需加载，减少首屏加载时的代码量。
-
-## React
-
-- 缓存组件：React.memo，通过浅比较 props 发生变化时才会重新渲染
-- 缓存大量的计算：useMemo
-- 缓存函数：useCallback
-- 延迟加载：React.lazy 和 React.Suspense 完成延迟加载
-- 当渲染大量列表时，可以使用 `key` 属性来帮助 React 识别每个列表项的唯一性，减少不必要的重新渲染。
-- 当需要渲染大量数据时，可以使用虚拟化技术（如 React Virtualized、react-window、react-virtualized 等库）来只渲染可见区域的内容，减少DOM操作，提高性能。
-
-# SEO优化
-
-# 网络
-
-## 浏览器地址到页面流程
-
-- **DNS 解析**：得到 IP 地址。
-- **建立 TCP 连接**：
-    - 第 1 次握手：**客户端** 发送一个 SYN 报文段到 服务器，并进入 **SYN_SENT 状态**。
-    - 第 2 次握手：**服务器** 收到客户端的 SYN 报文段后，发送一个 SYN-ACK 报文段作为响应，同时进入 **SYN_RECV 状态**。
-    - 第 3 次握手：**客户端** 收到服务器的 SYN-ACK 报文段后，再发送一个 ACK 报文段给服务器，**确认连接建立**，客户端和服务器都进入 **ESTABLISHED 状态**。
-- **发送 HTTP 请求**：浏览器通过已建立的 TCP 连接发送 HTTP 或 HTTPS 请求到服务器。请求中包含 请求方法、URL、HTTP 版本、请求头 等信息。
-- **服务器处理请求**：
-    - 根据请求的内容进行处理。这可能包括读取文件、执行脚本、查询数据库等操作。
-    - 服务器生成响应，响应中包含状态码、响应头和响应体（通常是 HTML 文档）。
-- **浏览器接收响应**：如果响应是 HTTP 200 OK，表示请求成功，浏览器开始解析响应体中的 HTML 内容。
-- **解析 HTML**：
-    - **解析 HTML**：浏览器解析 HTML 文档，构建 **DOM 树**（文档对象模型）。
-        - **解析 CSS** 和 **JS**：浏览器解析 HTML 中引用的 CSS 和 JS 文件，构建 **CSSOM 树**（CSS 对象模型）和 **JS 对象**。
-- **渲染页面**：
-    - **构建渲染树**：浏览器将 DOM 树和 CSSOM 树合并，构建渲染树。渲染树包含所有可见的节点及其样式信息。
-    - **布局计算**：基于渲染树，浏览器计算每个节点在页面上的 位置和大小。**即 重排**。
-    - **绘制**：浏览器将 渲染树 绘制 到屏幕上，显示最终的页面。**即 重绘**。
-        - **页面元素发生形状大小变化就是 重排，外观发生变化就是 重绘。**
-        - **重排一定会重绘，但是重绘不一定重排。**
-- **加载资源**：浏览器继续加载页面中引用的其他资源，如 图片、字体、视频 等。
-    - 这些资源的加载过程类似于 初始的 HTML文档 加载过程，包括 DNS解析、建立 TCP连接、发送 HTTP请求、接收响应 等。
-- **交互**：页面加载完成后，用户可以与页面进行交互，如点击链接、填写表单、滚动页面等。浏览器会根据用户的操作动态更新页面内容。
-
-## HTTP状态码
-
-- 状态码
-  - 101: 协议切换准备
-  - 请求成功：
-    - 200：成功
-  - 重定向：
-    - 301：永久重定向，响应头中会包含一个 Location 字段，指向新的URL。
-    - 302：临时重定向，搜索引擎不会将权重和收录情况转移到新的URL上，而是保留原本的URL。‌
-    - 304：表示可以在缓存中取数据 (协商缓存)
-  - 客户端错误：
-    - 401：未授权
-    - 403：拒绝请求
-    - 404：资源不存在
-  - 服务端错误：
-    - 500：服务器内部错误
-    - 502：网关错误
-    - 504：网关超时
-
-## 跨域
-
-- **JSONP 跨域**：利用 `<script>` 标签没有跨域限制，通过 `<script>` 标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数 中，返回给浏览器，浏览器解析执行，从而前端拿到 callback函数 返回的数据。
-  - 缺点：
-    - 只能处理get请求
-    - 通过 URL 携带参数容易被劫持，不安全
-- **CORS 跨域资源共享 （前端不需要做任何改变）**
-  - nginx代理设置：通过配置文件设置请求响应头 **Access-Control-Allow-Origin** 等字段。
-  - 缺点：
-    - 设置具体地址，有局限性
-    - 设置多源（*）就不能允许携带 cookie 了
-- **nginx反向代理**：同源策略仅是针对 **浏览器** 的安全策略。服务器端调用 HTTP接口 只是使用 HTTP协议，不需要同源策略，也就不存在跨域问题。
-- **WebSocket 协议跨域**：WebSocket protocol 是 HTML5 一种新的协议。它实现了浏览器与服务器全双工通信，同时 **允许跨域通讯**，是 server push 技术的一种很好的实现。
-
-## 请求方法
-
-- get请求 和 post请求的区别？
-
-## 浏览器缓存机制
-
-### HTTP缓存
-
-> 通过设置 HTTP 响应头 来实现。
-
-- **强缓存**：如果存在且未过期缓存，则直接使用，不向服务器发送请求
-  - **Cache-Control**：优先级高于 Expires，是一个相对时间
-    - public：全部缓存
-    - private：只能被单个用户的浏览器缓存存储
-    - no-cache：每次请求时都必须向服务器验证资源的有效性
-    - no-store：不缓存
-    - max-age：指定资源在缓存中的最大有效时间
-  - **Expires**：是绝对时间
-- **协商缓存**：浏览器在缓存过期后，会向服务器发送请求，携带响应头，如果资源未修改，服务器返回 304 状态码，表示使用缓存资源‌
-  - Last-Modified (**If-Modified-Since**)：基于时间戳
-  - ETag (**If-None-Match**)：基于内容哈希值，能更准确地判断资源是否发生变化
-
-### Cookie存储4KB
-
-- cookie 和 Storage存储 使用场景 对比：
-  - cookie 主要用于实现 **用户会话跟踪、身份认证** 等功能。它们常用于存储少量的 用户信息 或 会话标识，以便在服务器端 识别特定用户。
-  - Storage存储 更适合用于存储大量的数据，如 **用户偏好设置、应用程序配置** 等。由于其大容量和持久性的特点，本地存储在这些场景下表现更为出色。
-
-### Storage存储5MB左右
-
-- **localStorage**：存储没有截止日期的数据
-- **sessionStorage**：当关闭浏览器 **标签页** 时数据会丢失
-
-### IndexDB存储
-
-- **IndexedDB**：HTML5提供的本地数据库存储方案，适用于 大量数据的存储和复杂查询操作‌。
-  - 使用：封装个 IndexDBCache 类，用于增、删、改、查 操作。
-    - 参考：<https://blog.csdn.net/weiCong_Ling/article/details/131437456>
-
-### Service Worker缓存
-
-- **离线缓存**：
-  - 创建 Service Worker 文件
-    - Service Worker 的生命周期包括 安装、激活、运行 和 卸载 四个事件阶段，监听它们 实现各种功能
-      - **安装阶段 install**：通过 event.waitUntil，caches.open，cache.addAll 来创建和添加缓存
-      - **激活阶段 activate**：通过 event.waitUntil，caches.keys().then 来清理旧的缓存
-      - 运行阶段 active：可以接收 fetch 和 message 事件。
-      - 卸载阶段 uninstall：卸载过程通常是隐式的
-    - **监听 fetch 事件**：拦截网络请求，通过 event.respondWith caches.match，判断优先从缓存中提供资源，如果没有找到，则尝试从网络获取
-  - 在主线程注册 Service Worker
-    - 通过 navigator.serviceWorker.register('service-worker.js') 来注册 Service Worker
-  - 卸载 Service Worker：
-    - 在主线程中：使用 navigator.serviceWorker.getRegistration() 获取特定的注册对象，然后调用 unregister() 方法
-    - 更新新版本的 Service Worker
-- **推送通知**：支持通过 Push API 实现推送通知。
->
-- **优化建议**：使用 **Workbox**：Google 提供的库，简化 Service Worker 开发，提供缓存策略、路由管理和自动更新等功能。
-
-- cookie 和 session 的区别？
-- 浏览器有哪些缓存机制，怎么设置缓存时间有效期
-- 浏览器有哪些本地缓存api，分别用来存哪些数据，有什么区别吗
-
-## 浏览器垃圾回收机制
-
-- 说一下浏览器垃圾回收机制
-    - 标记清除：当变量进⼊执⾏环境时，就标记这个变量“进⼊环境”。当变量离开环境时，就会被标记为“离开环境”
-    - 引⽤计数：跟踪记录每个值被引⽤的次数，变为0时，说明这个变量已经没有价值
-- 哪些操作会造成内存泄露问题，怎么避免
-    - 造成：
-        - 意外的全局变量
-        - 遗忘的计时器
-        - 闭包
-    - 避免：
-        - 数组：将数组的⻓度设置为0，以此来达到清空数组的⽬的
-        - object：对于不再使⽤的对象，就将其设置为 null
-
-# 安全
-
-## 常见 Web 漏洞
-
-### SQL注入
->
-> SQL注入是一种常见的安全漏洞，攻击者通过在表单提交、URL参数、Cookie等输入点插入恶意SQL命令，绕过验证机制和权限检查，从而获取或篡改数据。SQL注入可能导致数据库信息泄露、网页篡改、服务器被远程控制等严重后果‌
-
-- 使用参数化查询接口，避免将用户输入直接拼接到SQL语句中
-- 对输入数据进行过滤和转义处理，特别是对特殊字符进行转义或编码转换。
-
-### 跨站脚本攻击 XSS
->
-> XSS攻击发生在客户端，攻击者通过在网页中注入恶意脚本，窃取用户数据、进行钓鱼欺骗或传播恶意代码。
-
-- 对输入数据进行适当的编码处理，确保输出的HTML和JavaScript代码不会执行恶意脚本。
-- 使用内容安全策略（CSP）来限制资源加载和执行，防止跨域脚本执行。
-- 对用户上传的内容进行严格的验证和过滤，避免执行未经验证的代码
-
-### 跨站请求伪造 CSRF
->
-> CSRF攻击允许攻击者在用户不知情的情况下，以用户的身份执行某些操作。例如，通过诱导用户点击一个链接，该链接会以用户的身份发送一个恶意请求到服务器‌
-
-- 验证码
-- Token
-
-### 弱口令‌
->
-> 弱口令漏洞使得攻击者可以通过简单的密码猜测或暴力破解方法登录系统，进而进行进一步攻击。弱口令问题常见于系统默认密码未修改、密码策略不完善等情况‌
-
-- 设置强密码策略，要求密码包含数字、大小写字母和特殊字符
-- 强制用户首次登录时修改默认密码，并定期要求用户更换密码
-- 使用验证码，限制登录尝试次数‌
-
-- web安全方面了解过吗，有哪些攻击方式，怎么避免
-
 # 项目业务
 
-- 平时项目里做过哪些优化
+- 平时项目里做过哪些优化？
     - 万条数据渲染
         - 时间分片渲染：通过 定时器 setTimeout 来包裹每次的渲染，利用任务队列机制，将渲染拆解成多个宏任务。
-        - 使用 requestAnimationFrame （RAF） + createDocumentFragment（文档碎片）：它会在每一帧绘制前被调用，从而保证平滑的渲染。能够避免定时器的不稳定问题。
-        - 虚拟列表：通过动态计算可视区域数据，仅渲染用户可见部分的内容，配合缓冲区机制模拟完整列表的滚动效果
-- 有很多页面，每个页面有一个表，这个表里有几百条数据，每一条数据里有一个下拉框，这个下拉框可选项有几百条选项，怎么优化
-- 平时怎么去约束代码，增加代码可读性
+        - 帧绘制：使用 requestAnimationFrame （RAF） + createDocumentFragment（文档碎片）：它会在每一帧绘制前被调用，从而保证平滑的渲染。能够避免定时器的不稳定问题。
+        - 虚拟列表：通过 **动态计算 可视区域数据**，仅渲染用户可见部分的内容，配合 **缓冲区机制** 模拟完整列表的滚动效果
+- 平时怎么去约束代码，增加代码可读性？
     - 命名
     - 代码风格
     - 注释
     - 抽取 重复代码 成 函数
-- 解决过线上问题吗，遇到了你怎么去处理
-- 遇到过技术层面什么难点吗，之前做过让你最有成就感的项目有吗，以后的发展是什么
