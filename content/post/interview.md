@@ -661,6 +661,10 @@ categories: [ "Solutions" ]
   - 调试困难
 - React 中闭包：
   - useState 和 useEffect：在 React 中，由于函数组件没有自己的实例，所以在使用 useState 和 useEffect 等 Hook 时，也会用到闭包的概念来保存组件内部的状态。
+- 应用场景：
+    - 自执行函数
+    - 防抖节流
+    - 链式调用
 
 ## DOM/BOM 对象
 
