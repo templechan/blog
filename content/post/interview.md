@@ -81,6 +81,7 @@ categories: [ "Solutions" ]
     - [三大原则](#三大原则)
     - [redux中间件](#redux中间件)
   - [自定义Hook组件](#自定义hook组件)
+- [Next.js](#nextjs)
 - [Node后端](#node后端)
 - [性能优化](#性能优化)
   - [常规](#常规)
@@ -507,6 +508,22 @@ categories: [ "Solutions" ]
 
 ## 常见面试题
 
+- **什么是响应式设计？响应式设计的基本原理是什么？如何做？**
+  - 原理：通过 媒体查询 检测不同的设备屏幕尺寸做处理，为了处理移动端，页面头部必须有 meta 声明 viewport
+  - 方式：
+    - 媒体查询
+    - 百分比
+    - vw/vh
+    - rem
+  - 优点：面对不同分辨率设备灵活性强，能够快捷解决多设备显示适应问题
+  - 缺点：
+    - 仅适用布局、信息、框架并不复杂的部门类型网站
+    - 兼容各种设备工作量大，效率低下
+- **说说 em/px/rem/vh/vw 区别？**
+  - **px**：绝对单位，页面按精确像素展示
+  - **em**：相对单位，基准点为父节点字体的大小，如果自身定义了font-size按自身来计算，整个页面内1em不是一个固定的值
+  - **rem**：相对单位，相对的只是 HTML根元素 font-size 的值
+  - **vw / vh**：就是根据窗口的宽度，分成100等份，100vw 就表示满宽，同理，vh 则为窗口的高度。主要用于页面视口大小布局，在页面布局上更加方便简单。
 - **盒模型的定义？标准盒模型 和 怪异盒模型 的区别？**
     - 盒模型：盒子包括 content、padding、border、margin。
     - **标准盒模型**（默认）: 元素的 width 和 height 仅指 content 的尺寸
@@ -542,8 +559,20 @@ categories: [ "Solutions" ]
 
     ```css
     white-space: nowrap;
+    
     overflow: hidden;
     text-overflow: ellipsis;
+    ```
+
+- **手写**: CSS 多行文本 字数过多显示 … ？
+
+    ```css
+    -webkit-line-clamp: 2：// 用来限制在一个块元素显示的文本的行数，为了实现该效果，它需要组合其他的WebKit属性）
+    display: -webkit-box; // 和1结合使用，将对象作为弹性伸缩盒子模型显示
+    -webkit-box-orient:vertical; // 和1结合使用 ，设置或检索伸缩盒对象的子元素的排列方式
+
+    overflow: hidden; // 文本溢出限定的宽度就隐藏内容
+    text-overflow: ellipsis; // 多行文本的情况下，用省略号“…”隐藏溢出范围的文本
     ```
 
 - **手写**: CSS 画三角形？
@@ -1453,6 +1482,228 @@ function CountdownTimer() {
 export default CountdownTimer;
 ```
 
+# Next.js
+
+- 支持 CSR, SSG, SSR
+    - CSR 客户端渲染：适用于需要 **交互性** 和 **快速加载** 的 非静态内容的单页应用。
+    - SSG 静态站点生成：适用于 **静态内容**，构建时生成页面。
+    - SSR 服务端渲染：适用于需要 服务器端数据的 **动态内容**。
+- SSG: 通过 getStaticProps 获取数据
+
+    ```js
+    // pages/about.js
+    export async function getStaticProps(context) {
+    // 获取数据
+    const data = await fetch('https://api.example.com/data').then(res => res.json());
+    
+    // 将数据返回给页面
+    return {
+        props: { data }
+    }
+    }
+    
+    export default function About({ data }) {
+    return (
+        <div>
+        <h1>About Us</h1>
+        <p>{data.description}</p>
+        </div>
+    );
+    }
+    ```
+
+- SSR: 通过 getServerSideProps 获取数据
+
+    ```js
+    // pages/dynamic.js
+    export async function getServerSideProps(context) {
+    // 从 API 获取数据
+    const res = await fetch('http://localhost:3000/api/data');
+    const data = await res.json();
+    
+    // 将数据返回给页面
+    return {
+        props: { data }
+    }
+    }
+    
+    export default function DynamicPage({ data }) {
+    return (
+        <div>
+        <h1>Dynamic Page</h1>
+        <p>{data.description}</p>
+        </div>
+    );
+    }
+    ```
+
+- 路由：
+    - 页面路由：定义客户端渲染的页面。
+        - 这些文件通常位于 pages 目录下。
+    - API路由：处理数据请求的一种特殊类型的路由。
+        - API 路由通常位于 pages/api 目录下
+        - Next.js API 适用于高并发、Serverless 场景
+            - Express 适用于长时间运行的后端服务
+    - 动态路由：具有动态参数的页面，这些参数可以在运行时确定
+- 水合：是 Next.js 在 SSG 和 SSR 中将服务器端渲染的 静态 HTML 转换 为 交互式 React 应用的过程。
+    - 水合过程：
+        - 构建虚拟 DOM：React 使用 props 数据生成虚拟 DOM。
+        - 比较 DOM：React 将虚拟 DOM 与服务器端生成的真实 DOM 进行比较。
+        - 绑定事件：React 将事件监听器附加到现有 DOM 节点上，而不是替换它们。
+- 优化图片/视频资源
+    - Next.js Image组件
+        - 延迟加载：默认启用懒加载，仅在需要时加载图像。
+        - 自动格式转换：根据用户设备和浏览器选择最佳图像格式（如WebP）。
+        - 响应式支持：自动调整图像大小以适应不同设备。
+    - CDN加速
+- 嵌入结构化数据:
+    - 通常使用 JSON-LD 格式编写，嵌入到HTML页面的 head 部分或紧接在 body 标签之前
+    - 结构化数据类型：
+        - 文章（Article）：用于新闻报道、博客文章等。
+        - 事件（Event）：用于展示即将发生的事件。
+        - 产品（Product）：用于商品详情页面。
+        - 组织（Organization）：用于公司、机构等。
+        - 评论（Review）：用于产品或服务的用户评价。
+        - 本地业务（Local Business）：用于实体店的位置和营业信息。
+    - 验证：使用Google的Structured Data Testing Tool或其他在线工具来验证你的结构化数据是否正确嵌入并符合规范。
+- 实现多语言动态切换（i18n）
+    - Next.js 从 v9.3 版本开始支持内置的 i18n 功能。
+    - 在 pages 目录下创建一个名为 _app.js 的文件（如果还没有的话），并在其中配置 i18n：
+
+        ```
+        // pages/_app.js
+        import { useRouter } from 'next/router';
+        import { useEffect } from 'react';
+
+        function MyApp({ Component, pageProps }) {
+            const router = useRouter();
+
+            useEffect(() => {
+                // 你可以在这里添加额外的国际化逻辑
+            }, [router.locale]);
+
+            return <Component {...pageProps} />;
+        }
+
+        export default MyApp;
+        ```
+
+    - 在 next.config.js 中配置 i18n：
+
+        ```js
+        module.exports = {
+        i18n: {
+            locales: ['en', 'zh'], // 支持的语言
+            defaultLocale: 'en', // 默认语言
+        },
+        };
+        ```
+
+    - 创建多语言页面
+
+        ```
+        pages/
+            en/
+                index.js
+            zh/
+                index.js
+        ```
+
+    - 添加语言切换链接
+
+        ```
+        import Link from 'next/link';
+        import { useRouter } from 'next/router';
+
+        function Home() {
+        const router = useRouter();
+        const { locale } = router;
+
+        return (
+            <div>
+            <h1>Hello World</h1>
+            <Link href='/index' locale={locale === 'en' ? 'zh' : 'en'}>
+                <a>{locale === 'en' ? 'Switch to Chinese' : '切换到英文'}</a>
+            </Link>
+            </div>
+        );
+        }
+
+        export default Home;
+        ```
+
+    - 虽然 Next.js 提供了内置的支持，但有时你可能需要更强大的功能，比如消息提取、编译时检查等。这时可以考虑使用第三方库，如 next-i18next 或 react-intl。
+- 确保符合 GDPR/CCPA 数据隐私规范，处理Cookie同意弹窗等交互逻辑。
+    - GDPR（欧盟通用数据保护条例）
+        - 要求： 如果网站面向欧盟用户，使用 Cookies（尤其是非必要的追踪 Cookies）时必须获得用户同意。
+        - 影响： 用户需要明确接受或拒绝 Cookies（通常通过弹窗或横幅实现）。
+    - CCPA（加州消费者隐私法）
+        - 要求： 网站需告知用户其数据如何被收集，并提供选择退出数据出售或共享的功能。
+        - 影响： 通常会显示隐私声明通知用户，提供隐私设置入口。
+    - 开发者实现:
+        - Cookies 和隐私确认是由网站开发者实现的。常见实现方式：
+            - Cookies 横幅通知： 页面底部或顶部显示通知，提示用户网站使用 Cookies。
+            - 选择同意/拒绝： 用户点击同意后，网站才会存储非必要 Cookies。
+            - 动态加载： 网站在用户同意之前，不加载追踪代码或营销工具。
+        - 实现时通常会用到以下技术：
+            - JavaScript Cookies 库： 例如 js-cookie。
+            - 专用插件或服务： 如 OneTrust、Cookiebot 等，专门用于管理隐私和 Cookies 合规。
+- 优化 Core Web Vitals​（LCP、FID、CLS）
+ - Core Web Vitals 是 Google 提出的用于衡量网站用户体验的核心指标，专注于页面加载速度、交互性和视觉稳定性。主要包括三个指标：
+    - LCP：最大内容绘制
+        - 衡量页面主内容加载的速度，理想值应在 2.5秒 内加载完主要内容。
+        - 影响因素：图片、视频、文本等内容的加载速度
+    - FID：首次输入延迟
+        - 衡量用户首次与页面交互（如点击链接或按钮）到浏览器响应的时间，理想值应低于 100毫秒。
+        - 影响因素：JavaScript 执行延迟、页面的响应性。
+    - CLS：累积布局偏移
+        - 衡量页面加载过程中视觉稳定性，理想值应低于 0.1。
+        - 影响因素：页面加载时元素的移动、图片尺寸未定义等问题。
+    - 优化：
+        - 浏览器缓存
+        - 图片优化
+        - 页面压缩
+        - 异步加载与延迟加载
+        - 使用 CDN 加速
+        - HTTP/2 和 HTTPS
+        - 数据库优化：数据库清理与索引优化
+        - 移动端优化：响应式设计，确保网站在不同设备上自适应，避免不必要的资源加载，提升 LCP 和 CLS。移动端的优化也有助于提升 FID，让用户交互更加流畅。
+        - Service Workers：实现离线功能和缓存管理，提高页面加载速度，并减少 LCP 和 FID 的加载延迟。
+        - WebAssembly 模块 加载到 Web Worker 中，可以在后台线程中执行高性能的计算任务，而不影响主线程的性能
+        - 字体优化
+            - Next.js 内置字体优化功能，通过使用 Google Fonts 和其他Web字体，减少字体加载时间。
+            - 使用next/font模块加载Google Fonts：
+
+                ```
+                import { Roboto } from 'next/font/google';
+    
+                const roboto = Roboto({
+                    subsets: ['latin'],
+                    weight: ['400', '700'],
+                });
+                
+                export default function Home() {
+                    return <p className={roboto.className}>Hello, World!</p>;
+                }
+                ```
+
+        - 第三方资源优化:
+            - 减少第三方脚本：减少外部脚本（如广告、社交按钮等）的加载数量，并优化其加载顺序，减少 FID 和 CLS 的不稳定性。
+            - 优化广告加载：通过异步加载广告脚本，避免广告影响页面的初始加载，提升 LCP 和 CLS。
+        - 网络优化：
+            - 减少 DNS 查询：使用 DNS 预取 和优化 DNS 设置，减少域名解析延迟，从而减少 FID。
+            - TCP连接优化：通过 TCP Fast Open 减少连接延迟，提高 FID。
+        - 性能监控与实时分析：定期使用 Lighthouse 和 Core Web Vitals 工具分析和优化网站，确保所有关键指标都处于理想状态。
+- 集成 Headless CMS​（如 Contentful/Sanity），管理多语言内容并确保数据实时同步。
+    - Contentful 是一个无头CMS。这意味着它是作为一个内容库而构建的，并通过一个API来提供数据。
+    - 在Contentful上创建一个账户, 设置内容模型, 向Contentful添加帖子
+    - 创建 Next.js 应用程序
+        - 向Next.js应用程序添加Contentful凭证：在你的contentful-nextjs-app 项目文件夹中，创建一个.env.local 文件。
+        - 设置API: 在你项目的根文件夹中创建一个lib 文件夹。在lib 文件夹中，创建一个api.js 文件。
+            - 声明我们需要获取的字段
+            - 创建一个自定义的fetchGraphQL 方法，用于与Contentful API建立联系。
+            - 对于来自Contentful API的每一个响应，数据将与各种元数据一起返回。
+
 # Node后端
 
 - 一个基于 Chrome V8 引擎的 JavaScript 运行环境，是一个让 JavaScript 运行在服务端的开发平台。
@@ -1528,65 +1779,6 @@ export default CountdownTimer;
         - 插件机制，万物挂ctx，且不带类型提示（靠别人自觉写d.ts）。插件机制异常黑盒，只能靠配置文件。
         - Egg.js没有原生提供的TypeScript支持， 开发时需要用egg-ts-helper 来帮助自动生成 d.ts 文件
 - Nest.js：基于 Express、Socket.io 封装的 nodejs 后端开发框架，支持 ts。
-- **Next.js**：一个基于 React 的开源框架，可帮助开发人员构建服务器端呈现的 React 应用程序。
-    - 支持 CSR, SSG, SSR
-        - CSR 客户端渲染：适用于需要 **交互性** 和 **快速加载** 的 非静态内容的单页应用。
-        - SSG 服务端渲染：适用于 **静态内容**，构建时生成页面。
-        - SSR 静态站点生成：适用于需要 服务器端数据的 **动态内容**。
-    - SSG: 通过 getStaticProps 获取数据
-
-        ```js
-        // pages/about.js
-        export async function getStaticProps(context) {
-        // 获取数据
-        const data = await fetch('https://api.example.com/data').then(res => res.json());
-        
-        // 将数据返回给页面
-        return {
-            props: { data }
-        }
-        }
-        
-        export default function About({ data }) {
-        return (
-            <div>
-            <h1>About Us</h1>
-            <p>{data.description}</p>
-            </div>
-        );
-        }
-        ```
-
-    - SSR: 通过 getServerSideProps 获取数据
-
-        ```js
-        // pages/dynamic.js
-        export async function getServerSideProps(context) {
-        // 从 API 获取数据
-        const res = await fetch('http://localhost:3000/api/data');
-        const data = await res.json();
-        
-        // 将数据返回给页面
-        return {
-            props: { data }
-        }
-        }
-        
-        export default function DynamicPage({ data }) {
-        return (
-            <div>
-            <h1>Dynamic Page</h1>
-            <p>{data.description}</p>
-            </div>
-        );
-        }
-        ```
-
-    - 水合：是 Next.js 在 SSR 和 SSG 中将服务器端渲染的静态 HTML 转换为交互式 React 应用的过程。
-        - 水合过程：
-            - 构建虚拟 DOM：React 使用 props 数据生成虚拟 DOM。
-            - 比较 DOM：React 将虚拟 DOM 与服务器端生成的真实 DOM 进行比较。
-            - 绑定事件：React 将事件监听器附加到现有 DOM 节点上，而不是替换它们。
 
 # 性能优化
 
