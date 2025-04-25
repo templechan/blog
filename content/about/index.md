@@ -27,8 +27,10 @@ Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师
 - **前端**：
     - Web 平台：React，Next
     - 移动平台：Taro，React Native
+    - 微前端：qiankun
 - **后端**：
     - API 开发：Next API，Node，Nest
+    - 微服务：Nest 微服务模块
     - 数据库：PostgreSQL，MongoDB，Redis
     - 数据采集：Scrapy，Playwright
 - **工程化**：Docker，Nginx
