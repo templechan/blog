@@ -23,7 +23,7 @@ Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师
 
 ### 软件
 
-- **UI/UX**：MasterGo, 蓝湖
+- **UI/UX**：MasterGo，蓝湖
 - **前端**：
     - Web 平台：React，Next
     - 移动平台：Taro，React Native
