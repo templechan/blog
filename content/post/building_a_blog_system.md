@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "构建博客系统"
-description: "Hugo 框架的使用，Twikoo 评论系统部署，自动化部署，SEO 等。"
+description: "Hugo 框架的使用，Twikoo 评论系统部署，站点自动化部署，图片自动批量压缩，SEO 等。"
 author: "谌中钱"
 date: "2025-01-15"
 image: "/img/temple-404-bg.png"
@@ -433,7 +433,8 @@ RUN hugo new site blog
 WORKDIR /blog
 # 212.64.16.86 为 云服务器 的 公网IP
 # 这里不能使用域名，否则 Hugo 生成的 动态链接 会变成 https://域名:80，导致 端口 重复，文章跳转会出错
-CMD ["hugo", "server", "--baseURL", "http://212.64.16.86", "-p", "80"]
+# --disableLiveReload：在生产环境中部署网站，不希望浏览器频繁刷新
+CMD ["hugo", "server", "--disableLiveReload", "--baseURL", "http://212.64.16.86", "-p", "80"]
 ```
 
 4. 搭建 Nginx 服务器 容器
@@ -783,7 +784,7 @@ SC_MAIL_NOTIFY: false
     - 站内 不能全屏观看。
 - 参考: [《梯子使用手册》](https://blog.climbtw.com/post/vpn_manual/)
 
-{{< youtube 7SDXezYzBH8 >}}
+{{< youtube _Y2hW6cqt1Y >}}
 
 # 自动化部署
 

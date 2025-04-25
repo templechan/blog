@@ -26,7 +26,7 @@ weight: 1
 }
 .svg-content {
     min-width: 1230px;  /* 不小于 SVG 原始宽度 */
-    height: 900px;  /* SVG 原始高度 */
+    height: 910px;  /* SVG 原始高度 */
 }
 </style>
 
@@ -104,6 +104,8 @@ weight: 1
             - Android, iOS, 小程序
                 - <a href="https://blog.climbtw.com/post/uniapp_manual/" target="_blank">《uni-app 使用手册》</a>
                 - <a href="https://blog.climbtw.com/post/weex_manual/" target="_blank">《Weex 使用手册》</a>
+    - 微前端架构
+        - <a href="https://blog.climbtw.com/post/qiankun_manual/" target="_blank">《qiankun 使用手册》</a>
 
 ## 数据开发（后端）
 
@@ -113,6 +115,8 @@ weight: 1
         - <a href="https://blog.climbtw.com/post/node_manual/" target="_blank">《Node 使用手册》</a>
             - Koa
         - <a href="https://blog.climbtw.com/post/nest_manual/" target="_blank">《Nest 使用手册》</a>
+    - 微服务架构
+        - Nest 微服务模块
 - 数据库
     - PostgreSQL
         - 高一致性，适合复杂分析 (存储订单/用户核心数据 等)
