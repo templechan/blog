@@ -1,0 +1,24 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+ 
+    - name: Install SSH key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.CTW_SSH_PRIVATE_KEY }}
+ 
+    - name: Adding Known Hosts
+      run: ssh-keyscan ${{ secrets.CTW_SERVER_IP }} >> ~/.ssh/known_hosts
+ 
+    - name: Deploy to Server
+      run: ssh ${{ secrets.CTW_USER }}@${{ secrets.CTW_SERVER_IP }} 'bash -s' < ./deploy.sh

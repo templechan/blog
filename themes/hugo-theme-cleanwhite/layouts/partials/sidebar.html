@@ -1,0 +1,333 @@
+<!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    <!-- Short About -->
+    {{ if .Site.Params.about_me }}
+    <section class="visible-md visible-lg">
+        <!--<hr><h5><a href="{{ "/about" | relLangURL }}">ABOUT ME</a></h5>-->
+        <div class="short-about">
+            {{ with .Site.Params.sidebar_avatar }}
+            <a href="{{ "/about" | relLangURL }}">
+                <img src="{{ . | relURL }}" alt="avatar" style="cursor: pointer" />
+            </a>
+            {{ end }}
+            {{ with .Site.Params.sidebar_about_description }}
+            <p>{{ . | safeHTML }}</p>
+            {{ end }}
+            <!-- SNS Link -->
+            <ul class="list-inline">
+                {{ if .Site.Params.social.email }}
+                <li>
+                    <a href="mailto:{{ .Site.Params.social.email }}" title="{{ .Site.Params.social.email }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                <!-- {{ with .Site.Params.social.wechat }}
+               <li>
+                   <a target="_blank" href="{{ . | relURL}}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fas fa-circle fa-stack-2x"></i>
+                           <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </a>
+               </li>
+               {{ end }} -->
+                {{ with .Site.Params.social.wechat }}
+                <li>
+                    <span class="fa-stack fa-lg social-img-span" data-img="wechat-img-sidebar" title="微信">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-weixin fa-stack-1x fa-inverse"></i>
+                        <img id="wechat-img-sidebar" src="{{ . | relURL }}"
+                            style="display:none; position:absolute; width: 150px; height: 150px; border: 2px solid gray; border-radius: 10px; z-index:1000;">
+                    </span>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.line }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-line fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.telegram }}
+                <li>
+                    <span class="fa-stack fa-lg social-img-span" data-img="telegram-img-sidebar"  title="Telegram">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                        <img id="telegram-img-sidebar" src="{{ . | relURL }}"
+                            style="display:none; position:absolute; width: 150px; height: 150px; border: 2px solid gray; border-radius: 10px; z-index:1000;">
+                    </span>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.tiktok }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="Tiktok">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-tiktok fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.instagram }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="Instagram">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.twitter }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="X">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+
+                <li style="line-height: 40px;">&nbsp;&nbsp;🐒&nbsp;&nbsp;</li>
+
+                {{ with .Site.Params.social.youtube }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="YouTube">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.zhihu }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="知乎">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-stack-1x fa-inverse">知</i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.weibo }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="微博">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-weibo fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+
+                <li style="line-height: 40px;">&nbsp;&nbsp;🐒&nbsp;&nbsp;</li>
+
+                {{ with .Site.Params.social.linkedin }}
+                <li>
+                    <a target="_blank" href="{{ . }}"  title="LinkedIn">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.github }}
+                <li>
+                    <a target="_blank" href="{{ . }}" title="GitHub">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.gitlab }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+
+                {{ with .Site.Params.social.facebook }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+
+                {{ with .Site.Params.social.git }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-git fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+
+                {{ with .Site.Params.social.medium }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-medium fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.stackoverflow }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-stack-overflow fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.reddit }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.mastodon }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-mastodon fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.keybase }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-keybase fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.xing }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-xing fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+
+                {{ with .Site.Params.social.flickr }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                        <span class="fa-stack fa-lg">
+                            <i class="fas fa-circle fa-stack-2x"></i>
+                            <i class="fab fa-flickr fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </section>
+    {{ end }}
+    <!-- Bookmarks -->
+    {{ if .Site.Params.bookmarks }}
+    <section>
+        <hr>
+        <h5>QUICK LINKS</h5>
+        <ul class="list-inline">
+            {{ range .Site.Params.bookmark_link }}
+            <li><a target="_blank" href="{{.href }}">{{.title}}</a></li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+    <!-- Featured Tags -->
+    {{ if .Site.Params.featured_tags }}
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FEATURED TAGS</h5>
+        <div class="tags">
+            {{ $featured_condition_size := .Site.Params.featured_condition_size }}
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            {{ if gt (len $taxonomy.Pages) $featured_condition_size }}
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
+                {{ $name }}
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    <!-- Friends Blog -->
+    {{ if .Site.Params.friends }}
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>FRIENDS</h5>
+        <ul class="list-inline">
+            {{ range .Site.Params.friend_link }}
+            <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+    {{ if .Site.Params.publications }}
+    <section>
+        <hr class="hidden-sm hidden-xs">
+        <h5>{{ .Site.Params.publications.Title }}</h5>
+        <div class="short-about">
+            {{ range .Site.Params.publications.items }}
+            <a href="{{.href}}">
+                <img src="{{.image}}" alt="avatar" style="cursor: pointer" />
+            </a>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+    <section>
+        <hr>
+        <h5 style="color: #0085a1;">赞赏名单</h5>
+        <ul class="list-inline" style="font-size: 14px; font-weight: bolder; color: #0085a1;">
+            <li style="display: inline-block; margin-bottom: 20px; font-size: 16px;">🐒 Total：¥160 (☕️ x 8)</li><br />
+            <li>🚀 <span>2023-08-20</span>&nbsp;&nbsp;•&nbsp;&nbsp;<span>¥100 (☕️ x 5)</span>&nbsp;&nbsp;•&nbsp;&nbsp;<span style="font-style: italic;">@言戈</span></li><br />
+            <li>🚀 <span>2023-08-20</span>&nbsp;&nbsp;•&nbsp;&nbsp;<span>¥60 (☕️ x 3)</span>&nbsp;&nbsp;•&nbsp;&nbsp;<span style="font-style: italic;">@templechan</span></li><br />
+            <li style="display: inline-block; margin-top: 4px;">•••</li><br />
+        </ul>
+    </section>
+</div>

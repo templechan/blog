@@ -1,0 +1,250 @@
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.42857143;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+img{vertical-align: middle;}
+.close {
+    float: right;
+    font-size: 21px;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2
+}
+
+button.close {
+    -webkit-appearance: none;
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0
+}
+.entry-shang {
+    padding: 30px 0 20px;
+    text-align: center;
+}
+
+.entry-shang p {
+    font-size: 16px;
+}
+
+.btn-bred {
+    width: 120px;
+    height: 36px;
+    border: none;
+    background: #0085a1;
+    color: #fff;
+    font-size: 15px;
+}
+
+.btn-bred:hover {
+    color: #fff;
+    outline: none!important;
+}
+
+.btn-bred:active {
+    color: #fff;
+}
+
+/* 移开后恢复原样 */
+.btn-bred:focus:not(:active) {
+    color: #fff;
+    outline: none!important;
+}
+
+.zs-modal-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+    display: none;
+    z-index: 100;
+}
+
+.zs-modal-box {
+    width: 340px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    /* margin: -195px 0 0 -171px; */
+    transform: translate(-50%, -50%);
+    border: 1px solid #eee;
+    background: #fff;
+    border-radius: 6px;
+    z-index: 100;
+    display: none;
+}
+
+.zs-modal-head {
+    padding: 0 16px;
+    position: relative;
+}
+
+.zs-modal-head img {
+    display: inline-block;
+    margin: 20px 8px 0 4px;
+    width: 60px;
+    height: 60px;
+    border-radius: 10%;
+}
+
+.zs-modal-head .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 52px;
+    height: 52px;
+    text-align: center;
+}
+
+.zs-modal-head .author {
+    display: inline-block;
+    vertical-align: top;
+    margin: 18px 0;
+}
+.zs-modal-head .author .slogan {
+    font-size: 14px;
+}
+.zs-modal-head .author a{
+    color: #333;
+    text-decoration: none;
+}
+
+.zs-modal-head .author img {
+    margin-right: 5px;
+}
+
+.zs-modal-head .tip {
+    background: #0085a1;
+    padding: 0 16px;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 4px;
+    margin-top: 4px;
+    position: relative;
+    line-height: 60px;
+    margin-bottom: 32px;
+}
+
+.zs-modal-head .tip i {
+    display: block;
+    border-width: 0 7px 7px 7px;
+    border-color: transparent  transparent #0085a1 transparent;
+    border-style: dashed dashed solid dashed;
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: -6px;
+}
+
+.zs-modal-body {
+    padding: 0 15px;
+    text-align: center;
+}
+
+.zs-modal-btns {
+    font-size: 0;
+}
+
+.zs-modal-btns .btn:nth-child(3n-2) {
+    margin-left: 0;
+}
+
+.zs-modal-btns .btn {
+    width: 28%;
+    margin-left: 5%;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+
+.zs-modal-btns .btn-blink {
+    background: #fff;
+    border-color: #0085a1;
+    color: #0085a1;
+    font-weight: bold;
+}
+
+.zs-modal-btns .btn-blink:hover, .zs-modal-btns .btn-blink:active {
+    background-color: #0085a1;
+    border: 0;
+    color: #fff;
+    outline: none!important;
+}
+
+.zs-modal-btns .btn-blink:focus {
+    border: 0;
+    background: #0085a1;
+    color: #fff;       
+    outline: none!important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .zs-modal-body ul {
+        letter-spacing: -5px;
+    }
+}
+
+.zs-modal-footer {
+    text-align: center;
+    margin-left: -8px;
+    margin-bottom: 35px;
+}
+
+.zs-modal-footer label {
+    margin: 0 8px;
+    cursor: pointer;
+    vertical-align: top;
+    margin-top: 25px;
+}
+
+.zs-modal-footer img {
+    display: inline;
+    height: 28px;
+    margin: 0 0 2px 8px;  
+}
+
+.zs-modal-pay {
+    text-align: center;
+    padding: 0;
+    display: none;
+}
+
+.zs-modal-pay p {
+    margin: 26px 0 0;
+}
+
+.zs-modal-pay #pay-type {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.zs-alipay span, .zs-wechat span {
+    font-size: 12px;
+    font-weight: normal;
+    color: gray;
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+}
+
+.zs-modal-pay img {
+    width: 54%;
+    margin: 16px auto 32px;
+}
