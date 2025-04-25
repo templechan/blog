@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: single-no-catalog
 title: "走进程序的世界"
 description: "本文以知识网络的方式，带你探索编程的奥秘，从基础概念到实践应用，希望能为初学者打开一扇通往代码世界的大门。"
 author: "谌中钱"
@@ -15,6 +15,21 @@ weight: 1
 
 > 在这个数字化的时代，程序已成为连接现实与虚拟的桥梁。本文以知识网络的方式，带你探索编程的奥秘，从基础概念到实践应用，希望能为初学者打开一扇通往代码世界的大门。让我们一起启程，发现程序的无限可能。 —— AI · 序
 
+<style>
+.svg-container {
+    width: 100%;
+    overflow-x: auto;
+    text-align: center;
+    border: 1px solid #eee;
+    margin-top: 40px;
+    padding-top: 10px;
+}
+.svg-content {
+    min-width: 1230px;  /* 不小于 SVG 原始宽度 */
+    height: 900px;  /* SVG 原始高度 */
+}
+</style>
+
 <div class="svg-container">
     <object
         data="/svg/entering_the_world_of_programming_mindmap.svg"
@@ -22,20 +37,6 @@ weight: 1
         class="svg-content">
     </object>
 </div>
-
-<style>
-.svg-container {
-    width: 100%;
-    overflow-x: auto;
-    border: 1px solid #eee;
-    margin-top: 40px;
-    padding-top: 10px;
-}
-.svg-content {
-    min-width: 1060px;  /* 不小于 SVG 原始宽度 */
-    height: 764px;  /* SVG 原始高度 */
-}
-</style>
 
 <!-- # <a href="https://blog.climbtw.com/post/entering_the_world_of_programming/" target="_blank">《走进程序的世界》</a>
 
@@ -67,9 +68,9 @@ weight: 1
         - Apple Safari (macOS 自带)
         - Microsoft Edge (Window 11 自带)
     - 代码编辑器
-        - <a href="https://code.visualstudio.com/post/vscode_manual/" target="_blank">《Visual Studio Code 使用手册》</a>
+        - <a href="https://blog.climbtw.com/post/vscode_manual/" target="_blank">《Visual Studio Code 使用手册》</a>
             - <a href="https://code.visualstudio.com" target="_blank">下载地址</a>
-        - <a href="https://code.visualstudio.com/post/markdown_manual/" target="_blank">《Markdown 使用手册》</a>
+        - <a href="https://blog.climbtw.com/post/markdown_manual/" target="_blank">《Markdown 使用手册》</a>
 
 ## UI/UX (设计)
 

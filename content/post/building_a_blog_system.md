@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "构建博客系统"
-description: "-"
+description: "Hugo 框架的使用，Twikoo 评论系统部署，自动化部署，SEO 等。"
 author: "谌中钱"
 date: "2025-01-15"
 image: "/img/temple-404-bg.png"
@@ -681,7 +681,8 @@ twikoo_env_id = "https://twikoo.climbtw.com/" # 云函数部署的地址
 .\themes\hugo-theme-cleanwhite\layouts\partials\comments.html
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.42/dist/twikoo.all.min.js"></script>
+<script src="https://registry.npmmirror.com/twikoo/1.6.42/files/dist/twikoo.all.min.js"></script>
+
 <!-- <script src='{{ "js/twikoo.all.min.js" | relURL }}'></script> -->
 ```
 
