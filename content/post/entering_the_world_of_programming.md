@@ -38,7 +38,7 @@ weight: 1
     </object>
 </div>
 
-# <a href="https://blog.climbtw.com/post/entering_the_world_of_programming/" target="_blank">《走进程序的世界》</a>
+<!-- # <a href="https://blog.climbtw.com/post/entering_the_world_of_programming/" target="_blank">《走进程序的世界》</a>
 
 ## 初始装备
 
@@ -147,4 +147,4 @@ weight: 1
 
 - <a href="https://blog.climbtw.com/post/building_a_blog_system/" target="_blank">《构建博客系统》</a>
 - <a href="https://blog.climbtw.com/post/design_and_development_of_hrms/" target="_blank">《人资系统 HRMS 的设计和研发》</a>
-- <a href="https://blog.climbtw.com/post/design_and_development_of_independent_station/" target="_blank">《电商独立站的设计和研发》</a>
+- <a href="https://blog.climbtw.com/post/design_and_development_of_independent_station/" target="_blank">《电商独立站的设计和研发》</a> -->
