@@ -40,13 +40,13 @@ title =  "ABOUT"
 href =  "/about/"
 
 [params]
-  header_image = "img/temple-home-bg.png"
+  header_image = "img/temple_home_bg.png"
   slogan = "山高自有客行路，水深自有渡船人"
   SEOTitle = "谌中钱的博客 | Temple Blog"
   description = ""
   keyword = ""
 
-  image_404 = "img/temple-404-bg.png"
+  image_404 = "img/temple_404_bg.png"
   title_404 = "页面不存在"
 
   upstreamAttribution = false # 显示主题作者信息
