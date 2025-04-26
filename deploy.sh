@@ -15,7 +15,7 @@ if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
     if [ ! "$(command -v mogrify)" ]; then
         # 安装图片压缩包 ImageMagick
-        dnf installl -y ImageMagick-7.1.1.26-2.oc9 bc parallel
+        dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
         sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
         sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
