@@ -4,7 +4,7 @@ title: "电商独立站的设计和研发"
 description: "-"
 author: "谌中钱"
 date: "2025-01-17"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
   - "solutions"

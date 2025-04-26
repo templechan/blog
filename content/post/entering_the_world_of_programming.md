@@ -4,7 +4,7 @@ title: "走进程序的世界"
 description: "本文以知识网络的方式，带你探索编程的奥秘，从基础概念到实践应用，希望能为初学者打开一扇通往代码世界的大门。"
 author: "谌中钱"
 date: "2025-01-14"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
   - "solutions"

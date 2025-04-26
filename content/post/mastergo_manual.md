@@ -4,7 +4,7 @@ title: "MasterGo 使用手册"
 description: "-"
 author: "谌中钱"
 date: "2025-02-12"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "ui/ux"
@@ -14,3 +14,9 @@ tags:
 <br />
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
+
+<!-- code_chunk_output -->
+
+
+
+<!-- /code_chunk_output -->

@@ -4,7 +4,7 @@ title: "Windows 系统重装手册"
 description: "-"
 author: "谌中钱"
 date: "2025-01-26"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "tools"

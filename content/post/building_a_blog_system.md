@@ -4,7 +4,7 @@ title: "构建博客系统"
 description: "Hugo 框架的使用，图片批量压缩，Twikoo 评论系统部署，站点自动化部署，SEO 等。"
 author: "谌中钱"
 date: "2025-01-15"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
   - "solutions"
@@ -301,7 +301,7 @@ title: "Visual Studio Code 使用手册"
 description: "VS Code 下载安装，常用插件 等。"
 author: "谌中钱"
 date: "2025-01-14"
-image: "/img/temple-404-bg.png" # banner 背景图
+image: "/img/temple_404_bg.jpg" # banner 背景图
 categories: [ "tech" ]
 tags:
   - "tools"

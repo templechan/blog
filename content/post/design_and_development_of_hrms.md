@@ -4,7 +4,7 @@ title: "人资系统 HRMS 的设计和研发"
 description: "-"
 author: "谌中钱"
 date: "2025-01-16"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
   - "solutions"
@@ -14,3 +14,9 @@ tags:
 <br />
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
+
+<!-- code_chunk_output -->
+
+
+
+<!-- /code_chunk_output -->

@@ -4,7 +4,7 @@ title: "CentOS 9 命令使用手册"
 description: "-"
 author: "谌中钱"
 date: "2025-02-03"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "tools"

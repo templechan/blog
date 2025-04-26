@@ -4,7 +4,7 @@ title: "Visual Studio Code 使用手册"
 description: "VS Code 安装，常用插件 等。"
 author: "谌中钱"
 date: "2025-02-07"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "tools"
@@ -137,7 +137,7 @@ title: "Visual Studio Code 使用手册"
 description: "VS Code 下载安装，常用插件 等。"
 author: "谌中钱"
 date: "2025-01-14"
-image: "/img/temple-404-bg.png"
+image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "tools"
