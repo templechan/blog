@@ -376,7 +376,7 @@ hugo server --bind 0.0.0.0
 
 #### 图片批量动态压缩
 
-- 采用 ImageMagick、bc 包 批量动态压缩图片资源，提高站点访问速度，会在 Docker 方式安装 时用到，操作命令如下：
+- 采用 ImageMagick、bc、parallel 包 批量动态压缩图片资源，提高站点访问速度，会在 Docker 方式安装 时用到，操作命令如下：
 
 ```shell
 # 手动压缩图片资源（会覆盖源文件，注意保留源文件）
@@ -480,20 +480,11 @@ cp -rf ./themes/hugo-theme-cleanwhite/exampleSite/static/* ./static/
 # 安装工具包
 dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
 # 配置ImageMagick策略文件
-vim /etc/ImageMagick-7/policy.xml
-
-# 按 i 键进入 插入模式
-# 复制下面的 配置内容 到里面：
-
-# <!-- 允许读写图片格式 -->
-# <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />
-# <!-- 提升资源限制 -->
-# <policy domain="resource" name="memory" value="1GiB"/>
-# <policy domain="resource" name="disk" value="4GiB"/>
-# <policy domain="resource" name="width" value="32KP"/>
-# <policy domain="resource" name="height" value="32KP"/>
-
-# 按 ESC 键退出 插入模式，输入 :wq 并按 Enter 来保存（write）并退出（quit）
+sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
+sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
+sed -i '/<policy domain="resource" name="disk"/s/value=".*"/value="4GiB"/' /etc/ImageMagick-7/policy.xml
+sed -i '/<policy domain="resource" name="width"/s/value=".*"/value="32KP"/' /etc/ImageMagick-7/policy.xml
+sed -i '/<policy domain="resource" name="height"/s/value=".*"/value="32KP"/' /etc/ImageMagick-7/policy.xml
 # 查看当前生效策略
 convert -list policy
 
@@ -1010,8 +1001,6 @@ if [ -d /usr/local/src/blog ]; then
 fi
 ```
 
-可以在 启动站点容器 的命令上，通过 **-v** 把容器内部新生成的 `./public/*.xml` 挂载到外部  `/static/sitemap/`
-
 # SEO
 
 ## 搜索引擎收录
@@ -1032,6 +1021,8 @@ fi
                 - <https://blog.climbtw.com/sitemap/sitemap.xml>
         - 可以在 启动站点容器 的命令上，通过 **-v** 把容器内部新生成的 `./public/*.xml` 挂载到外部  `/static/sitemap/`
         - 同时也修复一下 站点主题的 `.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html` 文件的 rss 链接地址：
+
+.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html：
 
 ```html
 {{ if .Site.Params.social.rss }}
