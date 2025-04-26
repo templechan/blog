@@ -46,7 +46,7 @@ href =  "/about/"
   description = ""
   keyword = ""
 
-  image_404 = "img/temple_404_bg.png"
+  image_404 = "img/temple_404_bg.jpg"
   title_404 = "页面不存在"
 
   upstreamAttribution = false # 显示主题作者信息
