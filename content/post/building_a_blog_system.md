@@ -970,40 +970,23 @@ git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
-    if [ ! "$(command -v pngquant)" ]; then
-        dnf install -y pngquant
+    if [ ! "$(command -v mogrify)" ]; then
+        # 安装图片压缩包 ImageMagick
+        dnf install ImageMagick bc parallel
+        # 配置ImageMagick策略文件
+        sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
+        sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
+        sed -i '/<policy domain="resource" name="disk"/s/value=".*"/value="4GiB"/' /etc/ImageMagick-7/policy.xml
+        sed -i '/<policy domain="resource" name="width"/s/value=".*"/value="32KP"/' /etc/ImageMagick-7/policy.xml
+        sed -i '/<policy domain="resource" name="height"/s/value=".*"/value="32KP"/' /etc/ImageMagick-7/policy.xml
     fi
-
 
     # 手动压缩图片资源（会覆盖源文件，注意保留源文件）
     # 压缩规则: 
     # 1. 超过 500KB 的图片才会压缩
     # 2. 根据 图片大小 动态控制压缩比例，最后都控制在 300KB 左右
     # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
-
-    # 安装工具包
-    dnf install ImageMagick bc parallel
-    # 配置ImageMagick策略文件
-    vim /etc/ImageMagick-7/policy.xml
-
-    # 按 i 键进入 插入模式
-    # 复制下面的 配置内容 到里面：
-
-    # <!-- 允许读写图片格式 -->
-    # <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />
-    # <!-- 提升资源限制 -->
-    # <policy domain="resource" name="memory" value="1GiB"/>
-    # <policy domain="resource" name="disk" value="4GiB"/>
-    # <policy domain="resource" name="width" value="32KP"/>
-    # <policy domain="resource" name="height" value="32KP"/>
-
-    # 按 ESC 键退出 插入模式，输入 :wq 并按 Enter 来保存（write）并退出（quit）
-    # 查看当前生效策略
-    convert -list policy
-
-    # 将脚本合成为一条命令
     find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 4 --bar 'f="{}";s=$(stat -c%s "$f");if [ $s -gt 512000 ];then q=$(echo "scale=0;60-30*l($s/512000)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$((q<10?10:q>75?75:q));case "${f##*.}" in png) p="-quality $((q-25)) -define png:compression-level=9 -colors 32" ;; jpg|jpeg) p="-quality $((q-10)) -sampling-factor 4:2:0" ;; webp) p="-quality $((q-20)) -define webp:method=6" ;; esac;mogrify $p "$f";fi'
-
 
     if [ ! "$(docker ps -a -f "name=blog" --quiet)" ]; then
         if [ ! "$(docker images -q blog)" ]; then
