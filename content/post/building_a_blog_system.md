@@ -53,7 +53,7 @@ weight: 2
   - [站点仓库的部署脚本](#站点仓库的部署脚本)
 - [SEO](#seo)
   - [搜索引擎收录](#搜索引擎收录)
-  - [注意](#注意)
+  - [修复站点地图](#修复站点地图)
 
 <!-- /code_chunk_output -->
 
@@ -1021,7 +1021,7 @@ fi
 - 必应收录官网：<https://www.bing.com/webmasters/sitemaps>
 - 谷歌收录官网：<https://search.google.com/search-console/sitemaps>
 
-## 注意
+## 修复站点地图
 
 - 本文使用 `hugo server --disableLiveReload --baseURL http://212.64.16.86 -p 80` 的方式 部署服务器站点， 这样 Hugo 生成的 动态链接 的头部会变成 `https://212.64.16.86:80`，导致在生成 站点地图 **index.xml** 和 **sitmap.xml** 时，谷歌会判定 非域名 的链接 无效。
     - 解决方案：
