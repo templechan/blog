@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "构建博客系统"
-description: "Hugo 框架的使用，图片批量压缩，Twikoo 评论系统部署，站点自动化部署，SEO 等。"
+description: "Hugo 框架的使用，全格式图片批量动态压缩，Twikoo 评论系统部署，站点自动化部署，SEO 等。"
 author: "谌中钱"
 date: "2025-01-15"
 image: "/img/temple_404_bg.jpg"
@@ -32,7 +32,7 @@ weight: 2
     - [Window 11 下](#window-11-下)
       - [包管理器 方式安装](#包管理器-方式安装)
     - [CentOS 9 下](#centos-9-下)
-      - [图片批量压缩](#图片批量压缩)
+      - [图片批量动态压缩](#图片批量动态压缩)
       - [Docker 方式安装](#docker-方式安装)
   - [使用 Twikoo 评论系统](#使用-twikoo-评论系统)
     - [云函数部署](#云函数部署)
@@ -374,7 +374,7 @@ hugo server --bind 0.0.0.0
 
 ### CentOS 9 下
 
-#### 图片批量压缩
+#### 图片批量动态压缩
 
 - 采用 ImageMagick、bc 包 批量动态压缩图片资源，提高站点访问速度，会在 Docker 方式安装 时用到，操作命令如下：
 
