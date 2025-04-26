@@ -70,7 +70,7 @@ dnf list installed | grep git
 dnf update
 
 # 安装 git
-dnf install git
+dnf install -y git
 
 # 设置 GitHub 国内镜像源
 git config --global url."https://bgithub.xyz/".insteadOf https://github.com/

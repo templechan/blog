@@ -15,7 +15,7 @@ if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
     if [ ! "$(command -v mogrify)" ]; then
         # 安装图片压缩包 ImageMagick
-        dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
+        dnf installl -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
         sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
         sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
@@ -42,5 +42,9 @@ if [ -d /usr/local/src/blog ]; then
     else
         docker restart blog
     fi
+    
+    # 更新RSS
+    cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/
+
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi

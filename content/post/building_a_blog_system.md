@@ -386,7 +386,7 @@ hugo server --bind 0.0.0.0
 # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
 
 # 安装工具包
-dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
+dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
 # 配置ImageMagick策略文件
 vim /etc/ImageMagick-7/policy.xml
 
@@ -478,7 +478,7 @@ cp -rf ./themes/hugo-theme-cleanwhite/exampleSite/static/* ./static/
 # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
 
 # 安装工具包
-dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
+dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
 # 配置ImageMagick策略文件
 vim /etc/ImageMagick-7/policy.xml
 
@@ -509,6 +509,9 @@ docker run -d --restart=always -p 81:80 \
 -v ./static:/blog/static \
 -v ./public:/blog/public \
 --name blog blog
+
+# 更新RSS
+cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/
 ```
 
 - Dockfile 文件:
@@ -972,7 +975,7 @@ if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
     if [ ! "$(command -v mogrify)" ]; then
         # 安装图片压缩包 ImageMagick
-        dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
+        dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
         sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
         sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
@@ -998,6 +1001,10 @@ if [ -d /usr/local/src/blog ]; then
     else
         docker restart blog
     fi
+    
+    # 更新RSS
+    cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/
+
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
 ```
@@ -1020,6 +1027,8 @@ fi
             - 这样新的 站点地图 文件地址就是：
                 - <https://blog.climbtw.com/sitemap/index.xml>
                 - <https://blog.climbtw.com/sitemap/sitemap.xml>
+        - 在 自动化部署脚本 **./deploy.sh** 中，容器重启后，可以替换下新的 xml 到 sitemap 文件夹中：
+            - 添加命令：`cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/`
         - 同时也修复一下 站点主题的 `.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html` 文件的 rss 链接地址：
 
 ```html
