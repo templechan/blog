@@ -38,13 +38,10 @@ if [ -d /usr/local/src/blog ]; then
             docker build -t blog .
         fi
         # 创建并运行容器
-        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public --name blog blog
+        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public -v ./static/sitemap/:/blog/public/*.xml --name blog blog
     else
         docker restart blog
     fi
-    
-    # 更新RSS
-    cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi

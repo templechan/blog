@@ -508,6 +508,7 @@ docker run -d --restart=always -p 81:80 \
 -v ./content:/blog/content \
 -v ./static:/blog/static \
 -v ./public:/blog/public \
+-v ./static/sitemap/:/blog/public/*.xml \
 --name blog blog
 
 # 更新RSS
@@ -997,7 +998,7 @@ if [ -d /usr/local/src/blog ]; then
             docker build -t blog .
         fi
         # 创建并运行容器
-        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public --name blog blog
+        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public -v ./static/sitemap/:/blog/public/*.xml --name blog blog
     else
         docker restart blog
     fi
@@ -1008,6 +1009,8 @@ if [ -d /usr/local/src/blog ]; then
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
 ```
+
+可以在 启动站点容器 的命令上，通过 **-v** 把容器内部新生成的 `./public/*.xml` 挂载到外部  `/static/sitemap/`
 
 # SEO
 
@@ -1027,8 +1030,7 @@ fi
             - 这样新的 站点地图 文件地址就是：
                 - <https://blog.climbtw.com/sitemap/index.xml>
                 - <https://blog.climbtw.com/sitemap/sitemap.xml>
-        - 在 自动化部署脚本 **./deploy.sh** 中，容器重启后，可以替换下新的 xml 到 sitemap 文件夹中：
-            - 添加命令：`cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/`
+        - 可以在 启动站点容器 的命令上，通过 **-v** 把容器内部新生成的 `./public/*.xml` 挂载到外部  `/static/sitemap/`
         - 同时也修复一下 站点主题的 `.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html` 文件的 rss 链接地址：
 
 ```html
