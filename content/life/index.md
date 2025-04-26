@@ -48,10 +48,10 @@ date: "2025-01-14"
 
 <span style="font-size: 24px;">🍖</span> **饮食主要以 蛋白质 摄入为主，碳水适量控制：**
 <div style="display: inline-block; vertical-align: top; max-width: 300px; margin: 0 10px 16px;"><img style="margin: 0 0 8px" src="/img/life_2025_okr_fitness_meal.jpg" alt="健身餐" title="健身餐 + 400 kcal" /><span style="font-size: 16px; font-style: italic;">健身餐 + 400 kcal</span></div>
-<div style="display: inline-block; vertical-align: top; max-width: 300px; margin: 0 10px 16px;"><img style="margin: 0 0 8px" src="/img/life_2025_okr_coffee.jpg" alt="橙C美式" title="" /><span style="font-size: 16px; font-style: italic;">橙C美式：+ 100 kcal</span></div>
+<div style="display: inline-block; vertical-align: top; max-width: 300px; margin: 0 10px 16px;"><img style="margin: 0 0 8px" src="/img/life_2025_okr_coffee.jpg" alt="橙C美式" title="" /><span style="font-size: 16px; font-style: italic;">橙C美式 + 100 kcal</span></div>
 
 <span style="font-size: 24px;">🏃🏻‍♂️</span> **运动 主要以 跑步 有氧为主：**
-<div style="display: inline-block; vertical-align: top; max-width: 300px; margin: 0 10px 16px;"><img style="margin: 0 0 8px" src="/img/life_2025_okr_run.jpg" alt="跑步" title="跑步5公里：- 500 kcal" /><span style="font-size: 16px; font-style: italic;">跑步5公里：- 500 kcal</span></div>
+<div style="display: inline-block; vertical-align: top; max-width: 300px; margin: 0 10px 16px;"><img style="margin: 0 0 8px" src="/img/life_2025_okr_run.jpg" alt="跑步" title="跑步5公里：- 500 kcal" /><span style="font-size: 16px; font-style: italic;">跑步5公里 - 500 kcal</span></div>
 
 ### 生活规律配合护肤
 
