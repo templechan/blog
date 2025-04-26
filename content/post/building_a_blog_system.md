@@ -386,7 +386,7 @@ hugo server --bind 0.0.0.0
 # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
 
 # 安装工具包
-dnf install ImageMagick bc parallel
+dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
 # 配置ImageMagick策略文件
 vim /etc/ImageMagick-7/policy.xml
 
@@ -478,7 +478,7 @@ cp -rf ./themes/hugo-theme-cleanwhite/exampleSite/static/* ./static/
 # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
 
 # 安装工具包
-dnf install ImageMagick bc parallel
+dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
 # 配置ImageMagick策略文件
 vim /etc/ImageMagick-7/policy.xml
 
@@ -972,7 +972,7 @@ if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
     if [ ! "$(command -v mogrify)" ]; then
         # 安装图片压缩包 ImageMagick
-        dnf install ImageMagick bc parallel
+        dnf install ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
         sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
         sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
