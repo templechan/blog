@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "构建博客系统"
-description: "Hugo 框架的使用，Twikoo 评论系统部署，站点自动化部署，图片自动批量压缩，SEO 等。"
+description: "Hugo 框架的使用，图片批量压缩，Twikoo 评论系统部署，站点自动化部署，SEO 等。"
 author: "谌中钱"
 date: "2025-01-15"
 image: "/img/temple-404-bg.png"
@@ -32,6 +32,7 @@ weight: 2
     - [Window 11 下](#window-11-下)
       - [包管理器 方式安装](#包管理器-方式安装)
     - [CentOS 9 下](#centos-9-下)
+      - [图片批量压缩](#图片批量压缩)
       - [Docker 方式安装](#docker-方式安装)
   - [使用 Twikoo 评论系统](#使用-twikoo-评论系统)
     - [云函数部署](#云函数部署)
@@ -47,11 +48,12 @@ weight: 2
     - [Vimeo (需要梯子)](#vimeo-需要梯子)
     - [YouTube (需要梯子)](#youtube-需要梯子)
 - [自动化部署](#自动化部署)
-  - [在腾讯云服务器上生成SSH密钥](#在腾讯云服务器上生成ssh密钥)
-  - [编写 GitHub Actions 工作流](#编写-github-actions-工作流)
+  - [在部署服务器上生成SSH密钥](#在部署服务器上生成ssh密钥)
+  - [编写 GitHub Action 工作流](#编写-github-action-工作流)
   - [站点仓库的部署脚本](#站点仓库的部署脚本)
 - [SEO](#seo)
   - [搜索引擎收录](#搜索引擎收录)
+  - [注意](#注意)
 
 <!-- /code_chunk_output -->
 
@@ -372,6 +374,17 @@ hugo server --bind 0.0.0.0
 
 ### CentOS 9 下
 
+#### 图片批量压缩
+
+- 采用 pngquant 包 批量动态压缩图片资源，提高站点访问速度，会在 Docker 方式安装 时用到，操作命令如下：
+
+```shell
+# 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
+# 压缩规则: 超过 1MB 的图片才会压缩，根据 图片大小 动态控制压缩比例
+dnf install -y pngquant
+find ./static/img/ -name "*.png" -type f -exec bash -c 'for f; do size=$(stat -c%s "$f"); [ $size -gt 1000000 ] && q=$((50-(size/10000))) && q=$((q<5?5:q)) && pngquant --ext .png --force --quality 5-${q} "$f"; done' _ {} +
+```
+
 #### Docker 方式安装
 
 1. 安装 Docker
@@ -410,7 +423,7 @@ cp -rf ./themes/hugo-theme-cleanwhite/exampleSite/content/* ./content/
 cp -rf ./themes/hugo-theme-cleanwhite/exampleSite/static/* ./static/
 
 # 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
-# 压缩规则: 超过 1MB 的图片才会压缩
+# 压缩规则: 超过 1MB 的图片才会压缩，根据 图片大小 动态控制压缩比例
 dnf install -y pngquant
 find ./static/img/ -name "*.png" -type f -exec bash -c 'for f; do size=$(stat -c%s "$f"); [ $size -gt 1000000 ] && q=$((50-(size/10000))) && q=$((q<5?5:q)) && pngquant --ext .png --force --quality 5-${q} "$f"; done' _ {} +
 
@@ -510,6 +523,15 @@ http {
         return 301 https://$server_name$request_uri; # 重定向使用 return 效率更高
     }
     
+    # 通过 ip 访问的话，优先匹配 显式标记为 default_server 的 server，如果没有则 使用第一个 server
+    # 这里设置下，通过 ip 访问的话，跳到服务器去
+    server {
+        listen 80 default_server;
+        server_name blog.climbtw.com;
+        # rewrite ^(.*)$ https://$server_name$1 permanent; # permanent，301 永久重定向，更新 url
+        return 301 https://$server_name$request_uri; # 重定向使用 return 效率更高
+    }
+
     server {
         listen       443 ssl;
         server_name  blog.climbtw.com;
@@ -788,7 +810,7 @@ SC_MAIL_NOTIFY: false
 
 # 自动化部署
 
-> 实现推送代码到 github 上的 main 分支时，会自动部署到服务器。
+> 实现推送代码到 github 上的 main 分支时，会自动部署到 部署服务器。
 
 - 自动化部署流程：
     - 在 Github 站点仓库上，通过 Github Action，新建一个 Workflow 工作流，创建 .github/workflows/**deploy.yml**，在里面监听 代码上传，合并 等操作，触发 连接部署服务器 的动作，并在 部署服务器 上执行 站点仓库里的 部署脚本 **./deploy.sh**
@@ -799,7 +821,7 @@ SC_MAIL_NOTIFY: false
             - [《GitHub Action 使用手册》](https://blog.climbtw.com/post/git_action_manual/)
     - 部署脚本 **./deploy.sh** 里面，会拉取最新的代码，完成网站更新。
 
-## 在腾讯云服务器上生成SSH密钥
+## 在部署服务器上生成SSH密钥
 
 ```shell
 # 在云服务器上生成 公钥（id_rsa.pub） 和 私钥（id_rsa）
@@ -823,7 +845,7 @@ cat ~/.ssh/id_rsa
 # 私钥 CTW_SSH_PRIVATE_KEY 会在 .github/workflows/deploy.yml 的 Secrets 中被用来连接 部署服务器
 ```
 
-## 编写 GitHub Actions 工作流
+## 编写 GitHub Action 工作流
 
 .github/workflows/**deploy.yml**：
 
@@ -878,7 +900,7 @@ if [ -d /usr/local/src/blog ]; then
         dnf install -y pngquant
     fi
     # 手动压缩图片资源（会覆盖源文件，注意保留源文件，同一个文件多次压缩会严重失真）
-    # 压缩规则: 超过 1MB 的图片才会压缩
+    # 压缩规则: 超过 1MB 的图片才会压缩，根据 图片大小 动态控制压缩比例
     find ./static/img/ -name "*.png" -type f -exec bash -c 'for f; do size=$(stat -c%s "$f"); [ $size -gt 1000000 ] && q=$((50-(size/10000))) && q=$((q<5?5:q)) && pngquant --ext .png --force --quality 5-${q} "$f"; done' _ {} +
 
     if [ ! "$(docker ps -a -f "name=blog" --quiet)" ]; then
@@ -903,3 +925,29 @@ fi
     - 百度的 sitemap 提交权限需要和客服去申请。
 - 必应收录官网：<https://www.bing.com/webmasters/sitemaps>
 - 谷歌收录官网：<https://search.google.com/search-console/sitemaps>
+
+## 注意
+
+- 本文使用 `hugo server --disableLiveReload --baseURL http://212.64.16.86 -p 80` 的方式 部署服务器站点， 这样 Hugo 生成的 动态链接 的头部会变成 `https://212.64.16.86:80`，导致在生成 站点地图 **index.xml** 和 **sitmap.xml** 时，谷歌会判定 非域名 的链接 无效。
+    - 解决方案：
+        - 在 站点 static 文件夹中，新建一个 sitemap 文件夹，存放 用VSCode手动批量替换 ip 为 域名 的 站点地图文件 **index.xml** 和 **sitmap.xml**：
+            - 比如：`http://212.64.16.86:80` 替换为 `https://blog.climbtw.com`
+            - 这样新的 站点地图 文件地址就是：
+                - <https://blog.climbtw.com/sitemap/index.xml>
+                - <https://blog.climbtw.com/sitemap/sitemap.xml>
+        - 同时也修复一下 站点主题的 `.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html` 文件的 rss 链接地址：
+
+```html
+{{ if .Site.Params.social.rss }}
+<li>
+    <!-- <a href='{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}' rel="alternate" type="application/rss+xml" title='{{ .Site.Title | default "" }}' > -->
+    <a href='/sitemap/index.xml' rel="alternate" type="application/rss+xml"
+        title='RSS'>
+        <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+        </span>
+    </a>
+</li>
+{{ end }}
+```

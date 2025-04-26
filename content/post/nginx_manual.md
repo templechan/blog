@@ -136,6 +136,15 @@ http {
         # rewrite ^(.*)$ https://$server_name$1 permanent; # permanent，301 永久重定向，更新 url
         return 301 https://$server_name$request_uri; # 重定向使用 return 效率更高
     }
+
+    # 通过 ip 访问的话，优先匹配 显式标记为 default_server 的 server，如果没有则 使用第一个 server
+    # 这里设置下，通过 ip 访问的话，跳到服务器去
+    server {
+        listen 80 default_server;
+        server_name blog.climbtw.com;
+        # rewrite ^(.*)$ https://$server_name$1 permanent; # permanent，301 永久重定向，更新 url
+        return 301 https://$server_name$request_uri; # 重定向使用 return 效率更高
+    }
     
     server {
         listen       443 ssl;
