@@ -20,3 +20,6 @@ tags:
 
 
 <!-- /code_chunk_output -->
+
+- nvm安装
+- 设置node源，和node镜像源

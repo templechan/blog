@@ -17,6 +17,4 @@ tags:
 
 <!-- code_chunk_output -->
 
-
-
 <!-- /code_chunk_output -->

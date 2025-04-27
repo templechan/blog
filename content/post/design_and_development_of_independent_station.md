@@ -3,7 +3,7 @@ layout: single
 title: "电商独立站的设计和研发"
 description: "-"
 author: "谌中钱"
-date: "2025-01-17"
+date: "2025-05-14"
 image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
@@ -16,7 +16,5 @@ tags:
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
 
 <!-- code_chunk_output -->
-
-
 
 <!-- /code_chunk_output -->
