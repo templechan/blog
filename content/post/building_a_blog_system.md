@@ -501,10 +501,16 @@ docker run -d --restart=always -p 81:80 \
 -v ./public:/blog/public \
 --name blog blog
 
-# 更新RSS
-sleep 5 # 等待 5 秒，确保容器已启动 
+# 等待 5 秒，确保容器已启动
+sleep 5
+# 修复 RSS
 sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
 sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
+# 修复站点的动态链接
+sed -i 's#http://212\.64\.16\.86:80#https://blog.climbtw.com#g' \
+./public/index.html \
+./public/categories/solutions/index.html \
+./public/categories/tech/index.html
 ```
 
 - Dockfile 文件:
@@ -594,7 +600,7 @@ http {
     }
     
     # 通过 ip 访问的话，优先匹配 显式标记为 default_server 的 server，如果没有则 使用第一个 server
-    # 这里设置下，通过 ip 访问的话，跳到服务器去
+    # 这里设置下，通过 ip 访问的话，跳到博客容器
     server {
         listen 80 default_server;
         server_name blog.climbtw.com;
@@ -995,10 +1001,16 @@ if [ -d /usr/local/src/blog ]; then
         docker restart blog
     fi
         
-    # 更新RSS
-    sleep 5 # 等待 5 秒，确保容器已启动 
+    # 等待 5 秒，确保容器已启动
+    sleep 5
+    # 修复 RSS
     sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
     sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
+    # 修复站点的动态链接
+    sed -i 's#http://212\.64\.16\.86:80#https://blog.climbtw.com#g' \
+    ./public/index.html \
+    ./public/categories/solutions/index.html \
+    ./public/categories/tech/index.html
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
@@ -1020,11 +1032,18 @@ fi
         - 用 VSCode 手动批量替换 ip 为 域名 的 站点地图文件 **index.xml** 和 **sitmap.xml**：
             - 比如：`http://212.64.16.86:80` 替换为 `https://blog.climbtw.com`
         - 可以在 启动站点容器 的命令结束后，通过 命令 替换 站点地图文件中的 `https://212.64.16.86:80` 为 `https://blog.climbtw.com`
-            - 替换命令：
+            - 同时也修复下站点的动态链接
+            - 修复命令：
 
 ```shell
-# 更新RSS
-sleep 5 # 等待 5 秒，确保容器已启动 
+# 等待 5 秒，确保容器已启动
+sleep 5
+# 修复 RSS
 sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
 sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
+# 修复站点的动态链接
+sed -i 's#http://212\.64\.16\.86:80#https://blog.climbtw.com#g' \
+./public/index.html \
+./public/categories/solutions/index.html \
+./public/categories/tech/index.html
 ```

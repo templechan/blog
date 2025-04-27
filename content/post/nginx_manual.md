@@ -138,7 +138,7 @@ http {
     }
 
     # 通过 ip 访问的话，优先匹配 显式标记为 default_server 的 server，如果没有则 使用第一个 server
-    # 这里设置下，通过 ip 访问的话，跳到服务器去
+    # 这里设置下，通过 ip 访问的话，跳到博客容器
     server {
         listen 80 default_server;
         server_name blog.climbtw.com;
