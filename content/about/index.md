@@ -87,7 +87,7 @@ Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师
 - 哔哩哔哩：[谌中钱 Temple](https://space.bilibili.com/3546602247555636)
 - Instagram：[templechann](https://www.instagram.com/templechann)
 - X：[templechann](https://x.com/templechann)
-- YouTube：[<a href="https://www.douyin.com/user/MS4wLjABAAAA84o70K2c9LEZXJ9fHp0deVyvxMudni7rQgAahjtoWIX34SCg61Gbf6H4HYKneZsW" target="_blank" style="color: #0085a1!important; text-decoration: underline;">@言戈 👉</a>n](https://www.youtube.com/<a href="https://www.douyin.com/user/MS4wLjABAAAA84o70K2c9LEZXJ9fHp0deVyvxMudni7rQgAahjtoWIX34SCg61Gbf6H4HYKneZsW" target="_blank" style="color: #0085a1!important; text-decoration: underline;">@言戈 👉</a>n)
+- YouTube：[@templechann](https://www.youtube.com/@templechann)
 
 ### 图文平台
 
