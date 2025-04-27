@@ -8,6 +8,13 @@
     <meta property="og:site_name" content="{{ .Site.Params.SEOTitle }}">
     <meta property="og:type" content="article">
 
+    {{ if .Params.ogurl }}
+    <meta property="og:url" content="{{ .Params.ogurl }}">
+    {{ else }}
+    <meta property="og:url" content="https://blog.climbtw.com/">
+    {{ end }}
+
+
     <!-- {{ if .Params.thumbnail }}
     <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}">
     <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" />
