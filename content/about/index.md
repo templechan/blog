@@ -1,7 +1,9 @@
 ---
 layout: page
 title: "关于我"
-description: "-"
+description: "Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师，曾在 阿里云，腾讯，Coupang 从事开发工作。常用技术栈以 React，Node 等技术为主。"
+author: "谌中钱"
+date: "2025-01-14"
 ---
 
 # 关于我

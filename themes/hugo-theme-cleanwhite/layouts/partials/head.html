@@ -4,28 +4,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- start ogp -->
-    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <!-- <meta property="og:site_name" content="{{ .Site.Title }}"> -->
+    <meta property="og:site_name" content="{{ .Site.Params.SEOTitle }}">
     <meta property="og:type" content="article">
 
-    {{ if .Params.thumbnail }}
+    <!-- {{ if .Params.thumbnail }}
     <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}">
     <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" />
     {{ else if .Params.image}}
     <meta property="og:image" content="{{ .Params.image }}">
     <meta property="twitter:image" content="{{ .Params.image }}" />
     {{ else }}
-    <meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.header_image }}">
-    <meta property="twitter:image" content="{{ .Site.BaseURL }}/{{ .Site.Params.header_image }}" />
-    {{ end }}
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Site.Params.header_image }}">
+    <meta property="twitter:image" content="{{ .Site.BaseURL }}{{ .Site.Params.header_image }}" />
+    {{ end }} -->
+    <meta property="og:image" content="https://blog.climbtw.com/img/favicon.png">
+    <meta property="twitter:image" content="https://blog.climbtw.com/img/favicon.png" />
 
     {{ if .Params.title }}
     <meta name="title" content="{{ .Params.title }}" />
     <meta property="og:title" content="{{ .Params.title }}" />
     <meta property="twitter:title" content="{{ .Params.title }}" />
-    {{ else }}
+    {{ else if .Site.Params.title }}
     <meta name="title" content="{{ .Site.Params.title }}" />
     <meta property="og:title" content="{{ .Site.Params.title }}" />
     <meta property="twitter:title" content="{{ .Site.Params.title }}" />
+    {{ else }}
+    <meta name="title" content="{{ .Title }}" />
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="twitter:title" content="{{ .Title }}" />
     {{ end }}
 
     {{ if .Params.description }}
@@ -48,7 +55,8 @@
     <meta name="keyword"  content="{{ .Site.Params.keyword }}">
     <link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}">
 
-    <title>{{ if .Title }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
+    <!-- <title>{{ if .Title }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title> -->
+    <title>{{ if and .Title (ne .Title "Temple Blog") }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
 
     <link rel="canonical" href="{{ .RelPermalink }}">
 

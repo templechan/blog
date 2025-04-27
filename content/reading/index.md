@@ -1,8 +1,7 @@
 ---
 layout: single
 title: "阅读"
-description: "-"
-description: "-"
+description: "代码之外，光影之间"
 author: "谌中钱"
 date: "2025-01-14"
 ---
