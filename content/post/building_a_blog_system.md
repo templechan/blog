@@ -968,7 +968,8 @@ if [ ! "$(command -v git)" ]; then
     git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
 fi
 
-git clone -b main https://github.com/templechan/blog.git
+# git clone -b main https://github.com/templechan/blog.git
+git clone -b main git@github.com:templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
