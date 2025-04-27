@@ -53,8 +53,12 @@ git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
 # git config --global url."https://gitclone.com/github.com/".insteadOf https://github.com/
 # 查看现有配置
 # git config --global --get-regexp url
+
+# 如果失效，则删除旧的，设置的新的
 # 删除 GitHub 国内镜像源
 # git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
+# 重新设置
+# git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 ```
 
 ## CentOS 9 下

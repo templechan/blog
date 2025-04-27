@@ -965,11 +965,12 @@ if [ ! "$(command -v git)" ]; then
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
     # 设置 GitHub 国内镜像源
-    git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+    # git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+    git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
+    git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 fi
 
-# git clone -b main https://github.com/templechan/blog.git
-git clone -b main git@github.com:templechan/blog.git
+git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
