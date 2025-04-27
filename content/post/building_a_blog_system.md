@@ -499,11 +499,12 @@ docker run -d --restart=always -p 81:80 \
 -v ./content:/blog/content \
 -v ./static:/blog/static \
 -v ./public:/blog/public \
--v ./static/sitemap/:/blog/public/*.xml \
 --name blog blog
 
 # 更新RSS
-cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/
+sleep 5 # 等待 5 秒，确保容器已启动 
+sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
+sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
 ```
 
 - Dockfile 文件:
@@ -989,13 +990,15 @@ if [ -d /usr/local/src/blog ]; then
             docker build -t blog .
         fi
         # 创建并运行容器
-        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public -v ./static/sitemap/:/blog/public/*.xml --name blog blog
+        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public --name blog blog
     else
         docker restart blog
     fi
-    
+        
     # 更新RSS
-    cp -f ./public/index.xml ./public/sitemap.xml ./static/sitemap/
+    sleep 5 # 等待 5 秒，确保容器已启动 
+    sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
+    sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
@@ -1014,27 +1017,14 @@ fi
 
 - 本文使用 `hugo server --disableLiveReload --baseURL http://212.64.16.86 -p 80` 的方式 部署服务器站点， 这样 Hugo 生成的 动态链接 的头部会变成 `https://212.64.16.86:80`，导致在生成 站点地图 **index.xml** 和 **sitmap.xml** 时，谷歌会判定 非域名 的链接 无效。
     - 解决方案：
-        - 在 站点 static 文件夹中，新建一个 sitemap 文件夹，存放 用VSCode手动批量替换 ip 为 域名 的 站点地图文件 **index.xml** 和 **sitmap.xml**：
+        - 用 VSCode 手动批量替换 ip 为 域名 的 站点地图文件 **index.xml** 和 **sitmap.xml**：
             - 比如：`http://212.64.16.86:80` 替换为 `https://blog.climbtw.com`
-            - 这样新的 站点地图 文件地址就是：
-                - <https://blog.climbtw.com/sitemap/index.xml>
-                - <https://blog.climbtw.com/sitemap/sitemap.xml>
-        - 可以在 启动站点容器 的命令上，通过 **-v** 把容器内部新生成的 `./public/*.xml` 挂载到外部  `/static/sitemap/`
-        - 同时也修复一下 站点主题的 `.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html` 文件的 rss 链接地址：
+        - 可以在 启动站点容器 的命令结束后，通过 命令 替换 站点地图文件中的 `https://212.64.16.86:80` 为 `https://blog.climbtw.com`
+            - 替换命令：
 
-.\themes\hugo-theme-cleanwhite\layouts\partials\footer.html：
-
-```html
-{{ if .Site.Params.social.rss }}
-<li>
-    <!-- <a href='{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}' rel="alternate" type="application/rss+xml" title='{{ .Site.Title | default "" }}' > -->
-    <a href='/sitemap/index.xml' rel="alternate" type="application/rss+xml"
-        title='RSS'>
-        <span class="fa-stack fa-lg">
-            <i class="fas fa-circle fa-stack-2x"></i>
-            <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-        </span>
-    </a>
-</li>
-{{ end }}
+```shell
+# 更新RSS
+sleep 5 # 等待 5 秒，确保容器已启动 
+sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
+sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
 ```

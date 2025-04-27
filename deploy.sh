@@ -43,5 +43,10 @@ if [ -d /usr/local/src/blog ]; then
         docker restart blog
     fi
 
+    # 更新RSS
+    sleep 5 # 等待 5 秒，确保容器已启动 
+    sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/index.xml
+    sed -i 's#http://212.64.16.86:80#https://blog.climbtw.com#g' ./public/sitemap.xml
+
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
