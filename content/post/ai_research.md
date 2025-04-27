@@ -8,6 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "ai"
+ogurl: "https://blog.climbtw.com/post/ai_research/"
 ---
 
 <br />

@@ -9,6 +9,7 @@ categories: [ "solutions" ]
 tags:
   - "solutions"
   - "ai"
+ogurl: "https://blog.climbtw.com/post/building_and-using_ai_assisted_platforms/"
 ---
 
 <br />

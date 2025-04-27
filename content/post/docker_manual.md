@@ -8,6 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "engineering"
+ogurl: "https://blog.climbtw.com/post/docker_manual/"
 ---
 
 <br />

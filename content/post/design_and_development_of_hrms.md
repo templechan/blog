@@ -8,6 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
   - "solutions"
+ogurl: "https://blog.climbtw.com/post/design_and_development_of_hrms/"
 ---
 
 <br />

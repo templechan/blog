@@ -8,6 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "web3"
+ogurl: "https://blog.climbtw.com/tags/web3/"
 ---
 
 <br />
@@ -16,7 +17,5 @@ tags:
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
 
 <!-- code_chunk_output -->
-
-
 
 <!-- /code_chunk_output -->

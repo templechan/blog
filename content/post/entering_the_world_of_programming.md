@@ -9,6 +9,7 @@ categories: [ "solutions" ]
 tags:
   - "solutions"
 weight: 1
+ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming/"
 ---
 
 <br />
