@@ -13,8 +13,6 @@ ogurl: "https://blog.climbtw.com/life"
 
 今天他们的 HR 联系我，问我要不要以长期兼职的形式合作，和他们聊了聊项目细节，还是接下了。
 
-牛马人生呐。
-
 # 2025.4.14 面试入职
 
 经过几个月的复习和面试，终于入职新公司，是做资产管理的，周末双休，法定节日的调休日也不用上班。
@@ -73,7 +71,7 @@ ogurl: "https://blog.climbtw.com/life"
 #### 生活规律配合护肤
 
 <span style="font-size: 24px;">🛏️</span> **早睡早起：23:00 - 7:00** <br />
-<span style="font-size: 24px;">🫧</span> **护肤保湿：EltaMD安妍科氨基酸洗面奶，颐莲保湿**
+<span style="font-size: 24px;">💦</span> **护肤保湿：EltaMD安妍科氨基酸洗面奶，颐莲保湿**
 
 ### 专业技术学习
 
