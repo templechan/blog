@@ -134,14 +134,16 @@ hugo:
 ```markdown
 ---
 layout: single
-title: "Visual Studio Code 使用手册"
-description: "VS Code 下载安装，常用插件 等。"
+title: "构建博客系统"
+description: "Hugo 框架的使用，全格式图片批量动态压缩，Twikoo 评论系统部署，站点自动化部署，SEO 等。"
 author: "谌中钱"
-date: "2025-01-14"
+date: "2025-01-15"
 image: "/img/temple_404_bg.jpg"
-categories: [ "tech" ]
+categories: [ "solutions" ]
 tags:
-  - "tools"
+  - "solutions"
+weight: 2
+ogurl: "https://blog.climbtw.com/post/building_a_blog_system"
 ---
 
 <br />
