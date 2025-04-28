@@ -6,6 +6,7 @@
     <!-- start ogp -->
     <!-- <meta property="og:site_name" content="{{ .Site.Title }}"> -->
     <meta property="og:site_name" content="{{ .Site.Params.SEOTitle }}">
+    <meta property="twitter:site" content="{{ .Site.Params.SEOTitle }}">
     <meta property="og:type" content="article">
 
     {{ if .Params.ogurl }}
@@ -29,17 +30,20 @@
     <meta property="twitter:image" content="https://blog.climbtw.com/img/favicon.png" />
 
     {{ if .Params.title }}
-    <meta name="title" content="{{ .Params.title }}" />
-    <meta property="og:title" content="{{ .Params.title }}" />
-    <meta property="twitter:title" content="{{ .Params.title }}" />
-    {{ else if .Site.Params.title }}
-    <meta name="title" content="{{ .Site.Params.title }}" />
+    <meta name="title" content="{{ .Params.title }} | {{ .Site.Params.SEOTitle }}" />
+    <meta property="og:title" content="{{ .Params.title }} | {{ .Site.Params.SEOTitle }}" />
+    <meta property="twitter:title" content="{{ .Params.title }} | {{ .Site.Params.SEOTitle }}" />
+    {{ else if and .Title (ne .Title "Temple Blog") }}
+    <!-- <meta name="title" content="{{ .Site.Params.title }}" />
     <meta property="og:title" content="{{ .Site.Params.title }}" />
-    <meta property="twitter:title" content="{{ .Site.Params.title }}" />
+    <meta property="twitter:title" content="{{ .Site.Params.title }}" /> -->
+    <meta name="title" content="{{ .Title }} | {{ .Site.Params.SEOTitle }}" />
+    <meta property="og:title" content="{{ .Title }} | {{ .Site.Params.SEOTitle }}" />
+    <meta property="twitter:title" content="{{ .Title }} | {{ .Site.Params.SEOTitle }}" />
     {{ else }}
-    <meta name="title" content='{{ if and .Title (ne .Title "Temple Blog") }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}' />
-    <meta property="og:title" content='{{ if and .Title (ne .Title "Temple Blog") }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}' />
-    <meta property="twitter:title" content='{{ if and .Title (ne .Title "Temple Blog") }}{{ .Title }} | {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}' />
+    <meta name="title" content="{{ .Site.Params.SEOTitle }}" />
+    <meta property="og:title" content="{{ .Site.Params.SEOTitle }}" />
+    <meta property="twitter:title" content="{{ .Site.Params.SEOTitle }}" />
     {{ end }}
 
     {{ if .Params.description }}
