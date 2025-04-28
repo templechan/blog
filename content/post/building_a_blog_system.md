@@ -9,7 +9,7 @@ categories: [ "solutions" ]
 tags:
   - "solutions"
 weight: 2
-ogurl: "https://blog.climbtw.com/post/building_a_blog_system/"
+ogurl: "https://blog.climbtw.com/post/building_a_blog_system"
 ---
 
 <br />

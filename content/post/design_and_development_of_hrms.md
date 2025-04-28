@@ -8,7 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
   - "solutions"
-ogurl: "https://blog.climbtw.com/post/design_and_development_of_hrms/"
+ogurl: "https://blog.climbtw.com/post/design_and_development_of_hrms"
 ---
 
 <br />
@@ -17,5 +17,7 @@ ogurl: "https://blog.climbtw.com/post/design_and_development_of_hrms/"
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
 
 <!-- code_chunk_output -->
+
+
 
 <!-- /code_chunk_output -->

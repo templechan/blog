@@ -4,7 +4,7 @@ title: "生活记录"
 description: "代码之外，生活之内"
 author: "谌中钱"
 date: "2025-01-14"
-ogurl: "https://blog.climbtw.com/life/"
+ogurl: "https://blog.climbtw.com/life"
 ---
 
 # 2025.4.27 远程兼职

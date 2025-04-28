@@ -8,7 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "ai"
-ogurl: "https://blog.climbtw.com/post/ai_research/"
+ogurl: "https://blog.climbtw.com/post/ai_research"
 ---
 
 <br />
@@ -17,5 +17,7 @@ ogurl: "https://blog.climbtw.com/post/ai_research/"
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
 
 <!-- code_chunk_output -->
+
+
 
 <!-- /code_chunk_output -->

@@ -9,10 +9,16 @@ categories: [ "solutions" ]
 tags:
   - "solutions"
   - "ai"
-ogurl: "https://blog.climbtw.com/post/building_and-using_ai_assisted_platforms/"
+ogurl: "https://blog.climbtw.com/post/building_and-using_ai_assisted_platforms"
 ---
 
 <br />
 <br />
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
+
+<!-- code_chunk_output -->
+
+
+
+<!-- /code_chunk_output -->

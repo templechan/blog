@@ -8,7 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "tools"
-ogurl: "https://blog.climbtw.com/post/vscode_manual/"
+ogurl: "https://blog.climbtw.com/post/vscode_manual"
 ---
 
 <br />

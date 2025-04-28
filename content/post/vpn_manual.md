@@ -8,7 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "tools"
-ogurl: "https://blog.climbtw.com/post/vpn_manual/"
+ogurl: "https://blog.climbtw.com/post/vpn_manual"
 ---
 
 <br />
@@ -17,5 +17,7 @@ ogurl: "https://blog.climbtw.com/post/vpn_manual/"
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
 
 <!-- code_chunk_output -->
+
+
 
 <!-- /code_chunk_output -->

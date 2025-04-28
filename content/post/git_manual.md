@@ -8,7 +8,7 @@ image: "/img/temple_404_bg.jpg"
 categories: [ "tech" ]
 tags:
   - "engineering"
-ogurl: "https://blog.climbtw.com/post/git_manual/"
+ogurl: "https://blog.climbtw.com/post/git_manual"
 ---
 
 <br />
