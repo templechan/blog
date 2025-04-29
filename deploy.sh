@@ -75,7 +75,7 @@ if [ -d /usr/local/src/blog ]; then
             echo "nvm 已存在。"
         fi
 
-        echo "使用 nvm 安装 Node.js 和 npm 20.19.1..."
+        echo "使用 nvm 安装 node 和 npm"
         nvm install 20.19.1
         nvm use 20.19.1
         nvm alias default 20.19.1
