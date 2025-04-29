@@ -1113,13 +1113,12 @@ if [ -d /usr/local/src/blog ]; then
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
         nvm install 20.19.1
-        nvm use 20.19.1
-    else
-        if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
-            npm install atomic-algolia
-        fi
-        npx atomic-algolia
+        nvm use 20.19.1    
     fi
+    if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
+        npm install atomic-algolia
+    fi
+    npx atomic-algolia
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
