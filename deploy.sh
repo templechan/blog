@@ -59,7 +59,7 @@ if [ -d /usr/local/src/blog ]; then
 
     # 推送索引到 Algolia
     # 检查 npm 是否存在
-    if ! command -v npm &> /dev/null; then
+    if [ ! "$(command -v npm)" ]; then
         # 下载并安装 nvm
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
@@ -69,7 +69,7 @@ if [ -d /usr/local/src/blog ]; then
 
         nvm install 20.19.1
         nvm use 20.19.1
-
+    else
         if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
             npm install atomic-algolia
         fi
