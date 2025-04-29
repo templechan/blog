@@ -135,4 +135,4 @@ docker inspect 容器ID
 
 # Docker 常用最简镜像
 
-- Node：
+- Node：node:20.19.1-alpine:3.20
