@@ -1047,7 +1047,11 @@ jobs:
 cd /usr/local/src
 rm -rf /usr/local/src/blog
 
+<<<<<<< HEAD
 if ! command -v git &> /dev/null; then
+=======
+if ! command -v git &>/dev/null; then
+>>>>>>> 6089b5008dc2647f2e00932957ff66dc3373a04f
     dnf install -y git
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
@@ -1062,7 +1066,11 @@ git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
+<<<<<<< HEAD
     if ! command -v mogrify &> /dev/null; then
+=======
+    if ! command -v mogrify &>/dev/null; then
+>>>>>>> 6089b5008dc2647f2e00932957ff66dc3373a04f
         # 安装图片压缩包 ImageMagick
         dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
@@ -1105,8 +1113,14 @@ if [ -d /usr/local/src/blog ]; then
 
     # 推送索引到 Algolia
     # 检查 npm 是否存在
+<<<<<<< HEAD
     if ! command -v npm &> /dev/null; then
         echo "npm 未安装，开始安装 nvm 并安装 npm..."
+=======
+    if ! command -v npm &>/dev/null; then
+        # 下载并安装 nvm
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+>>>>>>> 6089b5008dc2647f2e00932957ff66dc3373a04f
 
         if ! command -v nvm &> /dev/null; then
             echo "nvm 未安装，开始安装 nvm..."
@@ -1124,6 +1138,7 @@ if [ -d /usr/local/src/blog ]; then
         echo "使用 nvm 安装 Node.js 和 npm 20.19.1..."
         nvm install 20.19.1
         nvm use 20.19.1
+<<<<<<< HEAD
         nvm alias default 20.19.1
     fi
 
@@ -1131,6 +1146,12 @@ if [ -d /usr/local/src/blog ]; then
     if [ ! -f package.json ]; then
         echo "package.json 不存在，正在初始化 npm 项目..."
         npm init -y
+=======
+        npm init
+    fi
+    if ! npm list atomic-algolia --depth=0 --json 2>/dev/null | jq -e '.dependencies."atomic-algolia"' >/dev/null; then
+        npm install atomic-algolia
+>>>>>>> 6089b5008dc2647f2e00932957ff66dc3373a04f
     fi
 
     # 检查 atomic-algolia 是否已安装
