@@ -1109,7 +1109,7 @@ if [ -d /usr/local/src/blog ]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    
+
     if ! command -v npm &> /dev/null; then
         echo "npm 未安装，开始安装 nvm 并安装 npm..."
 
@@ -1132,18 +1132,12 @@ if [ -d /usr/local/src/blog ]; then
         nvm alias default 20.19.1
     fi
 
-    # 初始化 npm
-    if [ ! -f package.json ]; then
-        echo "package.json 不存在，正在初始化 npm 项目..."
-        npm init -y
-    fi
-
-    # 检查 atomic-algolia 是否已安装
-    if ! npm list atomic-algolia --depth=0 &> /dev/null; then
+    # 检查 atomic-algolia 是否全局已安装
+    if ! npm list -g atomic-algolia --depth=0 &> /dev/null; then
         echo "atomic-algolia 未安装，安装中..."
-        npm install atomic-algolia --save
+        npm install -g atomic-algolia
     else
-        echo "atomic-algolia 已安装。"
+        echo "atomic-algolia 全局已安装。"
     fi
 
     # 执行 atomic-algolia 命令
