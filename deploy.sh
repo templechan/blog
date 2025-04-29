@@ -1,7 +1,7 @@
 cd /usr/local/src
 rm -rf /usr/local/src/blog
 
-if [ ! "$(command -v git)" ]; then
+if ! command -v git &>/dev/null; then
     dnf install -y git
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
@@ -16,7 +16,7 @@ git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
-    if [ ! "$(command -v mogrify)" ]; then
+    if ! command -v mogrify &>/dev/null; then
         # 安装图片压缩包 ImageMagick
         dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
@@ -59,7 +59,7 @@ if [ -d /usr/local/src/blog ]; then
 
     # 推送索引到 Algolia
     # 检查 npm 是否存在
-    if [ ! "$(command -v nvm)" ]; then
+    if ! command -v npm &>/dev/null; then
         # 下载并安装 nvm
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
@@ -71,9 +71,9 @@ if [ -d /usr/local/src/blog ]; then
 
         nvm install 20.19.1
         nvm use 20.19.1
-    fi
-    if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
         npm init
+    fi
+    if ! npm list atomic-algolia --depth=0 --json 2>/dev/null | jq -e '.dependencies."atomic-algolia"' >/dev/null; then
         npm install atomic-algolia
     fi
     npx atomic-algolia

@@ -1047,12 +1047,12 @@ jobs:
 cd /usr/local/src
 rm -rf /usr/local/src/blog
 
-if [ ! "$(command -v git)" ]; then
+if ! command -v git &>/dev/null; then
     dnf install -y git
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
     # 设置 GitHub 国内镜像源
-    git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+    # git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
 fi
 
 # 如果失效，则删除旧的，设置的新的
@@ -1062,7 +1062,7 @@ git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
-    if [ ! "$(command -v mogrify)" ]; then
+    if ! command -v mogrify &>/dev/null; then
         # 安装图片压缩包 ImageMagick
         dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
@@ -1079,6 +1079,7 @@ if [ -d /usr/local/src/blog ]; then
     # 2. 根据 图片大小 动态控制压缩比例，最后都控制在 300KB 左右
     # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
     find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 4 --bar 'f="{}";s=$(stat -c%s "$f");if [ $s -gt 512000 ];then q=$(echo "scale=0;60-30*l($s/512000)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$((q<10?10:q>75?75:q));case "${f##*.}" in png) p="-quality $((q-25)) -define png:compression-level=9 -colors 128" ;; jpg|jpeg) p="-quality $((q-10)) -sampling-factor 4:2:0" ;; webp) p="-quality $((q-20)) -define webp:method=6" ;; esac;mogrify $p "$f";fi'
+    
 
     if [ ! "$(docker ps -a -f "name=blog" --quiet)" ]; then
         if [ ! "$(docker images -q blog)" ]; then
@@ -1086,11 +1087,11 @@ if [ -d /usr/local/src/blog ]; then
             docker build -t blog .
         fi
         # 创建并运行容器
-        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public --name blog blog
+        docker run -d --restart=always -p 81:80 -v ./themes:/blog/themes -v ./hugo.toml:/blog/hugo.toml -v ./content:/blog/content -v ./static:/blog/static -v ./public:/blog/public -v ./static/sitemap/:/blog/public/*.xml --name blog blog
     else
         docker restart blog
     fi
-        
+
     # 等待 5 秒，确保容器已启动
     sleep 5
     # 修复 RSS
@@ -1104,7 +1105,7 @@ if [ -d /usr/local/src/blog ]; then
 
     # 推送索引到 Algolia
     # 检查 npm 是否存在
-    if [ ! "$(command -v nvm)" ]; then
+    if ! command -v npm &>/dev/null; then
         # 下载并安装 nvm
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
@@ -1116,9 +1117,9 @@ if [ -d /usr/local/src/blog ]; then
 
         nvm install 20.19.1
         nvm use 20.19.1
-    fi
-    if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
         npm init
+    fi
+    if ! npm list atomic-algolia --depth=0 --json 2>/dev/null | jq -e '.dependencies."atomic-algolia"' >/dev/null; then
         npm install atomic-algolia
     fi
     npx atomic-algolia
