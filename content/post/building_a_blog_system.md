@@ -1110,7 +1110,8 @@ if [ -d /usr/local/src/blog ]; then
 
         # 加载 nvm（确保当前 shell 环境能使用 nvm）
         export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" >> ~/.bashrc
+        source ~/.bashrc
 
         nvm install 20.19.1
         nvm use 20.19.1    
