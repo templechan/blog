@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "构建博客系统"
-description: "Hugo 框架的使用，全格式图片批量动态压缩，Twikoo 评论系统部署，站点自动化部署，SEO 等。"
+description: "Hugo 框架的使用，全格式图片批量动态压缩，Twikoo 评论系统部署，Algolia 搜索，站点自动化部署，SEO 等。"
 author: "谌中钱"
 date: "2025-01-15"
 image: "/img/temple_404_bg.jpg"
