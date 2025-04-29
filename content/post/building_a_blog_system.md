@@ -1102,11 +1102,24 @@ if [ -d /usr/local/src/blog ]; then
     ./public/categories/solutions/index.html \
     ./public/categories/tech/index.html
 
-    # 推送索引到 Algolia，需先安装 Node.js
-    if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
-        npm install atomic-algolia
+    # 推送索引到 Algolia
+    # 检查 npm 是否存在
+    if ! command -v npm &> /dev/null; then
+        # 下载并安装 nvm
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+        # 加载 nvm（确保当前 shell 环境能使用 nvm）
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+        nvm install 20.19.1
+        nvm use 20.19.1
+
+        if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
+            npm install atomic-algolia
+        fi
+        npx atomic-algolia
     fi
-    npx atomic-algolia
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
