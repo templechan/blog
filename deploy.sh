@@ -57,5 +57,11 @@ if [ -d /usr/local/src/blog ]; then
     ./public/categories/solutions/index.html \
     ./public/categories/tech/index.html
 
+    # 推送索引到 Algolia
+    if [ ! "$(command -v atomic-algolia)" ]; then
+        npm install atomic-algolia
+    fi
+    npx atomic-algolia
+    
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi

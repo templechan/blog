@@ -44,6 +44,12 @@ ogurl: "https://blog.climbtw.com/post/building_a_blog_system"
         - [使用自定义头像](#使用自定义头像)
           - [使用 Weavatar 服务](#使用-weavatar-服务)
         - [使用 Server酱 (ServerChan) 评论推送](#使用-server酱-serverchan-评论推送)
+  - [使用 Algolia 站点搜索](#使用-algolia-站点搜索)
+    - [在 hugo-theme-cleanwhite 主题中使用](#在-hugo-theme-cleanwhite-主题中使用-1)
+      - [开启 Algolia](#开启-algolia)
+      - [本地生成索引文件](#本地生成索引文件)
+      - [推送搜索引到 Algolia](#推送搜索引到-algolia)
+    - [访问索引的配置](#访问索引的配置)
   - [嵌入视频](#嵌入视频)
     - [哔哩哔哩](#哔哩哔哩)
     - [Vimeo (需要梯子)](#vimeo-需要梯子)
@@ -514,6 +520,10 @@ sed -i 's#http://212\.64\.16\.86:80#https://blog.climbtw.com#g' \
 ./public/index.html \
 ./public/categories/solutions/index.html \
 ./public/categories/tech/index.html
+
+# 推送索引到 Algolia，下面的 使用 Algolia 会详细介绍
+# npm install atomic-algolia
+# npx atomic-algolia
 ```
 
 - Dockfile 文件:
@@ -523,6 +533,10 @@ sed -i 's#http://212\.64\.16\.86:80#https://blog.climbtw.com#g' \
 FROM hugomods/hugo:std-base-0.146.7
 RUN hugo new site blog
 WORKDIR /blog
+
+# 创建索引文件
+RUN hugo
+
 # 212.64.16.86 为 云服务器 的 公网IP
 # 这里不能使用域名，否则 Hugo 生成的 动态链接 会变成 https://域名:80，导致 端口 重复，文章跳转会出错
 # --disableLiveReload：在生产环境中部署网站，不希望浏览器频繁刷新
@@ -767,7 +781,7 @@ docker run -d --restart=always -p 82:8080 -e TWIKOO_THROTTLE=1000  -v ./data:/ap
 
 #### 修改站点配置启用
 
-1. 更新 站点配置文件 hugo.toml
+1. 修改 站点配置文件 hugo.toml
 
 ```toml
 # Twikoo comments
@@ -851,6 +865,70 @@ SC_MAIL_NOTIFY: false
 - 注意:
     - ServerChan 目前由于用户量比较大，免费的通知额度只有 5 条。
     - 自己发布的评论 (按邮箱判断)，不会通知。
+
+## 使用 Algolia 站点搜索
+
+> Algolia 是为你的 APP 或者网站添加搜索的最佳方式。
+
+- Algolia 官网：<https://www.algolia.com>
+
+### 在 hugo-theme-cleanwhite 主题中使用
+
+#### 开启 Algolia
+
+- 修改 站点配置文件 hugo.toml
+
+```toml
+# algolia site search
+algolia_search = true
+algolia_appId = "***"
+algolia_apiKey = "***"
+algolia_indexName = "hugo-blog"
+
+[outputs]
+home = ["HTML", "RSS", "Algolia"]
+
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
+```
+
+#### 本地生成索引文件
+
+- 在站点项目下执行构建命令：`hugo`，会在 public 目录下新建一个名为 algolia.json 的索引文件，它的地址即 **`ALGOLIA_INDEX_FILE`**。
+
+#### 推送搜索引到 Algolia
+
+1. 去 Algolia 官网 注册一个账号，获取 **`Application ID`**、**`Write API Key`**。
+2. 然后点击左侧的 Search 按钮，创建一个新的索引，自定义取名，比如 "hugo-blog"，即 **`ALGOLIA_INDEX_NAME`**。
+3. 在站点根目录下创建一个 `.env` 文件，写入上面获取到的 **`ALGOLIA_INDEX_FILE`**、**`Application ID`**、**`Write API Key`**、**`ALGOLIA_INDEX_NAME`**
+
+**`.env`**：
+
+```env
+ALGOLIA_INDEX_FILE=/public/algolia.json
+ALGOLIA_APP_ID=***
+ALGOLIA_ADMIN_KEY=***
+ALGOLIA_INDEX_NAME=hugo-blog
+```
+
+4. 安装推送工具包 `atomic-algolia`，推送索引到 Algolia
+
+```shell
+npm install atomic-algolia
+npx atomic-algolia
+```
+
+### 访问索引的配置
+
+- 即在上面的 站点配置 hugo.toml 中，填入 Algolia 官网中的 `Application ID`，`Search API Key`, 以及 `ALGOLIA_INDEX_NAME`
+- 创建 搜索页面文件，即在 content 创建一个文件夹 search，构建一个空文件，命令 `placeholder.md`，即可。
 
 ## 嵌入视频
 
@@ -1017,6 +1095,12 @@ if [ -d /usr/local/src/blog ]; then
     ./public/index.html \
     ./public/categories/solutions/index.html \
     ./public/categories/tech/index.html
+
+    # 推送索引到 Algolia
+    if [ ! "$(command -v atomic-algolia)" ]; then
+        npm install atomic-algolia
+    fi
+    npx atomic-algolia
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi

@@ -69,10 +69,10 @@ href =  "/about/"
 
 
   # algolia site search
-  algolia_search = false
-  algolia_appId = ""
-  algolia_indexName = ""
-  algolia_apiKey = ""
+  algolia_search = true
+  algolia_appId = "HACNU8MYXI"
+  algolia_apiKey = "ed4a519f49b478012850b6650f0f9913"
+  algolia_indexName = "hugo-blog"
 
   # Artalk comments
   # Follow https://artalk.js.org/ to set up your own server
@@ -147,8 +147,7 @@ href =  "/about/"
     id = ""
 
 [outputs]
-# home = ["HTML", "RSS", "Algolia"]
-home = ["HTML", "RSS"]
+home = ["HTML", "RSS", "Algolia"]
 
 [outputFormats.Algolia]
 baseName = "algolia"

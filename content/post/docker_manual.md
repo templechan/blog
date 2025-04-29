@@ -22,6 +22,7 @@ ogurl: "https://blog.climbtw.com/post/docker_manual"
 - [安装 Docker](#安装-docker)
   - [CentOS 9 下](#centos-9-下)
 - [Docker 常用命令](#docker-常用命令)
+- [Docker 常用最简镜像](#docker-常用最简镜像)
 
 <!-- /code_chunk_output -->
 
@@ -131,3 +132,7 @@ docker stats
 # 查看容器网络信息
 docker inspect 容器ID
 ```
+
+# Docker 常用最简镜像
+
+- Node：
