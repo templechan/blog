@@ -1104,7 +1104,7 @@ if [ -d /usr/local/src/blog ]; then
 
     # 推送索引到 Algolia
     # 检查 npm 是否存在
-    if [ ! "$(command -v npm)" ]; then
+    if [ ! "$(command -v nvm)" ]; then
         # 下载并安装 nvm
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
