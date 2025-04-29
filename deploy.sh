@@ -1,7 +1,7 @@
 cd /usr/local/src
 rm -rf /usr/local/src/blog
 
-if [ ! "$(command -v git)" ]; then
+if ! command -v git &> /dev/null; then
     dnf install -y git
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
@@ -16,7 +16,7 @@ git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ]; then
     cd /usr/local/src/blog
-    if [ ! "$(command -v mogrify)" ]; then
+    if ! command -v mogrify &> /dev/null; then
         # 安装图片压缩包 ImageMagick
         dnf install -y ImageMagick-7.1.1.26-2.oc9 bc parallel
         # 配置ImageMagick策略文件
@@ -59,24 +59,46 @@ if [ -d /usr/local/src/blog ]; then
 
     # 推送索引到 Algolia
     # 检查 npm 是否存在
-    if [ ! "$(command -v nvm)" ]; then
-        # 下载并安装 nvm
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    if ! command -v npm &> /dev/null; then
+        echo "npm 未安装，开始安装 nvm 并安装 npm..."
 
-        # 加载 nvm（确保当前 shell 环境能使用 nvm）
-        echo 'export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.bashrc
-        source ~/.bashrc
+        if ! command -v nvm &> /dev/null; then
+            echo "nvm 未安装，开始安装 nvm..."
+            # 下载并安装 nvm
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+            # 加载 nvm 环境
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+        
+        else
+            echo "nvm 已存在。"
+        fi
 
+        echo "使用 nvm 安装 Node.js 和 npm 20.19.1..."
         nvm install 20.19.1
         nvm use 20.19.1
+        nvm alias default 20.19.1
     fi
-    if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
-        npm init
-        npm install atomic-algolia
+
+    # 初始化 npm
+    if [ ! -f package.json ]; then
+        echo "package.json 不存在，正在初始化 npm 项目..."
+        npm init -y
     fi
+
+    # 检查 atomic-algolia 是否已安装
+    if ! npm list atomic-algolia --depth=0 &> /dev/null; then
+        echo "atomic-algolia 未安装，安装中..."
+        npm install atomic-algolia --save
+    else
+        echo "atomic-algolia 已安装。"
+    fi
+
+    # 执行 atomic-algolia 命令
+    echo "执行 atomic-algolia 命令..."
     npx atomic-algolia
+
 
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
