@@ -42,6 +42,8 @@ ogurl: "https://blog.climbtw.com/post/vscode_manual"
       - [在 Hugo 中使用 思维导图 流程](#在-hugo-中使用-思维导图-流程)
     - [Even Better TOML](#even-better-toml)
     - [Docker](#docker)
+  - [远程开发](#远程开发)
+    - [Remote - SSH](#remote---ssh)
 
 <!-- /code_chunk_output -->
 
@@ -254,3 +256,11 @@ style.less
 ### Docker
 
 > 使从 VS Code 构建、管理和部署容器化应用程序变得容易。它还提供了在容器中 Node.js、Python 和 .NET 的一键调试。
+
+## 远程开发
+
+### Remote - SSH
+
+- 连接到 linux
+    - `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys`
+- 连接到 WSL

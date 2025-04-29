@@ -1,10 +1,14 @@
 <!-- Including InstantSearch.js library and styling -->
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0/dist/instantsearch-theme-algolia.min.css"> -->
+<script src="/js/instantsearch.min.js"></script>
+<script src="/js/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="/css/instantsearch-theme-algolia.min.css">
 
-<div id="search-searchbar"></div>
+<div id="search-searchbar" style="margin: 20px 0 20px;"></div>
  <div class="post-list" id="search-hits">
  </div>
 
@@ -21,7 +25,7 @@ const hitTemplate = function(hit) {
   }*/
   let date = '';
   if (hit.date) {
-    date = moment.unix(hit.date).format('MMM D, YYYY');
+    date = moment.unix(hit.date).format('YYYY-MM-DD');
   }
   let url = `${hit.url}#${hit.anchor}`;
   const title = hit._highlightResult.title.value;
@@ -43,9 +47,9 @@ const hitTemplate = function(hit) {
 
 
   return `
-    <div class="post-item">
-      <span class="post-meta">${date}</span>
-      <h2><a class="post-link" href="${url}">${title}</a></h2>
+    <div class="post-item" style="border: 1px solid #d4d8e3; border-radius: 4px; padding: 16px 20px 20px; ">
+      <span class="post-meta" style="display: block; margin-bottom: -20px">${date}</span>
+      <h2><a class="post-link" href="${url}" >${title}</a></h2>
       <a href="${url}" class="post-breadcrumbs">${breadcrumbs}</a>
       <div class="post-snippet">${content}</div>
     </div>
@@ -105,5 +109,9 @@ search.start();
 }
 .post-snippet img {
   display: none;
+}
+.ais-hits--item em {
+    color: red;
+    padding: 0 1px;
 }
 </style>
