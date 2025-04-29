@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "阅读"
-description: "代码之外，光影之间"
+description: "代码之外，光影之间。"
 author: "谌中钱"
 date: "2025-01-14"
 ogurl: "https://blog.climbtw.com/reading"
