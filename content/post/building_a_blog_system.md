@@ -920,6 +920,9 @@ ALGOLIA_INDEX_NAME=hugo-blog
 
 4. 安装推送工具包 `atomic-algolia`，推送索引到 Algolia
 
+- `atomic-algolia` 是基于 Node.js 的工具，需先安装 Node.js
+    - 参考 [《Node 使用手册》](https://blog.climbtw.com/post/node_manual/)
+
 ```shell
 npm install atomic-algolia
 npx atomic-algolia
@@ -1035,6 +1038,9 @@ jobs:
 
 ## 站点仓库的部署脚本
 
+- `atomic-algolia` 是基于 Node.js 的工具，需先安装 Node.js
+    - 参考 [《Node 使用手册》](https://blog.climbtw.com/post/node_manual/)
+
 ./deploy.sh：
 
 ```shell
@@ -1096,8 +1102,8 @@ if [ -d /usr/local/src/blog ]; then
     ./public/categories/solutions/index.html \
     ./public/categories/tech/index.html
 
-    # 推送索引到 Algolia
-    if [ ! "$(command -v atomic-algolia)" ]; then
+    # 推送索引到 Algolia，需先安装 Node.js
+    if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
         npm install atomic-algolia
     fi
     npx atomic-algolia
