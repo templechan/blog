@@ -23,4 +23,4 @@ ogurl: "https://blog.climbtw.com/post/node_manual"
 <!-- /code_chunk_output -->
 
 - nvm安装
-- 设置node源，和node镜像源
+- 设置 node 源，和 node 镜像源
