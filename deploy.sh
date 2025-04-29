@@ -58,7 +58,12 @@ if [ -d /usr/local/src/blog ]; then
     ./public/categories/tech/index.html
 
     # 推送索引到 Algolia
-    # 检查 npm 是否存在
+    # 检查 npm 是否存在 (注意 非交互式 Shell 不会自动加载 ~/.bashrc 或 ~/.zshrc，导致：nvm 命令找不到, npm/node 路径未正确设置)
+    # 所以尝试先加载一遍 nvm 环境
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    
     if ! command -v npm &> /dev/null; then
         echo "npm 未安装，开始安装 nvm 并安装 npm..."
 
