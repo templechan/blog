@@ -98,6 +98,5 @@ if [ -d /usr/local/src/blog ]; then
     echo "执行 atomic-algolia 命令..."
     npx atomic-algolia
 
-
     # Nginx 如果配置好了，可直接访问网站查看部署更新
 fi
