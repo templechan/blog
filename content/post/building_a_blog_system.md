@@ -1115,10 +1115,10 @@ if [ -d /usr/local/src/blog ]; then
         source ~/.bashrc
 
         nvm install 20.19.1
-        nvm use 20.19.1    
+        nvm use 20.19.1
     fi
-    
     if ! npm list atomic-algolia --depth=0 2>/dev/null | grep -q atomic-algolia; then
+        npm init
         npm install atomic-algolia
     fi
     npx atomic-algolia
