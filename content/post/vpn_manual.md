@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "梯子使用手册"
-description: "-"
+description: "我用的机场，其他机场的推荐 等。"
 author: "谌中钱"
 date: "2025-01-22"
 image: "/img/temple_404_bg.jpg"
