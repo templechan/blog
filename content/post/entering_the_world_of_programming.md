@@ -26,7 +26,7 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
     padding-top: 10px;
 }
 .svg-content {
-    min-width: 1180px;  /* 不小于 SVG 原始宽度 */
+    min-width: 1300px;  /* 不小于 SVG 原始宽度 */
     height: 910px;  /* SVG 原始高度 */
 }
 </style>
