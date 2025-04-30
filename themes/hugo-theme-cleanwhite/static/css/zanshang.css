@@ -97,7 +97,7 @@ button.close {
 
 .zs-modal-head img {
     display: inline-block;
-    margin: 20px 8px 0 4px;
+    margin: 26px 8px 0 8px;
     width: 60px;
     height: 60px;
     border-radius: 10%;
@@ -115,7 +115,7 @@ button.close {
 .zs-modal-head .author {
     display: inline-block;
     vertical-align: top;
-    margin: 18px 0;
+    margin: 24px 0 14px;
 }
 .zs-modal-head .author .slogan {
     font-size: 14px;
@@ -131,14 +131,15 @@ button.close {
 
 .zs-modal-head .tip {
     background: #0085a1;
-    padding: 0 16px;
+    padding: 0 18px;
     font-size: 15px;
     color: #fff;
     border-radius: 4px;
-    margin-top: 4px;
+    margin-top: 8px;
     position: relative;
     line-height: 60px;
-    margin-bottom: 32px;
+    margin-bottom: 42px;
+    width: 304px;
 }
 
 .zs-modal-head .tip i {
@@ -203,8 +204,7 @@ button.close {
 
 .zs-modal-footer {
     text-align: center;
-    margin-left: -8px;
-    margin-bottom: 35px;
+    margin: -4px 0 8px -8px;
 }
 
 .zs-modal-footer label {
