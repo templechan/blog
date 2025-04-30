@@ -115,7 +115,7 @@ button.close {
 .zs-modal-head .author {
     display: inline-block;
     vertical-align: top;
-    margin: 24px 0 14px;
+    margin-top: 24px;
 }
 .zs-modal-head .author .slogan {
     font-size: 14px;
@@ -135,11 +135,10 @@ button.close {
     font-size: 15px;
     color: #fff;
     border-radius: 4px;
-    margin-top: 8px;
     position: relative;
     line-height: 60px;
+    margin-top: 18px;
     margin-bottom: 42px;
-    width: 304px;
 }
 
 .zs-modal-head .tip i {
