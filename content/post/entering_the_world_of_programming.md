@@ -26,7 +26,7 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
     padding-top: 10px;
 }
 .svg-content {
-    min-width: 1230px;  /* 不小于 SVG 原始宽度 */
+    min-width: 1180px;  /* 不小于 SVG 原始宽度 */
     height: 910px;  /* SVG 原始高度 */
 }
 </style>
@@ -147,6 +147,4 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
 ## 解决方案
 
 - <a href="https://blog.climbtw.com/post/building_a_blog_system/" target="_blank">《构建博客系统》</a>
-- <a href="https://blog.climbtw.com/post/design_and_development_of_hrms/" target="_blank">《人资系统 HRMS 的设计和研发》</a>
-- <a href="https://blog.climbtw.com/post/design_and_development_of_independent_station/" target="_blank">《电商独立站的设计和研发》</a>
-- <a href="https://blog.climbtw.com/post/building_and using_ai_assisted_platforms/" target="_blank">《构建和使用AI辅助平台》</a> -->
+- <a href="https://blog.climbtw.com/post/building_and_using_ai_assisted_platforms/" target="_blank">《使用和构建AI辅助平台》</a> -->
