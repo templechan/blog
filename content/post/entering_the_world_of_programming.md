@@ -147,4 +147,4 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
 ## 解决方案
 
 - <a href="https://blog.climbtw.com/post/building_a_blog_system/" target="_blank">《构建博客系统》</a>
-- <a href="https://blog.climbtw.com/post/building_and_using_ai_assisted_platforms/" target="_blank">《使用和构建AI辅助平台》</a> -->
+- <a href="https://blog.climbtw.com/post/building_and_using_ai_assisted_platforms/" target="_blank">《构建和使用AI辅助平台》</a> -->
