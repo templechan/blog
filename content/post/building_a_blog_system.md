@@ -1038,9 +1038,6 @@ jobs:
 
 ## 站点仓库的部署脚本
 
-- `atomic-algolia` 是基于 Node.js 的工具，需先安装 Node.js
-    - 参考 [《Node 使用手册》](https://blog.climbtw.com/post/node_manual/)
-
 ./deploy.sh：
 
 ```shell
