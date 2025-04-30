@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Windows 系统重装手册"
-description: "系统重装的流程 等"
+description: "系统重装的流程 等。"
 author: "谌中钱"
 date: "2025-01-26"
 image: "/img/temple_404_bg.jpg"
