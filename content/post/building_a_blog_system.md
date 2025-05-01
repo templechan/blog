@@ -3,7 +3,7 @@ layout: single
 title: "构建博客系统"
 description: "Hugo 框架的使用，全格式图片批量动态压缩，Twikoo 评论系统部署，Algolia 搜索，站点自动化部署，SEO 等。"
 author: "谌中钱"
-date: "2025-01-15"
+date: "2025-01-18"
 image: "/img/temple_404_bg.jpg"
 categories: [ "solutions" ]
 tags:
@@ -49,7 +49,7 @@ ogurl: "https://blog.climbtw.com/post/building_a_blog_system"
       - [开启 Algolia](#开启-algolia)
       - [本地生成索引文件](#本地生成索引文件)
       - [推送搜索引到 Algolia](#推送搜索引到-algolia)
-    - [访问索引的配置](#访问索引的配置)
+      - [访问索引的配置](#访问索引的配置)
   - [嵌入视频](#嵌入视频)
     - [哔哩哔哩](#哔哩哔哩)
     - [Vimeo (需要梯子)](#vimeo-需要梯子)
@@ -521,7 +521,7 @@ sed -i 's#http://212\.64\.16\.86:80#https://blog.climbtw.com#g' \
 ./public/categories/solutions/index.html \
 ./public/categories/tech/index.html
 
-# 推送索引到 Algolia，下面的 使用 Algolia 会详细介绍
+# 推送索引到 Algolia，下面的 使用 Algolia 会详细介绍（atomic-algolia 是基于 Node.js 的工具，需先安装 Node.js）
 # npm install atomic-algolia
 # npx atomic-algolia
 ```
@@ -928,10 +928,23 @@ npm install atomic-algolia
 npx atomic-algolia
 ```
 
-### 访问索引的配置
+#### 访问索引的配置
 
 - 即在上面的 站点配置 hugo.toml 中，填入 Algolia 官网中的 `Application ID`，`Search API Key`, 以及 `ALGOLIA_INDEX_NAME`
-- 创建 搜索页面文件，即在 content 创建一个文件夹 search，构建一个空文件，命令 `placeholder.md`，即可。
+- 创建 搜索页面文件，即在 content 创建一个文件夹 search，构建一个空文件，命名 `placeholder.md`，即可。
+
+placeholder.md：
+
+```yaml
+---
+layout: page
+title: "搜索页面"
+description: "使用 Algolia 为 站点 提供 搜索功能。 "
+author: "谌中钱"
+date: "2025-01-14"
+ogurl: "https://blog.climbtw.com/search"
+---
+```
 
 ## 嵌入视频
 
