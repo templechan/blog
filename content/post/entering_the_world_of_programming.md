@@ -26,8 +26,8 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
     padding-top: 10px;
 }
 .svg-content {
-    min-width: 1300px;  /* 不小于 SVG 原始宽度 */
-    height: 910px;  /* SVG 原始高度 */
+    min-width: 1210px;  /* 不小于 SVG 原始宽度 */
+    height: 900px;  /* SVG 原始高度 */
 }
 </style>
 
@@ -79,6 +79,7 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
     - <a href="https://blog.climbtw.com/post/mastergo_manual/" target="_blank">《MasterGo 使用手册》</a>
         - 蓝湖
         - iconfont
+    - Figma
 
 ## 界面开发（前端）
 
@@ -114,7 +115,7 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
     - Next API 路由
     - Node 技术栈
         - <a href="https://blog.climbtw.com/post/node_manual/" target="_blank">《Node 使用手册》</a>
-            - Koa
+            - Express
         - <a href="https://blog.climbtw.com/post/nest_manual/" target="_blank">《Nest 使用手册》</a>
     - 微服务架构
         - Nest 微服务模块
@@ -136,7 +137,7 @@ ogurl: "https://blog.climbtw.com/post/entering_the_world_of_programming"
     - <a href="https://blog.climbtw.com/post/nginx_manual/" target="_blank">《Nginx 使用手册》</a>
 - CI/CD
     - <a href="https://blog.climbtw.com/post/git_manual/" target="_blank">《Git 使用手册》</a>
-    - <a href="https://blog.climbtw.com/post/git_action_manual/" target="_blank">《GitHub Action 使用手册》</a>
+    - <a href="https://blog.climbtw.com/post/git_action_manual/" target="_blank">《GitHub Actions 使用手册》</a>
 
 ## 拓展
 

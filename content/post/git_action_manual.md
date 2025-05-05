@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "GitHub Action 使用手册"
+title: "GitHub Actions 使用手册"
 description: "-"
 author: "谌中钱"
 date: "2025-04-24"

@@ -9,7 +9,7 @@ ogurl: "https://blog.climbtw.com/about"
 
 # 关于我
 
-Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师，曾在 阿里云，腾讯，Coupang 从事开发工作。
+Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师，曾在 阿里云，Coupang，腾讯 从事开发工作。
 
 常用技术栈以 React，Node 等技术为主。
 
@@ -26,7 +26,7 @@ Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师
 
 ### 软件
 
-- **UI/UX**：MasterGo，蓝湖
+- **UI/UX**：MasterGo，蓝湖，Figma
 - **前端**：
     - Web 平台：React，Next
     - 移动平台：Taro，React Native
@@ -36,7 +36,7 @@ Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师
     - 微服务：Nest 微服务模块
     - 数据库：PostgreSQL，MongoDB，Redis
     - 数据采集：Scrapy，Playwright
-- **工程化**：Docker，Nginx
+- **部署**：Docker，Nginx，GitHub Actions
 - Web3 相关
 
 ### 语言
@@ -56,15 +56,11 @@ Hi，我是谌中钱，本科主修计算机科学，全栈高级开发工程师
 
 ## 工作经验
 
-- ***2025 - &nbsp;至今***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; ‌GY Asset，中国，深圳 ***（¥ \*\*,000 / 月）***
-- ***2023 - 2024***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Alibaba，中国，深圳 ***（¥ 25,000 / 月）***
-- ***2023 - 2023***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Coupang，中国，上海 ***（¥ 22,000 / 月）***
-- ***2020 - 2022***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Tencent，中国，武汉 ***（¥ 16,000 / 月）***
-- ***2018 - 2019***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Augmentum，中国，武汉 ***（¥ 7,000 / 月）***
-
-### 远程兼职
-
-- ***2025 - &nbsp;至今***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; ‌独立站开发，中国，深圳 ***（¥ \*,000 / 月，按单功能结）***
+- ***2025 - &nbsp;至今***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; ‌GY Asset，中国，深圳
+- ***2023 - 2024***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Alibaba，中国，深圳
+- ***2023 - 2023***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Coupang，中国，上海
+- ***2021 - 2023***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Tencent，中国，武汉
+- ***2018 - 2020***：Web 开发工程师 &nbsp;&nbsp;-&nbsp; Augmentum，中国，武汉
 
 ## 社交平台
 
