@@ -33,6 +33,7 @@ ogurl: "https://blog.climbtw.com/post/vscode_manual"
     - [Open in Browser](#open-in-browser)
     - [vscode-pdf](#vscode-pdf)
     - [Git History](#git-history)
+    - [Color Highlight](#color-highlight)
   - [语言支持](#语言支持)
     - [Markdown Preview Enhanced](#markdown-preview-enhanced)
       - [自定义CSS](#自定义css)
@@ -173,6 +174,10 @@ ogurl: "https://blog.climbtw.com/post/building_a_blog_system"
 ### Git History
 
 > 查看 Git 提交历史。
+
+### Color Highlight
+
+> 对文档中的 css/web 颜色进行样式设置。
 
 ## 语言支持
 

@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Docker 使用手册"
-description: "-"
+description: "Docker 安装，配置国内源，镜像仓库国内源，常用命令，常用最简镜像 等。"
 author: "谌中钱"
 date: "2025-04-12"
 image: "/img/temple_404_bg.jpg"
@@ -32,10 +32,10 @@ ogurl: "https://blog.climbtw.com/post/docker_manual"
 
 - Docker 官网: <https://www.docker.com>
 - Docker 文档: <https://docs.docker.com/engine/install/centos>
-    - Docker 国内软件源:
+    - Docker 国内源:
         - 阿里云镜像: <https://developer.aliyun.com/mirror/docker-ce?spm=a2c6h.13651102.0.0.39fd1b11KE7ti3>
 - Docker 官方镜像仓库: <https://hub.docker.com>
-    - Docker 镜像仓库 国内镜像源 实时更新: <https://github.com/dongyubin/DockerHub?tab=readme-ov-file>
+    - Docker 镜像仓库 国内源 实时更新: <https://github.com/dongyubin/DockerHub?tab=readme-ov-file>
 
 # 安装 Docker
 
@@ -53,13 +53,13 @@ dnf remove docker docker-client docker-client-latest docker-common docker-latest
 dnf update
 # 安装 dnf 存储库 的 管理软件包
 dnf install -y dnf-plugins-core
-# 设置  Docker 国内软件源
+# 设置  Docker 国内源
 # dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 dnf config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 # 安装 Docker
 dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# 设置 Docker 镜像仓库 国内镜像源
+# 设置 Docker 镜像仓库 国内源
 mkdir -p /etc/docker
 tee /etc/docker/daemon.json <<EOF
 {

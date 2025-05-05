@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Nginx 使用手册"
-description: "-"
+description: "Nginx 安装，常用配置 等。"
 author: "谌中钱"
 date: "2025-04-16"
 image: "/img/temple_404_bg.jpg"

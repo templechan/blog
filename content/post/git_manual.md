@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Git 使用手册"
-description: "-"
+description: "Git 安装，配置 GitHub 国内镜像源，常用命令，配置 SSH 等。"
 author: "谌中钱"
 date: "2025-04-20"
 image: "/img/temple_404_bg.jpg"
