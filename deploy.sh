@@ -8,13 +8,13 @@ if ! command -v git &> /dev/null; then
 fi
 
 # 设置 GitHub 国内镜像源
-# git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
 # 如果失效，则删除旧的，设置的新的，记得先测试下是否有效
 # git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
 # git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 git clone -b main https://github.com/templechan/blog.git
 
-if [ -d /usr/local/src/blog ]; then
+if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
     cd /usr/local/src/blog
     if ! command -v mogrify &> /dev/null; then
         # 安装图片压缩包 ImageMagick
