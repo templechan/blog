@@ -5,13 +5,13 @@ if ! command -v git &> /dev/null; then
     dnf install -y git
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
-    # 设置 GitHub 国内镜像源
-    git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
-    # 如果失效，则删除旧的，设置的新的，记得先测试下是否有效
-    # git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
-    # git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 fi
 
+# 设置 GitHub 国内镜像源
+git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+# 如果失效，则删除旧的，设置的新的，记得先测试下是否有效
+# git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
+# git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
@@ -51,24 +51,24 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
 
         # 安装 Docker
         dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-        # 设置 Docker 国内镜像代理
-        tee /etc/docker/daemon.json <<EOF
-        {
-        "registry-mirrors": [
-            "https://docker.1ms.run",
-            "https://dockerproxy.net",
-            "https://proxy.vvvv.ee",
-            "https://dockerproxy.link"
-        ]
-        }
-EOF
-        systemctl daemon-reload
 
         # 启动 Docker
         systemctl start docker
         # 设置 Docker 自启
         systemctl enable docker
     fi
+    # 设置 Docker 国内镜像代理
+    tee /etc/docker/daemon.json <<EOF
+    {
+    "registry-mirrors": [
+        "https://docker.1ms.run",
+        "https://dockerproxy.net",
+        "https://proxy.vvvv.ee",
+        "https://dockerproxy.link"
+    ]
+    }
+EOF
+    systemctl daemon-reload
 
     if [ "$(docker ps -a -f "name=blog" --quiet)" ]; then
         docker stop blog && docker rm blog
