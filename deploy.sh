@@ -61,7 +61,7 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
             "https://dockerproxy.link"
         ]
         }
-        EOF
+EOF
         systemctl daemon-reload
 
         # 启动 Docker
