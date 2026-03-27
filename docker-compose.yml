@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  blog:
+    # 等价于 docker build -t blog . （自动构建当前目录的Dockerfile）
+    build: .
+    # 容器名称
+    container_name: blog
+    # 端口映射 主机80 → 容器80
+    ports:
+      - "80:80"
+    # 开机/崩溃自动重启
+    restart: always

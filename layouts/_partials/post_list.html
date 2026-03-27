@@ -1,0 +1,47 @@
+<!-- post list -->
+<div data-pagefind-ignore="all">
+{{ range $index, $element := $.Paginator.Pages }}
+<div class="post-preview">
+    <a href="{{ .Permalink }}">
+        <h2 class="post-title">
+            {{ .Title }}
+            {{ if .Weight }}
+                <span style="margin-left: 4px;">⬆️</span>
+            {{ end }}
+        </h2>
+	{{with .Params.subtitle }}
+        <h3 class="post-subtitle">
+            {{ . }}
+        </h3>
+	{{ end }}
+        <div class="post-content-preview">
+	{{ with .Description }}
+            {{ . }}
+        {{ else }}
+            {{ .Summary | plainify}}
+       {{ end }}
+        </div>
+    </a>
+    <div class="post-meta">
+    {{ if .Params.metadata }}
+        {{ range $index, $element := .Params.metadata }}
+            {{ if .link }}
+                <a href="{{ .link }}" target="_blank">{{ .text }}</a>&nbsp;
+            {{ else }}
+                {{ .text }}
+            {{ end }}
+        {{ end }}
+        <br>
+    {{ end }}
+    <!-- Posted by {{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "Monday, January 2, 2006" }} -->
+    <span>Posted by {{ with .Params.author }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "2006-01-02" }}</span>
+    <!-- Don't show "Last Modified on" if update happened on the same day. -->
+    {{ if (and (not .Lastmod.IsZero) (not (eq (dateFormat "2006-01-02" .Lastmod) (dateFormat "2006-01-02" .Date)))) }}
+        <br><span>Last Modified on {{ dateFormat "2006-01-02" .Params.LastMod }}</span>
+    {{ end }}
+    </div>
+
+</div>
+<hr class="post-hr">
+{{ end }}
+</div>

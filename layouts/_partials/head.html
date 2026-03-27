@@ -1,0 +1,115 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Anti-FOC (Flash of Content) Script for Dark Mode -->
+    <script>
+    (function() {
+        // Auto-theme (sunrise/sunset) is enabled by default
+        // Can be disabled by setting auto_theme: false in config
+        const autoTheme = {{ if not .Site.Params.auto_theme }}false{{ else }}true{{ end }};
+        if (autoTheme) {
+            document.documentElement.setAttribute('data-auto-theme', 'true');
+        }
+
+        const theme = localStorage.getItem('cleanwhite-theme') ||
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+    })();
+    </script>
+
+
+
+    <meta name="title" content="{{ if .Params.title }} {{ .Params.title }} {{ else }} {{ .Site.Params.title }} {{ end }}" />
+    <meta name="description" content="{{ if .Params.description }} {{ .Params.description }} {{ else }} {{ .Site.Params.description }} {{ end }}" />
+    <meta name="keyword"  content="{{ .Site.Params.keyword }}">
+
+
+    <!-- ==================== Open Graph (OG) 通用社交分享标签 ==================== -->
+     <!-- 适用平台：Facebook、微信、小红书、LinkedIn、Discord、WhatsApp 等全球 99% 社交平台 -->
+    <meta property="og:title" content="{{ if .Params.title }} {{ .Params.title }} {{ else }} {{ .Site.Params.title }} {{ end }}" />
+    <meta property="og:description" content="{{ if .Params.description }} {{ .Params.description }} {{ else }} {{ .Site.Params.description }} {{ end }}" />
+    <meta property="og:image" content="{{ if .Params.image }} {{ .Site.BaseURL }}{{ .Params.image }} {{ else }} {{ .Site.BaseURL }}{{ .Site.Params.header_image }} {{ end }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+    <meta property="og:locale" content="zh_cn" />
+
+
+    <!-- ==================== Twitter Card 专属分享标签 ==================== -->
+     <!-- 适用平台：Twitter / X（单独配置，展示效果最优） -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ if .Params.title }} {{ .Params.title }} {{ else }} {{ .Site.Params.title }} {{ end }}" />
+    <meta name="twitter:description" content="{{ if .Params.description }} {{ .Params.description }} {{ else }} {{ .Site.Params.description }} {{ end }}" />
+    <meta name="twitter:image" content="{{ if .Params.image }} {{ .Site.BaseURL }}{{ .Params.image }} {{ else }} {{ .Site.BaseURL }}{{ .Site.Params.header_image }} {{ end }}" />
+    <!-- 可选：添加你的 Twitter 账号 -->
+    <meta name="twitter:site" content="@templechann" />
+
+
+
+    <link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}">
+
+    <title>
+        {{ if eq .Title "Searches" }}站内搜索 | {{ else }} 
+        {{ if and .Title (ne .Title "Temple Blog") }} {{ .Title }} | {{ end }}
+        {{ end }}
+        {{ .Site.Params.SEOTitle }}
+    </title>
+
+    <link rel="canonical" href="{{ .RelPermalink }}">
+
+    {{ if .Site.Params.disqus_proxy }}
+    <link rel="stylesheet" href="{{ "css/iDisqus.min.css" | relURL }}"/>
+    {{ end }}
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ "css/bootstrap.min.css" | relURL }}">
+
+    <!-- Clean White theme CSS -->
+    <link rel="stylesheet" href="{{ "css/hugo-theme-cleanwhite.css" | relURL }}">
+
+    <!-- Theme Variables CSS -->
+    <link rel="stylesheet" href="{{ "css/theme-variables.css" | relURL }}">
+
+    <!-- zangshang CSS -->
+    <link rel="stylesheet" href="{{ "css/zanshang.min.css" | relURL }}">
+
+    <!-- Custom Fonts -->
+    <!-- <link rel="stylesheet" href="{{ "css/font-awesome.all.min.css" | relURL }}"> -->
+    <link rel="stylesheet" href="{{ "css/font-awesome-7.all.min.css" | relURL }}">
+
+    <!-- KaTeX CSS  -->
+    {{ $noop := .WordCount }}
+    {{ if .Page.Store.Get "hasMath" -}}
+        {{ partial "math/katex-css.html" . -}}
+        {{ partial "math/katex-fonts.html" . -}}
+    {{ end -}}
+
+    <!--  Custom CSS  -->
+    {{ range .Site.Params.custom_css -}}
+    <link rel="stylesheet" href="{{ . | absURL }}">
+    {{- end }}
+
+    <!-- jQuery -->
+    <script src="{{ "js/jquery.min.js" | relURL }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ "js/bootstrap.min.js" | relURL }}"></script>
+
+    <!-- Hux Theme JavaScript -->
+    <script src="{{ "js/hux-blog.min.js" | relURL }}"></script>
+
+    <!-- lazy load image JavaScript -->
+    <script src="{{ "js/lazysizes.min.js" | relURL }}"></script>
+
+    <!-- Custom JS -->
+    {{ range .Site.Params.custom_js }}
+    <script src="{{ . | absURL }}"></script>
+    {{ end }}
+
+</head>
+
+{{ if .Site.Config.Services.GoogleAnalytics.ID }}
+{{ template "_internal/google_analytics.html" . }}
+{{ end }}

@@ -1,0 +1,173 @@
+# 生产构建时，生成所有正式链接的唯一基础地址
+# sitemap.xml（网站地图）、robots.txt（爬虫协议）、页面 canonical 标签 等 SEO 核心文件必依赖它
+baseURL = 'https://templechann.com/' 
+# locale = 'en-us'
+locale = 'zh-cn'
+title = 'Temple Blog'
+theme = 'hugo-theme-cleanwhite'
+
+buildFuture = true # 构建包含未来日期的文章
+hasCJKLanguage = true # 自动处理中日韩文字，解决默认配置下的排版、摘要、字数统计 BUG
+enableRobotsTXT = true # 自动在你的网站根目录生成 robots.txt 文件
+cleanDestinationDir = true # 构建时清空历史文件
+
+[markup]
+  [markup.highlight]
+    style = "nord" # 代码块高亮，https://xyproto.github.io/splash/docs/all.html
+    lineNos = true # 显示行号
+    lineNumbersInTable = false
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # markdown 中使用 html
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
+[pagination]
+  pagerSize = 10 # frontpage pagination
+
+[mediaTypes]
+  [mediaTypes.'font/woff']
+    suffixes = ['woff']
+  [mediaTypes.'font/woff2']
+    suffixes = ['woff2']
+
+[outputs]
+# home = ["HTML", "RSS", "Algolia"]
+home = ["HTML", "RSS"]
+
+[services]
+  # Enable comments by entering your Disqus shortname
+  [services.disqus]
+    shortname = ""
+  [services.googleAnalytics]
+    id = ""
+
+[outputFormats.Algolia]
+# baseName = "algolia"
+# isPlainText = true
+# mediaType = "application/json"
+# notAlternative = true
+
+[params]
+  header_image = "img/home-bg.png"
+  slogan = "山高自有客行路，水深自有渡船人"
+  SEOTitle = "谌中钱的博客 | Temple Blog"
+  description = "谌中钱（言戈，Temple Chan），男，29岁，179cm，65kg，摩羯座，ESTJ，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，腾讯、Coupang、阿里云 前搬砖人，爬界科技 创始人、首席执行官。"
+  keyword = "谌中钱, 言戈, 在下言戈, Temple Chan, Temple, templechan, templechann, templechannn, 谌中钱的博客, 博客网站, 博客, 编程技术"
+  
+  image_404 = "img/post-bg-404.png"
+  title_404 = "你页面不存在"
+  omit_categories = false # 隐藏分类菜单
+  upstreamAttribution = false # 显示主题作者信息
+  dark_mode_toggle = false # 是否开启暗黑模式
+  isSearch = false # 是否显示搜索图标
+
+  # Sidebar settings
+  sidebar_avatar = "img/templechan.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_about_description = "谌中钱（言戈，Temple Chan），男，29岁，179cm，65kg，摩羯座，ESTJ，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，腾讯、Coupang、阿里云 前搬砖人，爬界科技 创始人、首席执行官。"
+  about_me = true
+  bookmarks = true
+  featured_tags = true 
+  featured_condition_size = 0
+  friends = true
+
+  # Last posts
+  last_posts = true
+  #last_posts_title = "LAST POSTS"
+  #last_posts_count = 5
+
+  #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
+  reward = false 
+  reward_guide = "您的咖啡能让我写出少 Bug 的代码 ☕️ ~" 
+
+  # Twikoo comments
+  # Follow https://twikoo.js.org/ to set up your own env_id
+  twikoo_env_id = ""
+
+  # Artalk comments
+  # Follow https://artalk.js.org/ to set up your own server
+  artalk_enable = false
+  artalk_server = "https://xxx.xxx.com"
+  artalk_site = "xxx blog"
+
+  # We need a proxy to access Disqus api in China
+  # Follow https://github.com/zhaohuabing/disqus-php-api to set up your own disqus proxy
+  disqus_proxy = ""
+  disqus_site = ""
+
+  # algolia site search
+  algolia_search = false
+  algolia_appId = ""
+  algolia_indexName = ""
+  algolia_apiKey = ""
+
+  # leancloud storage for page view counter
+  page_view_counter = false
+  leancloud_app_id = ""
+  leancloud_app_key = ""
+
+  # Baidu Analytics
+  ba_track_id = ""
+
+  # Include any custom CSS and/or JS files, url or relative to /static folder
+  #custom_css = ["css/lightbox.css", "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css", "css/main.css"]
+  #custom_js = ["js/lightbox.js", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "js/main.js"]
+  
+  [params.algolia]
+  vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+  params = ["categories", "tags"] 
+
+  [params.social]
+  rss                    = true
+
+  email                  = "templechan@126.com"
+  github                 = "https://github.com/templechan"
+#   linkedin               = "https://www.linkedin.com/in/templechan"
+  wechat                 = "img/social/social-wechat.png"
+  qq                     = "img/social/social-qq.png"
+  whatsapp               = "img/social/social-whatsapp.jpg"
+  messenger              = "img/social/social-messenger.jpg"
+  telegram               = "img/social/social-telegram.jpg"
+  line                   = "img/social/social-line.jpg"
+  kakaotalk              = "img/social/social-kakaotalk.png"
+  zalo                   = "img/social/social-zalo.jpg"
+
+  tiktok                 = "https://www.douyin.com/user/MS4wLjABAAAA84o70K2c9LEZXJ9fHp0deVyvxMudni7rQgAahjtoWIX34SCg61Gbf6H4HYKneZsW"
+  wechatChannels         = "img/social/social-wechat-channels.jpg"
+  bilibili               = "https://space.bilibili.com/3546602247555636"
+  rednote                = "https://www.xiaohongshu.com/user/profile/658fc18d0000000022017e5a"
+  wechatPublicPlatform   = "img/social/social-wechat-public-platform.jpg"
+  csdn                   = "https://blog.csdn.net/2301_82344373"
+  juejin                 = "https://juejin.cn/user/3617844579024624"
+  zhihu                  = "https://www.zhihu.com/people/templechan"
+  weibo                  = "https://weibo.com/templechan1024"
+  facebook               = "https://www.facebook.com/templechann"
+  instagram              = "https://www.instagram.com/templechann"
+  tiktokInternational    = "https://www.tiktok.com/@templechan"
+  x                      = "https://x.com/templechann"
+  snapchat               = "https://www.snapchat.com/@templechann"
+  vk                     = "https://vk.com/templechan"
+  youtube                = "https://www.youtube.com/@templechann"
+  threads                = "https://www.threads.com/@templechann"
+
+  [[params.bookmark_link]]
+  title =  "爬界科技"
+  href =  "https://climbtw.com"
+
+  [[params.friend_link]]
+  title = "赵华冰的博客"
+  href =  "https://www.zhaohuabing.com"
+  [[params.friend_link]]
+  title = "Beyond the Void"
+  href =  "https://byvoid.com/zhs"
+
+  [[params.additional_menus]]
+  title =  "ARCHIVE"
+  href =  "/archive"
+  [[params.additional_menus]]
+  title =  "ABOUT"
+  href =  "/about"

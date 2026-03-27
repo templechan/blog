@@ -1,0 +1,42 @@
+{{ define "header" }}
+<header class="intro-header" style="background-image: url('{{ .Site.Params.header_image | relURL }}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <!-- <h1>{{ .Site.Title}} </h1> -->
+                    <h2 style="font-size: 40px;">{{ .Title }}</h2>
+                    <!--<hr class="small">-->
+		    <!-- <span class="subheading">{{ .Site.Params.slogan }}</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{{ end }}
+
+{{ define "main" }}
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Container -->
+            <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container">
+
+            {{ .Content }}
+
+            {{ partial "comments.html" . }}
+            
+            </div>
+            
+            {{ partial "sidebar.html" . }}
+        </div>
+    </div>
+</article>
+
+{{ end }}
