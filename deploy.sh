@@ -5,13 +5,13 @@ if ! command -v git &> /dev/null; then
     dnf install -y git
     git config --global user.email "templechan@126.com"
     git config --global user.name "templechan"
+    # 设置 GitHub 国内镜像源
+    git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+    # 如果失效，则删除旧的，设置的新的，记得先测试下是否有效
+    # git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
+    # git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 fi
 
-# 设置 GitHub 国内镜像源
-git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
-# 如果失效，则删除旧的，设置的新的，记得先测试下是否有效
-# git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
-# git config --global url."https://kkgithub.com/".insteadOf https://github.com/
 git clone -b main https://github.com/templechan/blog.git
 
 if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
@@ -32,7 +32,7 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
     # 1. 超过 512KB 的图片才会压缩
     # 2. 根据 图片大小 动态控制压缩比例，最后都控制在 300KB 左右
     # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
-    find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 4 'f="{}";s=$(stat -c %s "$f");if [ $s -gt 512000 ]; then q=$(echo "scale=0; 60 - 30*l($s/512000)/l(10)" | bc -l 2>/dev/null | awk "{print int(\$1+0.5)}"); q=$((q < 10 ? 10 : q > 75 ? 75 : q)); case "${f##*.}" in png) opts="-quality $((q-25)) -define png:compression-level=9 -colors 128" ;; jpg|jpeg) opts="-quality $((q-10)) -sampling-factor 4:2:0" ;; webp) opts="-quality $((q-20)) -define webp:method=6" ;; esac; mogrify $opts "$f"; fi'    
+    find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 4 --bar 'f="{}";s=$(stat -c %s "$f");if [ $s -gt 512000 ];then q=$(echo "scale=0;60-30*l($s/512000)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$((q<10?10:q>75?75:q));case "${f##*.}" in png) p="-quality $((q-25)) -define png:compression-level=9 -colors 128" ;; jpg|jpeg) p="-quality $((q-10)) -sampling-factor 4:2:0" ;; webp) p="-quality $((q-20)) -define webp:method=6" ;; esac;mogrify $p "$f";fi'
     
     if ! command -v docker &> /dev/null; then
         # 卸载旧版 Docker
