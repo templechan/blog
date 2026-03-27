@@ -6,7 +6,7 @@ description: 涉及 云服务器购买，配置，备案 等。
 author: 谌中钱
 date: 2026-01-20
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - tool
 tags: 

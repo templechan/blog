@@ -6,7 +6,7 @@ description: 涉及 Markdown 常用语法 等。
 author: 谌中钱
 date: 2026-02-01
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - tool
 tags: 

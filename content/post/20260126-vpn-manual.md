@@ -6,7 +6,7 @@ description: 涉及 梯子购买，使用 等。
 author: 谌中钱
 date: 2026-01-26
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - tool
 tags: 

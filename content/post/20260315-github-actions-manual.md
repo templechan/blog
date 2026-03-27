@@ -6,7 +6,7 @@ description: 涉及 ... 等。
 author: 谌中钱
 date: 2026-03-15
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - programming
 tags: 

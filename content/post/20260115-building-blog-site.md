@@ -6,7 +6,7 @@ description: 涉及 Hugo 静态框架，自动化部署，评论服务，SEO 等
 author: 谌中钱
 date: 2026-01-15
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
@@ -410,7 +410,7 @@ draft: false
   author: 谌中钱
   date: 2026-01-14
   lastMod: 
-  image: images/post-bg-default.png
+  image: img/post-bg-default.png
   categories: 
   - 
   tags: 

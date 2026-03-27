@@ -6,7 +6,7 @@ description: 涉及 CentOS 9 常用命令 等。
 author: 谌中钱
 date: 2026-01-23
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - tool
 tags: 

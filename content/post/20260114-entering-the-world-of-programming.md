@@ -6,7 +6,7 @@ description: 本文以知识网络的方式，带你探索编程的奥秘，从�
 author: 谌中钱
 date: 2026-01-14
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - programming
 tags: 

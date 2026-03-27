@@ -6,7 +6,7 @@ description: 涉及 Git 安装，常用命令，SSH配置 等。
 author: 谌中钱
 date: 2026-03-12
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - programming
 tags: 

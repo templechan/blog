@@ -6,7 +6,7 @@ description: 涉及 VSCode 常用插件，配置 等。
 author: 谌中钱
 date: 2026-01-29
 lastMod: 
-image: images/post-bg-default.png
+image: img/post-bg-default.png
 categories: 
 - tool
 tags: 
