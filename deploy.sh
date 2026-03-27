@@ -70,12 +70,8 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
 EOF
     systemctl daemon-reload
 
-    if [ "$(docker ps -a -f "name=blog" --quiet)" ]; then
-        docker stop blog && docker rm blog
-    fi
-    if [ "$(docker images -q blog)" ]; then
-        docker rmi blog
-    fi
+    docker rm -f blog >/dev/null 2>&1
+    docker rmi -f blog >/dev/null 2>&1
 
-    docker compose up -d
+    docker compose up -d --build
 fi
