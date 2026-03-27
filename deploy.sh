@@ -18,7 +18,7 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
     cd /usr/local/src/blog
     if ! command -v mogrify &> /dev/null; then
         # 安装图片压缩包 ImageMagick
-        dnf install -y ImageMagick-7.1.1.26-4.oc9 bc parallel
+        dnf install -y ImageMagick bc parallel
         # 配置ImageMagick策略文件
         sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
         sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
@@ -37,10 +37,8 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
     if ! command -v docker &> /dev/null; then
         # 卸载旧版 Docker
         dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
-        # 查看 centos-extras 是否开启
-        dnf repolist all 
-        # 如果未开启，则需要启用 centos-extras 存储库，将其 enabled 的值设置为1
-        vim /etc/yum.repos.d/OpenCloudOS.repo
+        # 自动启用仓库
+        sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/OpenCloudOS.repo
         # 保存后，清除重建缓存
         dnf clean all && dnf makecache
 
