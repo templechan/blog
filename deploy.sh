@@ -20,19 +20,11 @@ if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
         # 安装图片压缩包 ImageMagick
         dnf install -y ImageMagick bc parallel
         # 配置ImageMagick策略文件
-        sed -i '/<policy domain="coder" rights="read|write"/!b;n;c\ \ <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />' /etc/ImageMagick-7/policy.xml
-        sed -i '/<policy domain="resource" name="memory"/s/value=".*"/value="1GiB"/' /etc/ImageMagick-7/policy.xml
-        sed -i '/<policy domain="resource" name="disk"/s/value=".*"/value="4GiB"/' /etc/ImageMagick-7/policy.xml
-        sed -i '/<policy domain="resource" name="width"/s/value=".*"/value="32KP"/' /etc/ImageMagick-7/policy.xml
-        sed -i '/<policy domain="resource" name="height"/s/value=".*"/value="32KP"/' /etc/ImageMagick-7/policy.xml
+        sed -i '/<policy domain="coder" rights=".*" pattern="PNG,JPG,JPEG,WEBP"/d;/<policymap>/a \  <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />;s/<policy domain="resource" name="memory" value="[^"]*"/<policy domain="resource" name="memory" value="256MiB"/;s/<policy domain="resource" name="disk" value="[^"]*"/<policy domain="resource" name="disk" value="1GiB"/;s/<policy domain="resource" name="width" value="[^"]*"/<policy domain="resource" name="width" value="8KP"/;s/<policy domain="resource" name="height" value="[^"]*"/<policy domain="resource" name="height" value="8KP"/;s/<policy domain="resource" name="thread" value="[^"]*"/<policy domain="resource" name="thread" value="2"/;s/<policy domain="resource" name="throttle" value="[^"]*"/<policy domain="resource" name="throttle" value="1"/;s/<policy domain="resource" name="map" value="[^"]*"/<policy domain="resource" name="map" value="256MiB"/' /etc/ImageMagick-7/policy.xml
     fi
 
     # 手动压缩图片资源（会覆盖源文件，注意保留源文件）
-    # 压缩规则: 
-    # 1. 超过 512KB 的图片才会压缩
-    # 2. 根据 图片大小 动态控制压缩比例，最后都控制在 300KB 左右
-    # 3. 可压缩 PNG,JPG,JPEG,WEBP 的图片
-    find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 4 --bar 'f="{}";s=$(stat -c %s "$f");if [ $s -gt 512000 ];then q=$(echo "scale=0;60-30*l($s/512000)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$((q<10?10:q>75?75:q));case "${f##*.}" in png) p="-quality $((q-25)) -define png:compression-level=9 -colors 128" ;; jpg|jpeg) p="-quality $((q-10)) -sampling-factor 4:2:0" ;; webp) p="-quality $((q-20)) -define webp:method=6" ;; esac;mogrify $p "$f";fi'
+    find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 2 --bar 'f="{}";old_size=$(stat -c %s "$f");if [ $old_size -gt 256000 ]; then q=$(echo "scale=0; 75 - 20*l($old_size/256000)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$(( q < 25 ? 25 : q > 70 ? 70 : q ));ext="${f##*.}";case "$ext" in png) mogrify -strip -quality $q -define png:compression-level=9 -colors 256 "$f" ;; jpg|jpeg) mogrify -strip -quality $q -sampling-factor 4:2:0 "$f" ;; webp) mogrify -strip -quality $q -define webp:method=6 "$f" ;; esac;new_size=$(stat -c %s "$f");save=$((old_size - new_size));ratio=$(( save * 100 / old_size ));echo -e "\033[1;32m✅ 压缩：$f | 原始：$((old_size/1024))KB → 压缩后：$((new_size/1024))KB | 压缩率：$ratio%\033[0m";else echo -e "\033[1;33mℹ️ 跳过小图：$f\033[0m";fi'    
     
     if ! command -v docker &> /dev/null; then
         # 卸载旧版 Docker
@@ -69,7 +61,7 @@ EOF
     fi
 
     if [ "$(docker ps -a -f "name=blog" --quiet)" ]; then
-        docker rm blog
+        docker stop blog && docker rm blog
     fi
     if [ "$(docker images -q blog)" ]; then
         docker rmi blog
