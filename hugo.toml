@@ -8,7 +8,7 @@ theme = 'hugo-theme-cleanwhite'
 
 buildFuture = true # 构建包含未来日期的文章
 hasCJKLanguage = true # 自动处理中日韩文字，解决默认配置下的排版、摘要、字数统计 BUG
-enableRobotsTXT = true # 自动在你的网站根目录生成 robots.txt 文件
+enableRobotsTXT = false
 cleanDestinationDir = true # 构建时清空历史文件
 
 [markup]
