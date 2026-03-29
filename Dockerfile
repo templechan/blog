@@ -5,6 +5,6 @@ COPY . .
 RUN hugo --minify
 
 # 阶段2：生产运行环境（仅保留静态文件 + Nginx，超小体积）
-FROM nginx:alpine
+FROM nginx:alpine-slim
 COPY --from=builder /src/public/ /usr/share/nginx/html/
 EXPOSE 80

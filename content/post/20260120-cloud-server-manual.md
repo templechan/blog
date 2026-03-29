@@ -76,7 +76,11 @@ draft: false
 
 ### 1.3 DNS 配置
 
+> 腾讯云 DNS 管理台，可以一键配置。
+
 ### 1.4 SSL 配置
+
+> 下载好相关域名的 nginx 证书，在云服务器搭建 nginx 服务，在 nginx 配置里设置好 证书路径，可参考 <a href="https://templechann.com/post/nginx-manual" target="_blank">《Nginx 使用手册》</a>。
 
 ### 1.5 服务器域名备案
 

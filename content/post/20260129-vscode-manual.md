@@ -63,9 +63,10 @@ draft: false
 
 ### 2.3 Markdown Preview Enhanced
 
-> Markdown 功能拓展插件。
+> Markdown 功能拓展插件，可提供 目录 自动生成 等功能。
 
 - 插件中文文档：<a href="https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/" target="_blank">`https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/`</a>
+
 
 ### 2.4 markmap 
 

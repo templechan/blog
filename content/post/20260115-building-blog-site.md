@@ -36,11 +36,15 @@ draft: false
     - [2.3.1 配置文件](#231-配置文件)
     - [2.3.2 内容元数据配置](#232-内容元数据配置)
     - [2.3.3 命令新建文章模板](#233-命令新建文章模板)
-- [2.4 自动化部署](#24-自动化部署)
-  - [2.4.1 云服务器 SSH 配置](#241-云服务器-ssh-配置)
-  - [2.4.2 编写脚本](#242-编写脚本)
-- [2.5 评论服务](#25-评论服务)
-- [2.6 SEO](#26-seo)
+  - [2.4 自动化部署](#24-自动化部署)
+    - [2.4.1 云服务器 SSH 配置](#241-云服务器-ssh-配置)
+    - [2.4.2 编写脚本](#242-编写脚本)
+      - [2.4.2.1 工作流文件](#2421-工作流文件)
+      - [2.4.2.2 部署脚本](#2422-部署脚本)
+      - [2.4.2.3 镜像构建文件](#2423-镜像构建文件)
+      - [2.4.2.4 容器构建启动文件](#2424-容器构建启动文件)
+  - [2.5 评论服务](#25-评论服务)
+  - [2.6 SEO](#26-seo)
 
 <!-- /code_chunk_output -->
 
@@ -72,9 +76,9 @@ draft: false
 
 #### 2.1.1 Window 11 环境
 
-- 环境依赖
-  - 访问 GitHub 可能需要梯子：参考 <a href="https://templechann.com/post/20260126-vpn-manual" target="_blank">《梯子使用手册》</a>
-  - Git：参考 <a href="https://templechann.com/post/20260312-git-manual" target="_blank">《Git 使用手册》</a>
+- 环境依赖：
+  - 访问 GitHub 可能需要梯子：参考 <a href="https://templechann.com/post/vpn-manual" target="_blank">《梯子使用手册》</a>
+  - Git：参考 <a href="https://templechann.com/post/git-manual" target="_blank">《Git 使用手册》</a>
 
 ```shell
 # 1 安装 Hugo
@@ -193,7 +197,7 @@ hugo server --bind 0.0.0.0
 ```toml
 # 生产构建时，生成所有正式链接的唯一基础地址
 # sitemap.xml（网站地图）、robots.txt（爬虫协议）、页面 canonical 标签 等 SEO 核心文件必依赖它
-baseURL = 'https://templechann.com/' 
+baseURL = 'https://templechann.com'
 # locale = 'en-us'
 locale = 'zh-cn'
 title = 'Temple Blog'
@@ -259,6 +263,12 @@ home = ["HTML", "RSS"]
   dark_mode_toggle = false # 是否开启暗黑模式
   isSearch = false # 是否显示搜索图标
 
+  # 备案信息
+  isBeian = true # 是否显示备案信息
+  icp = "鄂ICP备2025165689号-1"
+  gongan = "鄂公网安备42018502008405号"
+  gongan_num = "42018502008405"
+  
   # Sidebar settings
   sidebar_avatar = "img/templechan.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
   sidebar_about_description = "谌中钱（言戈，Temple Chan），男，29岁，179cm，65kg，摩羯座，ESTJ，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，腾讯、Coupang、阿里云 前搬砖人，爬界科技 创始人、首席执行官。"
@@ -377,9 +387,9 @@ home = ["HTML", "RSS"]
 layout: post
 title: 构建博客网站
 subtitle: 
-description: 涉及 Hugo 静态框架，评论服务，搜索服务，SEO，自动化部署 等。
+description: 涉及 Hugo 静态框架，自动化部署，评论服务，SEO 等。
 author: 谌中钱
-date: 2026-01-14
+date: 2026-01-15
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -408,7 +418,7 @@ draft: false
   subtitle: 
   description: 涉及  等。
   author: 谌中钱
-  date: 2026-01-14
+  date: 2026-01-15
   lastMod: 
   image: img/post-bg-default.png
   categories: 
@@ -429,11 +439,16 @@ draft: false
   <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6} -->
   ```
 
-## 2.4 自动化部署
+### 2.4 自动化部署
 
 > 实现推送代码到 Github 上的 main 分支时，会自动部署到 云服务器。
 
-### 2.4.1 云服务器 SSH 配置
+- 环境依赖：
+  - 云服务器：参考 <a href="https://templechann.com/post/cloud-server-manual" target="_blank">《云服务器购买和使用手册》</a>
+  - Docker：参考 <a href="https://templechann.com/post/docker-manual" target="_blank">《Docker 使用手册》</a>
+  - Nginx：参考 <a href="https://templechann.com/post/nginx-manual" target="_blank">《Nginx 使用手册》</a>
+
+#### 2.4.1 云服务器 SSH 配置
 
 > 让 Github 可以用 云服务器的私钥 去连接 云服务器。
 
@@ -457,34 +472,168 @@ cat ~/.ssh/id_ed25519
 # Value: 部署服务器的 user
 ```
 
-### 2.4.2 编写脚本
+#### 2.4.2 编写脚本
 
 > - ***.github/workflows/blog_deploy.yml***：工作流文件，用来连接云服务器，执行云服务器的部署脚本
 > - ***./deploy.sh***：云服务器的部署脚本
 > - ***./Dockfile***：镜像构建文件
+> - ***./docker-compose.yml***：容器构建文件
+
+##### 2.4.2.1 工作流文件
 
 - .github/workflows/blog_deploy.yml：
 
+```yml
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+ 
+    - name: Install SSH key
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.BLOG_SSH_PRIVATE_KEY }}
+ 
+    - name: Adding Known Hosts
+      run: ssh-keyscan ${{ secrets.BLOG_SERVER_IP }} >> ~/.ssh/known_hosts
+ 
+    - name: Deploy to Server
+      run: ssh ${{ secrets.BLOG_USER }}@${{ secrets.BLOG_SERVER_IP }} 'bash -s' < ./deploy.sh
 ```
 
-```
+##### 2.4.2.2 部署脚本
 
 - ./deploy.sh：
 
+```sh
+cd /usr/local/src
+rm -rf /usr/local/src/blog
+
+if ! command -v git &> /dev/null; then
+    dnf install -y git
+    git config --global user.email "templechan@126.com"
+    git config --global user.name "templechan"
+fi
+
+# 设置 GitHub 国内镜像源
+git config --global url."https://bgithub.xyz/".insteadOf https://github.com/
+# 如果失效，则删除旧的，设置的新的，记得先测试下是否有效
+# git config --global --unset url."https://bgithub.xyz/".insteadOf https://github.com/
+# git config --global url."https://kkgithub.com/".insteadOf https://github.com/
+git clone -b main https://github.com/templechan/blog.git
+
+if [ -d /usr/local/src/blog ] && [ -n "$(ls -A /usr/local/src/blog)" ]; then
+    cd /usr/local/src/blog
+    if ! command -v mogrify &> /dev/null; then
+        # 安装图片压缩包 ImageMagick
+        dnf install -y ImageMagick bc parallel
+        # 配置ImageMagick策略文件
+        sed -i '/<policy domain="coder" rights=".*" pattern="PNG,JPG,JPEG,WEBP"/d;/<policymap>/a \  <policy domain="coder" rights="read|write" pattern="PNG,JPG,JPEG,WEBP" />;s/<policy domain="resource" name="memory" value="[^"]*"/<policy domain="resource" name="memory" value="256MiB"/;s/<policy domain="resource" name="disk" value="[^"]*"/<policy domain="resource" name="disk" value="1GiB"/;s/<policy domain="resource" name="width" value="[^"]*"/<policy domain="resource" name="width" value="8KP"/;s/<policy domain="resource" name="height" value="[^"]*"/<policy domain="resource" name="height" value="8KP"/;s/<policy domain="resource" name="thread" value="[^"]*"/<policy domain="resource" name="thread" value="2"/;s/<policy domain="resource" name="throttle" value="[^"]*"/<policy domain="resource" name="throttle" value="1"/;s/<policy domain="resource" name="map" value="[^"]*"/<policy domain="resource" name="map" value="256MiB"/' /etc/ImageMagick-7/policy.xml
+    fi
+
+    # 手动压缩图片资源（会覆盖源文件，注意保留源文件）
+    # 1 图片大小判断 >100KB 才压缩
+    # 2 动态质量计算算法 75 - 20*l(...)
+    # 3 质量限制 15~60
+    # 4 PNG / JPG / WebP 压缩参数
+    # 5 统计节省空间算法
+    # 6 并行数 -j 2
+    
+    # 进度交互版
+    # start=$SECONDS; find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 2 --bar 'f="{}";old_size=$(stat -c %s "$f");if [ $old_size -gt 102400 ]; then q=$(echo "scale=0;80-40*l($old_size/102400)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$((q<15?15:q>60?60:q));ext="${f##*.}";case "$ext" in png) mogrify -strip -quality $q -define png:compression-level=9 -colors 128 "$f" 2>/dev/null ;; jpg|jpeg) mogrify -strip -quality $q -sampling-factor 4:2:0 -density 72x72 "$f" 2>/dev/null ;; webp) mogrify -strip -quality $((q-5)) -define webp:method=6 "$f" 2>/dev/null ;; esac;new_size=$(stat -c %s "$f");save=$((old_size-new_size));echo "$save" >> /tmp/img_save.txt;fi'; total_save=$(awk '{sum+=$1}END{print sum}' /tmp/img_save.txt 2>/dev/null||0); count=$(wc -l </tmp/img_save.txt 2>/dev/null||0); rm -f /tmp/img_save.txt; cost=$((SECONDS - start)); min=$((cost / 60)); sec=$((cost % 60)); echo -e "\n\033[1;32m=== 压缩完成 ===\033[0m"; echo "✅ 压缩数量：$count 张"; echo "✅ 节省空间：$((total_save/1024)) KB ($((total_save/1024/1024)) MB)"; echo -e "✅ 耗时：${min}分${sec}秒"; echo -e "\033[1;32m================\033[0m"
+    # GitHub Actions 不支持交互专用
+    start=$SECONDS; find ./static/img/ \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.webp" \) -type f -print0 | parallel -0 -j 2 'f="{}";old_size=$(stat -c %s "$f");if [ $old_size -gt 102400 ]; then q=$(echo "scale=0;80-40*l($old_size/102400)/l(10)" | bc -l | awk "{print int(\$1+0.5)}");q=$((q<15?15:q>60?60:q));ext="${f##*.}";case "$ext" in png) mogrify -strip -quality $q -define png:compression-level=9 -colors 128 "$f" 2>/dev/null ;; jpg|jpeg) mogrify -strip -quality $q -sampling-factor 4:2:0 -density 72x72 "$f" 2>/dev/null ;; webp) mogrify -strip -quality $((q-5)) -define webp:method=6 "$f" 2>/dev/null ;; esac;new_size=$(stat -c %s "$f");save=$((old_size-new_size));echo "$save" >> /tmp/img_save.txt;fi' 2>/dev/null; total_save=$(awk '{sum+=$1}END{print sum}' /tmp/img_save.txt 2>/dev/null||0); count=$(wc -l </tmp/img_save.txt 2>/dev/null||0); rm -f /tmp/img_save.txt; cost=$((SECONDS-start)); min=$((cost/60)); sec=$((cost%60)); echo -e "\n=== 图片压缩完成 ==="; echo "压缩数量：$count 张"; echo "节省空间：$((total_save/1024)) KB ($((total_save/1024/1024)) MB)"; echo "耗时：${min}分${sec}秒"; echo "===================="
+
+    if ! command -v docker &> /dev/null; then
+        # 卸载旧版 Docker
+        dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+        # 自动启用仓库
+        sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/OpenCloudOS.repo
+        # 保存后，清除重建缓存
+        dnf clean all && dnf makecache
+
+        # 设置 Docker 国内软件源
+        dnf install -y dnf-plugins-core
+        # dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+        dnf config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+        # 安装 Docker
+        dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+        # 启动 Docker
+        systemctl start docker
+        # 设置 Docker 自启
+        systemctl enable docker
+    fi
+    # 设置 Docker 国内镜像代理
+    tee /etc/docker/daemon.json <<EOF
+    {
+    "registry-mirrors": [
+        "https://docker.1ms.run",
+        "https://dockerproxy.net",
+        "https://proxy.vvvv.ee",
+        "https://dockerproxy.link"
+    ]
+    }
+EOF
+    systemctl daemon-reload
+
+    docker rm -f blog >/dev/null 2>&1
+    docker rmi -f blog >/dev/null 2>&1
+
+    docker compose up -d --build
+fi
 ```
 
-```
+##### 2.4.2.3 镜像构建文件
 
 - ./Dockfile：
 
+```docker
+# 阶段1：Hugo 构建环境（临时镜像，用完丢弃）
+FROM hugomods/hugo:std-base-0.159.0 AS builder
+WORKDIR /src
+COPY . .
+RUN hugo --minify
+
+# 阶段2：生产运行环境（仅保留静态文件 + Nginx，超小体积）
+FROM nginx:alpine
+COPY --from=builder /src/public/ /usr/share/nginx/html/
+EXPOSE 80
 ```
 
+##### 2.4.2.4 容器构建启动文件
+
+- ./docker-compose.yml：
+
+```yml
+version: '3.8'
+
+services:
+  blog:
+    # 等价于 docker build -t blog . （自动构建当前目录的Dockerfile）
+    build: .
+    # 容器名称
+    container_name: blog
+    # 端口映射 主机80 → 容器80
+    ports:
+      - "80:80"
+    # 开机/崩溃自动重启
+    restart: always
 ```
 
+### 2.5 评论服务
 
-## 2.5 评论服务
-
-## 2.6 SEO
+### 2.6 SEO
 
 
 

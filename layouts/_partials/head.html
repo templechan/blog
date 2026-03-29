@@ -20,17 +20,16 @@
     </script>
 
 
-
-    <meta name="title" content="{{ if .Params.title }} {{ .Params.title }} {{ else }} {{ .Site.Params.title }} {{ end }}" />
-    <meta name="description" content="{{ if .Params.description }} {{ .Params.description }} {{ else }} {{ .Site.Params.description }} {{ end }}" />
+    <meta name="title" content="{{ if .Params.title }}{{ .Params.title }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}" />
+    <meta name="description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
     <meta name="keyword"  content="{{ .Site.Params.keyword }}">
 
 
     <!-- ==================== Open Graph (OG) 通用社交分享标签 ==================== -->
      <!-- 适用平台：Facebook、微信、小红书、LinkedIn、Discord、WhatsApp 等全球 99% 社交平台 -->
-    <meta property="og:title" content="{{ if .Params.title }} {{ .Params.title }} {{ else }} {{ .Site.Params.title }} {{ end }}" />
-    <meta property="og:description" content="{{ if .Params.description }} {{ .Params.description }} {{ else }} {{ .Site.Params.description }} {{ end }}" />
-    <meta property="og:image" content="{{ if .Params.image }} {{ .Site.BaseURL }}{{ .Params.image }} {{ else }} {{ .Site.BaseURL }}{{ .Site.Params.header_image }} {{ end }}" />
+    <meta property="og:title" content="{{ if .Params.title }}{{ .Params.title }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}" />
+    <meta property="og:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+    <meta property="og:image" content="{{ if .Params.image }}{{ .Site.BaseURL }}{{ .Params.image }}{{ else }}{{ .Site.BaseURL }}{{ .Site.Params.header_image }}{{ end }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
@@ -40,9 +39,9 @@
     <!-- ==================== Twitter Card 专属分享标签 ==================== -->
      <!-- 适用平台：Twitter / X（单独配置，展示效果最优） -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ if .Params.title }} {{ .Params.title }} {{ else }} {{ .Site.Params.title }} {{ end }}" />
-    <meta name="twitter:description" content="{{ if .Params.description }} {{ .Params.description }} {{ else }} {{ .Site.Params.description }} {{ end }}" />
-    <meta name="twitter:image" content="{{ if .Params.image }} {{ .Site.BaseURL }}{{ .Params.image }} {{ else }} {{ .Site.BaseURL }}{{ .Site.Params.header_image }} {{ end }}" />
+    <meta name="twitter:title" content="{{ if .Params.title }}{{ .Params.title }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}" />
+    <meta name="twitter:description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
+    <meta name="twitter:image" content="{{ if .Params.image }}{{ .Site.BaseURL }}{{ .Params.image }}{{ else }}{{ .Site.BaseURL }}{{ .Site.Params.header_image }}{{ end }}" />
     <!-- 可选：添加你的 Twitter 账号 -->
     <meta name="twitter:site" content="@templechann" />
 

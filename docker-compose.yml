@@ -6,8 +6,8 @@ services:
     build: .
     # 容器名称
     container_name: blog
-    # 端口映射 主机80 → 容器80
+    # 端口映射 主机81 → 容器80
     ports:
-      - "80:80"
+      - "81:80"
     # 开机/崩溃自动重启
     restart: always

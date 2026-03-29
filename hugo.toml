@@ -1,6 +1,6 @@
 # 生产构建时，生成所有正式链接的唯一基础地址
 # sitemap.xml（网站地图）、robots.txt（爬虫协议）、页面 canonical 标签 等 SEO 核心文件必依赖它
-baseURL = 'https://templechann.com/' 
+baseURL = 'https://templechann.com'
 # locale = 'en-us'
 locale = 'zh-cn'
 title = 'Temple Blog'
@@ -66,6 +66,12 @@ home = ["HTML", "RSS"]
   dark_mode_toggle = false # 是否开启暗黑模式
   isSearch = false # 是否显示搜索图标
 
+  # 备案信息
+  isBeian = true # 是否显示备案信息
+  icp = "鄂ICP备2025165689号-1"
+  gongan = "鄂公网安备42018502008405号"
+  gongan_num = "42018502008405"
+  
   # Sidebar settings
   sidebar_avatar = "img/templechan.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
   sidebar_about_description = "谌中钱（言戈，Temple Chan），男，29岁，179cm，65kg，摩羯座，ESTJ，汉族，中共团员，1996年1月14日出生于湖北省武汉市黄陂区，祖籍河南洛阳一带，始祖春秋时期郑国大夫裨谌。理学学士学位，主修计算机科学，中国内地不知名程序员，腾讯、Coupang、阿里云 前搬砖人，爬界科技 创始人、首席执行官。"
