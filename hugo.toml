@@ -92,7 +92,7 @@ home = ["HTML", "RSS"]
 
   # Twikoo comments
   # Follow https://twikoo.js.org/ to set up your own env_id
-  twikoo_env_id = ""
+  twikoo_env_id = "https://twikoo.templechann.com/"
 
   # Artalk comments
   # Follow https://artalk.js.org/ to set up your own server

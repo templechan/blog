@@ -43,8 +43,16 @@ draft: false
       - [2.4.2.2 部署脚本](#2422-部署脚本)
       - [2.4.2.3 镜像构建文件](#2423-镜像构建文件)
       - [2.4.2.4 容器构建启动文件](#2424-容器构建启动文件)
-  - [2.5 评论服务](#25-评论服务)
-  - [2.6 SEO](#26-seo)
+  - [2.5 部署云服务器 Nginx 服务](#25-部署云服务器-nginx-服务)
+  - [2.6 Twikoo 评论服务](#26-twikoo-评论服务)
+    - [2.6.1 云函数部署](#261-云函数部署)
+      - [2.6.1.1 Docker 方式](#2611-docker-方式)
+        - [2.6.1.1.1 容器构建文件](#26111-容器构建文件)
+    - [2.6.2 站点修改](#262-站点修改)
+      - [2.6.1 修改站点配置](#261-修改站点配置)
+      - [2.6.2 修改主题代码](#262-修改主题代码)
+      - [2.6.3 Twikoo 设置](#263-twikoo-设置)
+  - [2.7 SEO](#27-seo)
 
 <!-- /code_chunk_output -->
 
@@ -624,16 +632,104 @@ services:
     build: .
     # 容器名称
     container_name: blog
-    # 端口映射 主机80 → 容器80
+    # 端口映射 主机81 → 容器80
     ports:
-      - "80:80"
+      - "81:80"
     # 开机/崩溃自动重启
     restart: always
 ```
 
-### 2.5 评论服务
+### 2.5 部署云服务器 Nginx 服务
 
-### 2.6 SEO
+> 部署一个 Nginx 服务监听 云服务器 的 80 端口，然后通过端口转发到各种服务，参考 <a href="https://templechann.com/post/nginx-manual" target="_blank">《Nginx 使用手册》</a>
+
+
+### 2.6 Twikoo 评论服务
+
+> Twikoo 是一个简洁、安全、免费的静态网站评论系统。
+
+- Twikoo 官网：<https://twikoo.js.org>
+- GitHub: <https://github.com/twikoojs/twikoo/releases>
+    - 前端引用 twikoo.js 版本需要与 云函数版本 保持一致
+
+#### 2.6.1 云函数部署
+
+##### 2.6.1.1 Docker 方式
+
+```shell
+# 1 创建文件夹，用来存放 数据文件
+mkdir -p /usr/local/src/twikoo/data && cd /usr/local/src/twikoo
+
+# 2 创建启动容器
+docker compose up -d
+
+# 3 修改云服务器 nginx.conf 配置，让 二级域名 xxx.templechann.com 反向代理到 twikoo 容器映射的 宿主机端口 82，重启 nginx 容器
+```
+
+###### 2.6.1.1.1 容器构建文件
+
+./docker-compose.yml：
+
+```yml
+version: '3'
+
+services:
+  twikoo:
+    image: imaegoo/twikoo:1.6.42
+    container_name: twikoo
+    restart: always
+    ports:
+      - "82:8080"
+    environment:
+      - TWIKOO_THROTTLE=1000
+    volumes:
+      - ./data:/app/data
+```
+
+#### 2.6.2 站点修改
+
+##### 2.6.1 修改站点配置
+
+hugo.toml：
+
+```toml
+# Twikoo comments
+# Follow https://twikoo.js.org/ to set up your own env_id
+twikoo_env_id = "https://xxx.templechann.com/" # 云函数部署的地址
+```
+
+##### 2.6.2 修改主题代码
+
+- 修改 前端引用的 twikoo.js，与 云函数版本 保持一致，这里用的 1.6.42：
+
+.layouts\_partials\comments.html：
+
+```html
+<!-- <script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.14/dist/twikoo.all.min.js"></script> -->
+<script src="https://registry.npmmirror.com/twikoo/1.6.42/files/dist/twikoo.all.min.js"></script>
+```
+
+- 主题 的 bootstrap.min.css 对 上传图像 样式有覆盖，修改一下:
+
+.layouts\_partials\comments.html：
+
+```html
+<style>
+.twikoo img {
+    margin: 0;
+} 
+.twikoo .tk-input-image {
+    display: none;
+}
+</style>
+<div id="twikoo-tcomment"></div>
+```
+
+##### 2.6.3 Twikoo 设置
+
+> 在 站点文章 下方会有 Twikoo 评论组件，组件右下侧有 设置 按钮，第一次打开 设置 需要 配置密码。
+
+### 2.7 SEO
 
 
 

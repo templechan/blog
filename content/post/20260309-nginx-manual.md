@@ -68,14 +68,14 @@ cd /usr/local/src/nginx
 
 
 # 3 创建启动容器
-docker-compose up -d
+docker compose up -d
 ```
 
 ##### 2.1.1.1 挂载配置文件
 
 ./conf/nginx.conf：
 
-```conf
+```nginx
 worker_processes  1;
 
 events {
@@ -198,10 +198,10 @@ http {
 
     server {
         listen       443 ssl;
-        server_name  twikoo.templechann.com;
+        server_name  xxx.templechann.com;
 
-        ssl_certificate      /etc/nginx/certs/twikoo.templechann.com_bundle.pem;
-        ssl_certificate_key  /etc/nginx/certs/twikoo.templechann.com.key;
+        ssl_certificate      /etc/nginx/certs/xxx.templechann.com_bundle.pem;
+        ssl_certificate_key  /etc/nginx/certs/xxx.templechann.com.key;
 
         ssl_session_cache    shared:SSL:1m;
         
