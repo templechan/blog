@@ -73,7 +73,7 @@ docker compose up -d
 
 ##### 2.1.1.1 挂载配置文件
 
-./conf/nginx.conf：
+`./conf/nginx.conf：`
 
 ```nginx
 worker_processes  1;
@@ -277,7 +277,7 @@ http {
 ```
 ##### 2.1.1.2 容器构建文件
 
-./docker-compose.yml：
+`./docker-compose.yml：`
 
 ```yml
 version: '3'

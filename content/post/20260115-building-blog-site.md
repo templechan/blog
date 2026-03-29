@@ -51,7 +51,9 @@ draft: false
     - [2.6.2 站点修改](#262-站点修改)
       - [2.6.1 修改站点配置](#261-修改站点配置)
       - [2.6.2 修改主题代码](#262-修改主题代码)
-      - [2.6.3 Twikoo 设置](#263-twikoo-设置)
+    - [2.6.3 Twikoo 设置](#263-twikoo-设置)
+      - [2.6.3.1 头像配置](#2631-头像配置)
+      - [2.6.3.2 Server酱 (ServerChan) 评论推送](#2632-server酱-serverchan-评论推送)
   - [2.7 SEO](#27-seo)
 
 <!-- /code_chunk_output -->
@@ -200,7 +202,7 @@ hugo server --bind 0.0.0.0
 
 #### 2.3.1 配置文件
 
-- 作者配置 hugo.toml：
+- 作者配置 `./hugo.toml`：
 
 ```toml
 # 生产构建时，生成所有正式链接的唯一基础地址
@@ -417,7 +419,7 @@ draft: false
 #### 2.3.3 命令新建文章模板
 
 - 命令：`hugo new post/20260115-building-blog-site.md`
-- 作者文章模版 archetypes/post.md：
+- 作者文章模版 `./archetypes/post.md`：
 
   ```md
   ---
@@ -482,14 +484,14 @@ cat ~/.ssh/id_ed25519
 
 #### 2.4.2 编写脚本
 
-> - ***.github/workflows/blog_deploy.yml***：工作流文件，用来连接云服务器，执行云服务器的部署脚本
-> - ***./deploy.sh***：云服务器的部署脚本
-> - ***./Dockfile***：镜像构建文件
-> - ***./docker-compose.yml***：容器构建文件
+> - `./.github/workflows/blog_deploy.yml`：工作流文件，用来连接云服务器，执行云服务器的部署脚本
+> - `./deploy.sh`：云服务器的部署脚本
+> - `./Dockfile`：镜像构建文件
+> - `./docker-compose.yml`：容器构建文件
 
 ##### 2.4.2.1 工作流文件
 
-- .github/workflows/blog_deploy.yml：
+- `.github/workflows/blog_deploy.yml：`
 
 ```yml
 name: Deploy to Server
@@ -520,7 +522,7 @@ jobs:
 
 ##### 2.4.2.2 部署脚本
 
-- ./deploy.sh：
+- `./deploy.sh：`
 
 ```sh
 cd /usr/local/src
@@ -604,7 +606,7 @@ fi
 
 ##### 2.4.2.3 镜像构建文件
 
-- ./Dockfile：
+- `./Dockfile：`
 
 ```docker
 # 阶段1：Hugo 构建环境（临时镜像，用完丢弃）
@@ -621,7 +623,7 @@ EXPOSE 80
 
 ##### 2.4.2.4 容器构建启动文件
 
-- ./docker-compose.yml：
+- `./docker-compose.yml：`
 
 ```yml
 version: '3.8'
@@ -648,8 +650,8 @@ services:
 
 > Twikoo 是一个简洁、安全、免费的静态网站评论系统。
 
-- Twikoo 官网：<https://twikoo.js.org>
-- GitHub: <https://github.com/twikoojs/twikoo/releases>
+- Twikoo 官网：<a href="https://twikoo.js.org" target="_blank">`https://twikoo.js.org`</a>
+- GitHub: <a href="https://github.com/twikoojs/twikoo/releases" target="_blank">`https://github.com/twikoojs/twikoo/releases`</a>
     - 前端引用 twikoo.js 版本需要与 云函数版本 保持一致
 
 #### 2.6.1 云函数部署
@@ -668,7 +670,7 @@ docker compose up -d
 
 ###### 2.6.1.1.1 容器构建文件
 
-./docker-compose.yml：
+`./docker-compose.yml：`
 
 ```yml
 version: '3'
@@ -690,7 +692,7 @@ services:
 
 ##### 2.6.1 修改站点配置
 
-hugo.toml：
+`./hugo.toml：`
 
 ```toml
 # Twikoo comments
@@ -702,32 +704,66 @@ twikoo_env_id = "https://xxx.templechann.com/" # 云函数部署的地址
 
 - 修改 前端引用的 twikoo.js，与 云函数版本 保持一致，这里用的 1.6.42：
 
-.layouts\_partials\comments.html：
+`./layouts/_partials/comments.html：`
 
 ```html
 <!-- <script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.14/dist/twikoo.all.min.js"></script> -->
 <script src="https://registry.npmmirror.com/twikoo/1.6.42/files/dist/twikoo.all.min.js"></script>
 ```
 
-- 主题 的 bootstrap.min.css 对 上传图像 样式有覆盖，修改一下:
+- 主题 的 bootstrap.min.css 对 上传图像 样式有覆盖
+- 主题 hugo-theme-cleanwhite 的样式对 头像 div 有覆盖
+- 需要修改:
 
-.layouts\_partials\comments.html：
+`./layouts/_partials/comments.html：`
 
 ```html
 <style>
-.twikoo img {
-    margin: 0;
-} 
 .twikoo .tk-input-image {
     display: none;
+}
+.twikoo img {
+    margin: 0;
 }
 </style>
 <div id="twikoo-tcomment"></div>
 ```
 
-##### 2.6.3 Twikoo 设置
+#### 2.6.3 Twikoo 设置
 
 > 在 站点文章 下方会有 Twikoo 评论组件，组件右下侧有 设置 按钮，第一次打开 设置 需要 配置密码。
+
+##### 2.6.3.1 头像配置
+
+> Weavatar，多端多元化的统一头像服务。
+
+- Weavatar 官网: <a href="https://weavatar.com" target="_blank">`https://weavatar.com`</a>
+- 配置方法:
+    - 去 Weavatar 官网 用 邮箱 注册 和 上传 自定义头像。
+    - 在 Twikoo 设置 -> 配置管理 -> 通用，按如下配置:
+
+```
+GRAVATAR_CDN: weavatar.com
+```
+
+##### 2.6.3.2 Server酱 (ServerChan) 评论推送
+
+> Server酱，英文名 ServerChan，是一款 手机 和 服务器、智能设备 之间的通信软件。
+
+- Server酱 官网: <a href="https://sct.ftqq.com" target="_blank">`https://sct.ftqq.com`</a>
+- 配置方法:
+    - 去 Server酱 官网 注册，获取 SendKey，然后在 通道配置 里面设置 通知方式，我使用的 方糖的微信服务号。
+    - 在 Twikoo 设置 -> 配置管理 -> 即时通知，按如下配置:
+
+```
+PUSHOO_CHANNEL: serverchan
+PUSHOO_TOKEN: 填写获取的 SendKey
+```
+
+- 注意:
+    - ServerChan 目前由于用户量比较大，免费的通知额度只有 5 条。
+    - 自己发布的评论 (按邮箱判断)，不会通知。
+
 
 ### 2.7 SEO
 

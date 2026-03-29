@@ -53,14 +53,14 @@ var disq = new iDisqus('disqus-comment', {
 <div id="disqus-comment"></div>
 {{ template "_internal/disqus.html" . }}
 {{ else if .Site.Params.twikoo_env_id }}
-<!-- <style>
-.twikoo img {
-    margin: 0;
-}
+<style>
 .twikoo .tk-input-image {
     display: none;
 }
-</style> -->
+.twikoo img {
+    margin: 0;
+}
+</style>
 <div id="twikoo-tcomment"></div>
 <!-- <script src="https://cdn.jsdelivr.net/npm/twikoo@1.4.14/dist/twikoo.all.min.js"></script> -->
 <script src="https://registry.npmmirror.com/twikoo/1.6.42/files/dist/twikoo.all.min.js"></script>
