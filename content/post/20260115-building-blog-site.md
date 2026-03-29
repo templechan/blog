@@ -502,10 +502,6 @@ on:
     branches:
       - main
 
-# 强制使用 Node.js 24，消除所有警告
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -522,7 +518,7 @@ jobs:
         run: ssh-keyscan ${{ secrets.BLOG_SERVER_IP }} > ~/.ssh/known_hosts
 
       - name: Deploy to server
-        run: ssh -o StrictHostKeyChecking=no ${{ secrets.BLOG_USER }}@${{{ secrets.BLOG_SERVER_IP }}} 'bash -s' < ./deploy.sh
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.BLOG_USER }}@${{ secrets.BLOG_SERVER_IP }} 'bash -s' < ./deploy.sh
 ```
 
 ##### 2.4.2.2 部署脚本
