@@ -55,6 +55,7 @@ draft: false
       - [2.6.3.1 头像配置](#2631-头像配置)
       - [2.6.3.2 Server酱 (ServerChan) 评论推送](#2632-server酱-serverchan-评论推送)
   - [2.7 SEO](#27-seo)
+    - [2.7.1 搜索引擎收录](#271-搜索引擎收录)
 
 <!-- /code_chunk_output -->
 
@@ -766,6 +767,13 @@ PUSHOO_TOKEN: 填写获取的 SendKey
 
 
 ### 2.7 SEO
+
+#### 2.7.1 搜索引擎收录
+
+- 百度收录官网：<a href="https://ziyuan.baidu.com/linksubmit/index" target="_blank">`https://ziyuan.baidu.com/linksubmit/index`</a>
+    - 百度的 sitemap 提交权限需要和客服去申请。
+- 必应收录官网：<a href="https://www.bing.com/webmasters/sitemaps" target="_blank">`https://www.bing.com/webmasters/sitemaps`</a>
+- 谷歌收录官网：<a href="https://search.google.com/search-console/sitemaps" target="_blank">`https://search.google.com/search-console/sitemaps`</a>
 
 
 

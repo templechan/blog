@@ -185,14 +185,14 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
         }
 
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-            root html;
-        }
+        # error_page   500 502 503 504  /50x.html;
+        # location = /50x.html {
+        #     root  /usr/share/nginx/html;
+        # }
 
         # error_page 404 /404.html;
         # location = /404.html {
-        #     root html;
+        #     root /usr/share/nginx/html;
         # }
     }
 
@@ -229,10 +229,10 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
         }
 
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-            root html;
-        }
+        # error_page   500 502 503 504  /50x.html;
+        # location = /50x.html {
+        #     root  /usr/share/nginx/html;
+        # }
     }
 
     server {
@@ -268,10 +268,10 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
         }
 
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
+        # error_page   500 502 503 504  /50x.html;
+        # location = /50x.html {
+        #     root  /usr/share/nginx/html;
+        # }
     }
 }
 ```
