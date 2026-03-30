@@ -48,7 +48,7 @@ draft: false
     </object>
 </div>
 
-<!-- # <a href="https://templechann.com/post/entering-the-world-of-programming/" target="_blank">《走进程序的世界》</a>
+# <a href="https://templechann.com/post/entering-the-world-of-programming/" target="_blank">《走进程序的世界》</a>
 
 ## 初始装备
 
@@ -130,7 +130,7 @@ draft: false
 ## 数据开发（后端）
 
 - API 框架
-    - Next/Nuxt API 路由
+    - Next/Nuxt API Routes
     - Node 技术栈
         - <a href="https://templechann.com/post/express-manual/" target="_blank">《Express 使用手册》</a>
         - Nest
@@ -162,4 +162,4 @@ draft: false
 ## 解决方案
 
 - <a href="https://templechann.com/post/building-blog-site/" target="_blank">《构建博客网站》</a>
-- <a href="https://templechann.com/post/building-knowledge-base-qa-system/" target="_blank">《构建知识库问答RAG系统》</a> -->
+- <a href="https://templechann.com/post/building-knowledge-base-qa-system/" target="_blank">《构建知识库问答RAG系统》</a>

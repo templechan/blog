@@ -28,7 +28,7 @@ description: "嗨，我是谌中钱，本科主修计算机科学，全栈开发
     - Web 平台：React，Next
     - 移动平台：Taro，React Native
 - **后端**：
-    - API 开发：Express
+    - API 开发：Next API Routes，Express
 - **部署**：Docker，Nginx，GitHub Actions
 
 ### 语言
