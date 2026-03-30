@@ -511,10 +511,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4  # 升级到最新版，修复 Node20 警告
+        uses: actions/checkout@v6  # 升级到最新版，修复 Node20 警告
 
       - name: Install SSH key
-        uses: webfactory/ssh-agent@v0.9.0  # 升级到最新版
+        uses: webfactory/ssh-agent@v0.9.1  # 升级到最新版，未明确支持 Node24‌
         with:
           ssh-private-key: ${{ secrets.BLOG_SSH_PRIVATE_KEY }}
 
