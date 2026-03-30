@@ -165,7 +165,7 @@ http {
         # 系统临时维护
         # rewrite ^(.*)$ /maintainace.html break; # break，地址栏 url 不变
         # location = /maintainace.html {
-        #     root html;
+        #     root /usr/share/nginx/html;
         # }
 
         # location / {
@@ -185,9 +185,9 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
         }
 
-        # error_page   500 502 503 504  /50x.html;
+        # error_page 500 502 503 504 /50x.html;
         # location = /50x.html {
-        #     root  /usr/share/nginx/html;
+        #     root /usr/share/nginx/html;
         # }
 
         # error_page 404 /404.html;
@@ -215,7 +215,7 @@ http {
         # 系统临时维护
         # rewrite ^(.*)$ /maintainace.html break; # break，地址栏 url 不变
         # location = /maintainace.html {
-        #     root html;
+        #     root /usr/share/nginx/html;
         # }
 
         # 反向代理
@@ -229,9 +229,9 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
         }
 
-        # error_page   500 502 503 504  /50x.html;
+        # error_page 500 502 503 504 /50x.html;
         # location = /50x.html {
-        #     root  /usr/share/nginx/html;
+        #     root /usr/share/nginx/html;
         # }
     }
 
@@ -252,10 +252,10 @@ http {
         ssl_prefer_server_ciphers on;
 
         # 系统临时维护
-        # rewrite ^(.*)$ /maintainace.html break; # break，地址栏 url 不变
-        # location = /maintainace.html {
-        #     root html;
-        # }
+        rewrite ^(.*)$ /maintainace.html break; # break，地址栏 url 不变
+        location = /maintainace.html {
+            root /usr/share/nginx/html;
+        }
 
         # 反向代理
         location / {

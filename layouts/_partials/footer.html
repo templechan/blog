@@ -327,28 +327,30 @@
 
              </ul>
 
-		        <p class="copyright text-muted">
+             <p class="copyright text-muted">
+                    <br />
                     Copyright &copy; {{ .Site.Title }} {{ now.Year }} 
-
+                    
                     {{ if .Site.Params.isBeian }}
                         {{if .Site.Params.icp }} |
-                        <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #749AE3;">{{ .Site.Params.icp | markdownify }}</a>
+                        <a href="https://beian.miit.gov.cn/" target="_blank" style="color: #337ab7;">{{ .Site.Params.icp | markdownify }}</a>
                         {{end}} 
-    
+                        
                         {{if .Site.Params.gongan }} |
-                        <img src="{{"img/beian.png" | relURL}}" style="width: 18px; height: 18px; vertical-align: text-bottom;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code={{ .Site.Params.gongan_num }}" target='_blank' style='color: #749AE3;'>{{ .Site.Params.gongan | markdownify }}</a>
+                        <img src="{{"img/beian.png" | relURL}}" style="width: 18px; height: 18px; vertical-align: text-bottom;"> <a href="https://beian.mps.gov.cn/#/query/webSearch?code={{ .Site.Params.gongan_num }}" target='_blank' style='color: #337ab7;'>{{ .Site.Params.gongan | markdownify }}</a>
                         {{end}}
-                    {{ end }}
-
-                    {{ if .Site.Params.upstreamAttribution }}
-                    <br>
-                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
-                    <iframe
+                        {{ end }}
+                        
+                        {{ if .Site.Params.upstreamAttribution }}
+                        <br>
+                        <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                        <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
                         frameborder="0" scrolling="0" width="100px" height="20px"
                         src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
                     </iframe>
                     {{ end }}
+                    <br />
                 </p>
             </div>
         </div>
