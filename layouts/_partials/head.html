@@ -23,6 +23,7 @@
     <meta name="title" content="{{ if .Params.title }}{{ .Params.title }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}" />
     <meta name="description" content="{{ if .Params.description }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}" />
     <meta name="keywords"  content="{{ .Site.Params.keyword }}">
+    <meta name="application-name" content="{{ .Site.Title }}" />
 
 
     <!-- ==================== Open Graph (OG) 通用社交分享标签 ==================== -->
@@ -33,7 +34,7 @@
     <meta property="og:url" content="{{ .Permalink }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
-    <meta property="og:locale" content="zh_cn" />
+    <meta property="og:locale" content="zh_CN" />
 
 
     <!-- ==================== Twitter Card 专属分享标签 ==================== -->
@@ -44,6 +45,7 @@
     <meta name="twitter:image" content="{{ if .Params.image }}{{ .Site.BaseURL }}{{ .Params.image }}{{ else }}{{ .Site.BaseURL }}{{ .Site.Params.header_image }}{{ end }}" />
     <!-- 可选：添加你的 Twitter 账号 -->
     <meta name="twitter:site" content="@templechann" />
+    <meta name="twitter:creator" content="@templechann" />
 
 
 
