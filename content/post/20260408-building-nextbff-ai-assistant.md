@@ -247,12 +247,6 @@ draft: false
       <td>🔹dayjs：轻量级时间日期处理库<br />🔹uuid：唯一 ID 生成库</td>
     </tr>
     <tr>
-      <td>核心 Hook</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>工程化</td>
       <td>TypeScript、ESLint、Prettier、Husky、lint-staged、Turbopack</td>
       <td>typescript ^5<br />eslint ^9<br />prettier ^3.8.1<br />husky ^9.1.7<br />lint-staged ^16.4.0<br />Turbopack：Next.js 16.2.3 已全面默认的打包工具</td>
