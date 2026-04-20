@@ -1,18 +1,19 @@
 ---
 layout: post
-title: React 使用手册
+title: HTML 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-02-16
+date: 2025-03-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
 - 前端
-- 框架
-slug: react-manual
+- 编程语言
+slug: html-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -26,4 +27,5 @@ draft: false
 
 
 <!-- /code_chunk_output -->
+
 

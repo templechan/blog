@@ -4,7 +4,7 @@ title: 走进程序的世界
 subtitle: 
 description: 本文以知识网络的方式，带你探索编程的奥秘，从基础概念到实践应用，希望能为初学者打开一扇通往代码世界的大门。
 author: 谌中钱
-date: 2026-01-14
+date: 2025-01-14
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -15,7 +15,7 @@ slug: entering-the-world-of-programming
 metadata:
 - text: Temple's Blog
   link: https://templechann.com/
-weight: 1
+weight: 3
 showtoc: false
 draft: false
 ---
@@ -104,6 +104,8 @@ draft: false
     - <a href="https://templechann.com/post/js-manual/" target="_blank">《JavaScript 使用手册》</a>
         - <a href="https://templechann.com/post/ts-manual/" target="_blank">《TypeScript 使用手册》</a>
 - 框架工具
+    - Node
+        - <a href="https://templechann.com/post/node-manual" target="_blank">《Node 使用手册》</a>
     - React
         - Web平台 (SPA，H5)
             - 客户端渲染
@@ -137,7 +139,7 @@ draft: false
     - 微服务
         - Nest 微服务模块
 - 数据库
-    - PostgreSQL
+    - <a href="https://templechann.com/post/postgresql-manual/" target="_blank">《PostgreSQL 使用手册》</a>
         - 高一致性，适合复杂分析 (存储订单/用户核心数据 等)
     - MongoDB
         - 高吞吐量读写 (记录用户行为日志 等)
@@ -162,4 +164,4 @@ draft: false
 ## 解决方案
 
 - <a href="https://templechann.com/post/building-blog-site/" target="_blank">《构建博客网站》</a>
-- <a href="https://templechann.com/post/building-knowledge-base-qa-system/" target="_blank">《构建知识库问答RAG系统》</a>
+- <a href="https://templechann.com/post/building-nextbff-ai-assistant/" target="_blank">《构建 Next BFF 级 AI 助手 - T.AI》</a>

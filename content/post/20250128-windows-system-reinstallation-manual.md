@@ -4,7 +4,7 @@ title: Windows 系统重装手册
 subtitle: 
 description: 涉及 系统重装的流程 等。
 author: 谌中钱
-date: 2026-01-17
+date: 2025-01-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - 操作系统
 slug: windows-system-reinstallation-manual
+weight:
 showtoc: true
 draft: false
 ---

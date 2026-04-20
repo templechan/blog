@@ -1,17 +1,19 @@
 ---
 layout: post
-title: 算法研究
+title: Taro 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-03-18
+date: 2025-06-08
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 算法研究
-slug: algorithm-research
+- 前端
+- 框架
+slug: taro-manual
+weight:
 showtoc: true
 draft: false
 ---

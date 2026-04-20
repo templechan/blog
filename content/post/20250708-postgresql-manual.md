@@ -1,18 +1,19 @@
 ---
 layout: post
-title: React Native 使用手册
+title: PostgreSQL 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-02-25
+date: 2025-07-08
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 前端
-- 框架
-slug: rn-manual
+- 后端
+- 数据库
+slug: postgresql-manual
+weight:
 showtoc: true
 draft: false
 ---

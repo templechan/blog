@@ -4,7 +4,7 @@ title: Git 使用手册
 subtitle: 
 description: 涉及 Git 安装，常用命令，SSH配置 等。
 author: 谌中钱
-date: 2026-03-12
+date: 2025-08-18
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - CI/CD
 slug: git-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -35,6 +36,9 @@ draft: false
 
 - 官网: <a href="https://git-scm.com" target="_blank">`https://git-scm.com`</a>
 - 安装：在官网直接下载安装即可使用。
+- 国内镜像源资料：
+    - 7ed 镜像：<a href="https://www.7ed.net/dashboard" target="_blank">`https://www.7ed.net/dashboard`</a>
+    - ghproxy 镜像：<a href="https://ghproxy.net/" target="_blank">`https://ghproxy.net/`</a>
 
 ## 2 常用命令
 

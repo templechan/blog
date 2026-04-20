@@ -4,7 +4,7 @@ title: Visual Studio Code 使用手册
 subtitle: 
 description: 涉及 VSCode 常用插件，配置 等。
 author: 谌中钱
-date: 2026-01-29
+date: 2025-03-08
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - IDE
 slug: vscode-manual
+weight:
 showtoc: true
 draft: false
 ---

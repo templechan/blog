@@ -4,7 +4,7 @@ title: 梯子使用手册
 subtitle: 
 description: 涉及 梯子购买，使用 等。
 author: 谌中钱
-date: 2026-01-26
+date: 2025-02-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - 网络
 slug: vpn-manual
+weight:
 showtoc: true
 draft: false
 ---

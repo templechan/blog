@@ -4,7 +4,7 @@ title: 构建博客网站
 subtitle: 
 description: 涉及 Hugo 静态框架，自动化部署，评论服务，SEO 等。
 author: 谌中钱
-date: 2026-01-15
+date: 2025-01-18
 lastMod: 
 image: img/post-bg-default.png
 categories: 

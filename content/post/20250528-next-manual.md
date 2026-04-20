@@ -1,18 +1,19 @@
 ---
 layout: post
-title: Express 使用手册
+title: Next 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-02-28
+date: 2025-05-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 后端
+- 前端
 - 框架
-slug: express-manual
+slug: next-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -26,3 +27,4 @@ draft: false
 
 
 <!-- /code_chunk_output -->
+

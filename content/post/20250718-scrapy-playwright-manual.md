@@ -1,17 +1,20 @@
 ---
 layout: post
-title: GitHub Actions 使用手册
+title: Scrapy + Playwright 爬虫使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-03-15
+date: 2025-07-18
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- CI/CD
-slug: github-actions-manual
+- 后端
+- 框架
+- 数据采集
+slug: scrapy-playwright-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -25,4 +28,3 @@ draft: false
 
 
 <!-- /code_chunk_output -->
-

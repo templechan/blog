@@ -1,11 +1,12 @@
 # 生产构建时，生成所有正式链接的唯一基础地址
 # sitemap.xml（网站地图）、robots.txt（爬虫协议）、页面 canonical 标签 等 SEO 核心文件必依赖它
 baseURL = 'https://templechann.com'
-# locale = 'en-us'
-locale = 'zh-cn'
+# locale = 'en-US'
+locale = 'zh-CN'
 title = 'Temple Blog'
 theme = 'hugo-theme-cleanwhite'
 
+buildDrafts = false # 构建草稿
 buildFuture = true # 构建包含未来日期的文章
 hasCJKLanguage = true # 自动处理中日韩文字，解决默认配置下的排版、摘要、字数统计 BUG
 enableRobotsTXT = false

@@ -1,19 +1,18 @@
 ---
 layout: post
-title: Scrapy + Playwright 爬虫使用手册
+title: 算法研究
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-03-03
+date: 2025-09-08
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 后端
-- 框架
-- 数据采集
-slug: scrapy-playwright-manual
+- 算法研究
+slug: algorithm-research
+weight:
 showtoc: true
 draft: false
 ---
@@ -27,3 +26,4 @@ draft: false
 
 
 <!-- /code_chunk_output -->
+

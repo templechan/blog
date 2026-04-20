@@ -1,18 +1,19 @@
 ---
 layout: post
-title: TypeScript 使用手册
+title: Express 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-02-13
+date: 2025-06-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 前端
-- 编程语言
-slug: ts-manual
+- 后端
+- 框架
+slug: express-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -26,4 +27,3 @@ draft: false
 
 
 <!-- /code_chunk_output -->
-

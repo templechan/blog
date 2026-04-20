@@ -1,19 +1,19 @@
 ---
 layout: post
-title: 构建知识库问答RAG系统
+title: React 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-01-16
+date: 2025-05-18
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 解决方案
-- AI
-slug: building-knowledge-base-qa-system
-weight: 3
+- 前端
+- 框架
+slug: react-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -27,5 +27,4 @@ draft: false
 
 
 <!-- /code_chunk_output -->
-
 

@@ -4,7 +4,7 @@ title: Markdown 使用手册
 subtitle: 
 description: 涉及 Markdown 常用语法 等。
 author: 谌中钱
-date: 2026-02-01
+date: 2025-03-18
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - 编程语言
 slug: markdown-manual
+weight:
 showtoc: true
 draft: false
 ---

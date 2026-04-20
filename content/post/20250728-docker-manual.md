@@ -4,7 +4,7 @@ title: Docker 使用手册
 subtitle: 
 description: 涉及 Docker 安装，国内镜像代理实时更新，设置国内软件源，常用命令 等。
 author: 谌中钱
-date: 2026-03-06
+date: 2025-07-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - 部署
 slug: docker-manual
+weight:
 showtoc: true
 draft: false
 ---
@@ -22,7 +23,10 @@ draft: false
 
 <!-- code_chunk_output -->
 
-
+- [1 简介](#1-简介)
+- [2 安装](#2-安装)
+  - [2.1 CentOS 9 环境](#21-centos-9-环境)
+  - [2.2 常用命令](#22-常用命令)
 
 <!-- /code_chunk_output -->
 

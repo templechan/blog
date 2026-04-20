@@ -1,18 +1,18 @@
 ---
 layout: post
-title: Next 使用手册
+title: GitHub Actions 使用手册
 subtitle: 
 description: 涉及 ... 等。
 author: 谌中钱
-date: 2026-02-19
+date: 2025-08-28
 lastMod: 
 image: img/post-bg-default.png
 categories: 
 - programming
 tags: 
-- 前端
-- 框架
-slug: next-manual
+- CI/CD
+slug: github-actions-manual
+weight:
 showtoc: true
 draft: false
 ---

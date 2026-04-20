@@ -4,7 +4,7 @@ title: 云服务器购买和使用手册
 subtitle: 
 description: 涉及 云服务器购买，配置，备案 等。
 author: 谌中钱
-date: 2026-01-20
+date: 2025-02-08
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - 操作系统
 slug: cloud-server-manual
+weight:
 showtoc: true
 draft: false
 ---

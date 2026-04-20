@@ -4,7 +4,7 @@ title: Nginx 使用手册
 subtitle: 
 description: 涉及 Nginx 安装，常用配置 等。
 author: 谌中钱
-date: 2026-03-09
+date: 2025-08-08
 lastMod: 
 image: img/post-bg-default.png
 categories: 
@@ -12,6 +12,7 @@ categories:
 tags: 
 - 部署
 slug: nginx-manual
+weight:
 showtoc: true
 draft: false
 ---
