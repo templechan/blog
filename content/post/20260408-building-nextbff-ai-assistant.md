@@ -121,24 +121,145 @@ draft: false
 
 > 本项目采用的技术点版本，除了兼容性考虑外，都采用最新版，使用 pnpm-lock.yaml 保证协同一致性。
 
-||技术点|版本|生产优势|
-|:-:|:-|:-|:-|
-|基础环境|Git、Node.js、NVM、PNPM|git 2.53.0.2<br />node.js 24.14.1<br />nvm 1.2.2.0<br />pnpm 10.33.0|🔹Git：版本控制，多人协作<br />🔹NVM：Node.js 多版本管理器<br />🔹Node.js：JS 运行环境，前端全栈基础设施<br />🔹PNPM：高性能的 NPM（Node.js 的包管理器）|
-|UI设计|参考 DeepSeek、字节豆包、阿里千问 的 Web 端、移动端|最新|🔹市场已验证，符合用户习惯|
-|前端框架|React、Next.js、create-next-app|react 19.2.4<br />next 16.2.3<br />create-next-app 16.2.3|🔹React：前端主流框架，生态强大，大厂标准<br />🔹Next.js：React 的全栈增强框架，解决 SEO、首屏慢、路由麻烦、接口分离等痛点<br />🔹create-next-app：Next.js 的脚手架，一键搭建标准化的项目结构|
-|UI|Tailwind CSS、shadcn/ui、lucide-react、sonner|tailwindcss ^4<br />shadcn ^4.2.0<br />lucide-react ^1.8.0<br />sonner ^2.0.7|🔹Tailwind CSS：CSS 原子化样式工具类框架，快速写页面样式，简化响应式布局<br />🔹shadcn/ui：基于 Tailwind CSS 的高质量可定制组件库<br />🔹lucide-react：React 专用的图标库，轻量<br />🔹sonner：轻量提示组件，官方推荐|
-|数据管理|Zustand、SWR、fetch|zustand ^5.0.12<br />swr ^2.4.1|🔹Zustand：前端全局状态存取，轻量<br />🔹SWR：后端数据调度，负责统一管理服务层接口，实现数据自动缓存、刷新、重试等，轻量|
-|文档解析|FileReader、mammoth、pdfjs-dist|mammoth ^1.12.0<br />pdfjs-dist ^5.6.205|🔹mammoth：纯前端解析 .docx 文档的库<br />🔹pdfjs-dist：纯前端解析 .pdf 文件的库|
-|RAG技术|@langchain/core、@langchain/textsplitters、@xenova/transformers、pg|@langchain/core ^1.1.39<br />@langchain/textsplitters ^1.0.1<br />@xenova/transformers ^2.17.2<br />pg^8.20.0|🔹@langchain/core：RAG 流程调度核心，负责把 文档读取 → 分块 → 向量化 → 检索 → 提示词 → 大模型回答，串成一条完整流水线。<br />🔹@langchain/textsplitters：文档分块，切割后送入 embedding 模型<br />🔹@xenova/transformers：纯 JS 本地跑 AI 模型，负责向量生成、向量检索、问题分类等<br ><br >当前项目使用的模型有：<br />🔹Xenova/all-MiniLM-L6-v2：嵌入模型，负责向量生成、检索，轻量超快<br />🔹Xenova/distilbert-base-uncased-mnli：分类模型，负责用户意图识别，超轻量蒸馏模型|
-|后端框架|Next API Routes|Next.js 内置的后端接口能力|🔹Next API Routes：提供接口能力，信息安全隔离，支持边缘化|
-|数据库|PostgreSQL、pgvector|PostgreSQL 18<br />pgvector：是 PostgreSQL 的向量插件|🔹PostgreSQL：世界上最稳定、最强大的开源数据库 🐶，高一致性，适合复杂分析等<br />🔹pgvector：负责把 Xenova 模型生成的向量存进数据库，使用用户问题生产的向量去检索数据库中相似的文档片段|
-|第三方工具|dayjs、uuid|dayjs ^1.11.20<br />uuid ^13.0.0|🔹dayjs：轻量级时间日期处理库<br />🔹uuid：唯一 ID 生成库|
-|核心 Hook||||
-|工程化|TypeScript、ESLint、Prettier、Husky、lint-staged、Turbopack|typescript ^5<br />eslint ^9<br />prettier ^3.8.1<br />husky ^9.1.7<br />lint-staged ^16.4.0<br />Turbopack：Next.js 16.2.3 已全面默认的打包工具|🔹TypeScript：给 JS 加类型，防止 BUG，更安全<br />🔹ESLint：检查代码语法错误、不规范写法<br />🔹Prettier：自动格式化代码，统一风格<br />🔹Husky：Git 提交钩子，拦截不合格代码<br />🔹lint-staged：只检查本次修改的文件，速度飞快<br />🔹Turbopack：由 Vercel 官方开发的下一代 JavaScript 打包工具，比 webpack 快 10～100 倍，比 Vite 快 5～20 倍，兼容 webpack|
-|自动化部署|Docker、Nginx、GitHub Actions|Docker 29.1.3  <br /> Nginx 1.24.0|🔹Docker：容器化，环境统一，跨平台<br />🔹Nginx：高性能 Web 服务器，提供反向代理，解决跨域，SSL证书配置等功能<br />🔹GitHub Actions：CI/CD 自动化部署|
-|边缘部署|Vercel、Vercel Postgres|||
+<style>
+.markdown-table {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  display: block !important;
+  overflow-x: auto !important;
+  font-size: 14px !important;
+  line-height: 1.9 !important;
+  border-radius: 10px !important;
+  margin: 16px 0 !important;
+}
+.markdown-table th,
+.markdown-table td {
+  padding: 18px 22px !important;
+  border: 1px solid #e8ebee !important;
+  text-align: left !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+  background: transparent !important;
+  color: #333 !important;
+}
+/* 核心：第一列最小宽度，保证至少显示5个汉字 */
+.markdown-table td:first-child,
+.markdown-table th:first-child {
+  min-width: 70px !important;
+  width: 70px !important;
+  white-space: nowrap !important;
+}
+.markdown-table th {
+  background: #f7f8fa !important;
+  font-weight: 600 !important;
+}
+.markdown-table tr:nth-child(even) {
+  background: #fcfdff !important;
+}
+.markdown-table tr:hover {
+  background: #f2f5f9 !important;
+}
+</style>
 
-
+<table class="markdown-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>技术点</th>
+      <th>版本</th>
+      <th>生产优势</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>基础环境</td>
+      <td>Git、Node.js、NVM、PNPM</td>
+      <td>git 2.53.0.2<br />node.js 24.14.1<br />nvm 1.2.2.0<br />pnpm 10.33.0</td>
+      <td>🔹Git：版本控制，多人协作<br />🔹NVM：Node.js 多版本管理器<br />🔹Node.js：JS 运行环境，前端全栈基础设施<br />🔹PNPM：高性能的 NPM（Node.js 的包管理器）</td>
+    </tr>
+    <tr>
+      <td>UI设计</td>
+      <td>参考 DeepSeek、字节豆包、阿里千问 的 Web 端、移动端</td>
+      <td>最新</td>
+      <td>🔹市场已验证，符合用户习惯</td>
+    </tr>
+    <tr>
+      <td>前端框架</td>
+      <td>React、Next.js、create-next-app</td>
+      <td>react 19.2.4<br />next 16.2.3<br />create-next-app 16.2.3</td>
+      <td>🔹React：前端主流框架，生态强大，大厂标准<br />🔹Next.js：React 的全栈增强框架，解决 SEO、首屏慢、路由麻烦、接口分离等痛点<br />🔹create-next-app：Next.js 的脚手架，一键搭建标准化的项目结构</td>
+    </tr>
+    <tr>
+      <td>UI</td>
+      <td>Tailwind CSS、shadcn/ui、lucide-react、sonner</td>
+      <td>tailwindcss ^4<br />shadcn ^4.2.0<br />lucide-react ^1.8.0<br />sonner ^2.0.7</td>
+      <td>🔹Tailwind CSS：CSS 原子化样式工具类框架，快速写页面样式，简化响应式布局<br />🔹shadcn/ui：基于 Tailwind CSS 的高质量可定制组件库<br />🔹lucide-react：React 专用的图标库，轻量<br />🔹sonner：轻量提示组件，官方推荐</td>
+    </tr>
+    <tr>
+      <td>数据管理</td>
+      <td>Zustand、SWR、fetch</td>
+      <td>zustand ^5.0.12<br />swr ^2.4.1</td>
+      <td>🔹Zustand：前端全局状态存取，轻量<br />🔹SWR：后端数据调度，负责统一管理服务层接口，实现数据自动缓存、刷新、重试等，轻量</td>
+    </tr>
+    <tr>
+      <td>文档解析</td>
+      <td>FileReader、mammoth、pdfjs-dist</td>
+      <td>mammoth ^1.12.0<br />pdfjs-dist ^5.6.205</td>
+      <td>🔹mammoth：纯前端解析 .docx 文档的库<br />🔹pdfjs-dist：纯前端解析 .pdf 文件的库</td>
+    </tr>
+    <tr>
+      <td>RAG技术</td>
+      <td>@langchain/core、@langchain/textsplitters、@xenova/transformers、pg</td>
+      <td>@langchain/core ^1.1.39<br />@langchain/textsplitters ^1.0.1<br />@xenova/transformers ^2.17.2<br />pg^8.20.0</td>
+      <td>🔹@langchain/core：RAG 流程调度核心，负责把 文档读取 → 分块 → 向量化 → 检索 → 提示词 → 大模型回答，串成一条完整流水线。<br />🔹@langchain/textsplitters：文档分块，切割后送入 embedding 模型<br />🔹@xenova/transformers：纯 JS 本地跑 AI 模型，负责向量生成、向量检索、问题分类等<br /><br />当前项目使用的模型有：<br />🔹Xenova/all-MiniLM-L6-v2：嵌入模型，负责向量生成、检索，轻量超快<br />🔹Xenova/distilbert-base-uncased-mnli：分类模型，负责用户意图识别，超轻量蒸馏模型</td>
+    </tr>
+    <tr>
+      <td>后端框架</td>
+      <td>Next API Routes</td>
+      <td>Next.js 内置的后端接口能力</td>
+      <td>🔹Next API Routes：提供接口能力，信息安全隔离，支持边缘化</td>
+    </tr>
+    <tr>
+      <td>数据库</td>
+      <td>PostgreSQL、pgvector</td>
+      <td>PostgreSQL 18<br />pgvector：是 PostgreSQL 的向量插件</td>
+      <td>🔹PostgreSQL：世界上最稳定、最强大的开源数据库 🐶，高一致性，适合复杂分析等<br />🔹pgvector：负责把 Xenova 模型生成的向量存进数据库，使用用户问题生产的向量去检索数据库中相似的文档片段</td>
+    </tr>
+    <tr>
+      <td>第三方工具</td>
+      <td>dayjs、uuid</td>
+      <td>dayjs ^1.11.20<br />uuid ^13.0.0</td>
+      <td>🔹dayjs：轻量级时间日期处理库<br />🔹uuid：唯一 ID 生成库</td>
+    </tr>
+    <tr>
+      <td>核心 Hook</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>工程化</td>
+      <td>TypeScript、ESLint、Prettier、Husky、lint-staged、Turbopack</td>
+      <td>typescript ^5<br />eslint ^9<br />prettier ^3.8.1<br />husky ^9.1.7<br />lint-staged ^16.4.0<br />Turbopack：Next.js 16.2.3 已全面默认的打包工具</td>
+      <td>🔹TypeScript：给 JS 加类型，防止 BUG，更安全<br />🔹ESLint：检查代码语法错误、不规范写法<br />🔹Prettier：自动格式化代码，统一风格<br />🔹Husky：Git 提交钩子，拦截不合格代码<br />🔹lint-staged：只检查本次修改的文件，速度飞快<br />🔹Turbopack：由 Vercel 官方开发的下一代 JavaScript 打包工具，比 webpack 快 10～100 倍，比 Vite 快 5～20 倍，兼容 webpack</td>
+    </tr>
+    <tr>
+      <td>自动化部署</td>
+      <td>Docker、Nginx、GitHub Actions</td>
+      <td>Docker 29.1.3<br />Nginx 1.24.0</td>
+      <td>🔹Docker：容器化，环境统一，跨平台<br />🔹Nginx：高性能 Web 服务器，提供反向代理，解决跨域，SSL证书配置等功能<br />🔹GitHub Actions：CI/CD 自动化部署</td>
+    </tr>
+    <tr>
+      <td>边缘部署</td>
+      <td>Vercel、Vercel Postgres</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+ 
 ## 2 项目开发
 
 ### 2.1 项目初始化
